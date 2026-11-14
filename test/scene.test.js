@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { Vector3 } from 'three';
 import { createCourtyardScene } from '../src/domain/scene.js';
 import { SCENE_CONFIG } from '../src/domain/scene-config.js';
+import { castSunRay } from '../src/core/geometry.js';
 
 const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-12, `${a} != ${b}`);
 const sceneAt = canopyId => createCourtyardScene({ regionId: 'R1', canopyId });
@@ -77,4 +78,12 @@ test('P1 scene creation rejects unknown IDs and state snapshots cannot mutate ot
   const second = sceneAt('R6');
   assert.notDeepEqual(first.canopy.roof.min, second.canopy.roof.min);
   assert.deepEqual(sceneAt('R1').canopy.roof.min, first.canopy.roof.min);
+});
+
+test('P1 actual canopy posts and roof both produce nearest ray witnesses', () => {
+  const scene = createCourtyardScene({ regionId: 'R3', canopyId: 'R3' });
+  const point = new Vector3(5, 0, -2);
+  const towardPost = new Vector3(...scene.canopy.posts[0].center).sub(point).normalize();
+  assert.equal(castSunRay(point, towardPost, scene.occluders).blockerId, 'C_POST_NW');
+  assert.equal(castSunRay(new Vector3(5, 1.5, -2), new Vector3(0, 1, 0), scene.occluders).blockerId, 'C_ROOF');
 });
