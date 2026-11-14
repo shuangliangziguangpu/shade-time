@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: AI diagnostic without dedicated key is BLOCKED and sends zero requests
+ok 1 - AI diagnostic without dedicated key is BLOCKED and sends zero requests
+  ---
+  duration_ms: 1.8629
+  type: 'test'
+  ...
+# Subtest: AI diagnostic checks configured model before sending a completion (MOCK transport)
+ok 2 - AI diagnostic checks configured model before sending a completion (MOCK transport)
+  ---
+  duration_ms: 29.2623
+  type: 'test'
+  ...
+# Subtest: AI diagnostic rejects unavailable model without substituting another (MOCK)
+ok 3 - AI diagnostic rejects unavailable model without substituting another (MOCK)
+  ---
+  duration_ms: 0.4987
+  type: 'test'
+  ...
+# Subtest: AI diagnostic handles HTTP authentication failure without exposing body (MOCK)
+ok 4 - AI diagnostic handles HTTP authentication failure without exposing body (MOCK)
+  ---
+  duration_ms: 0.2987
+  type: 'test'
+  ...
+# Subtest: AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK)
+ok 5 - AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK)
+  ---
+  duration_ms: 2.8454
+  type: 'test'
+  ...
+# Subtest: AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms)
+ok 6 - AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms)
+  ---
+  duration_ms: 34.8692
+  type: 'test'
+  ...
+# Subtest: G1 no occluder gives direct sunlight
+ok 7 - G1 no occluder gives direct sunlight
+  ---
+  duration_ms: 1.0909
+  type: 'test'
+  ...
+# Subtest: G2 analytical intersection with G is (1,1,0)
+ok 8 - G2 analytical intersection with G is (1,1,0)
+  ---
+  duration_ms: 0.6458
+  type: 'test'
+  ...
+# Subtest: G3 box behind the positive ray cannot occlude
+ok 9 - G3 box behind the positive ray cannot occlude
+  ---
+  duration_ms: 0.3256
+  type: 'test'
+  ...
+# Subtest: G4-G5 height 1.5m and a 75-degree sun pass over G
+ok 10 - G4-G5 height 1.5m and a 75-degree sun pass over G
+  ---
+  duration_ms: 0.7623
+  type: 'test'
+  ...
+# Subtest: G6-G7 synthetic roof blocks vertical ray; moving it away removes block
+ok 11 - G6-G7 synthetic roof blocks vertical ray; moving it away removes block
+  ---
+  duration_ms: 0.1887
+  type: 'test'
+  ...
+# Subtest: G8 parallel slab rays hit or miss without NaN
+ok 12 - G8 parallel slab rays hit or miss without NaN
+  ---
+  duration_ms: 0.1127
+  type: 'test'
+  ...
+# Subtest: G9 original points inside or on box are invalid before epsilon offset
+ok 13 - G9 original points inside or on box are invalid before epsilon offset
+  ---
+  duration_ms: 0.1099
+  type: 'test'
+  ...
+# Subtest: G10 multiple occluders count once with closest witness independent of array order
+ok 14 - G10 multiple occluders count once with closest witness independent of array order
+  ---
+  duration_ms: 0.1324
+  type: 'test'
+  ...
+# Subtest: boundary tangent, just inside, and just outside have deterministic outcomes
+ok 15 - boundary tangent, just inside, and just outside have deterministic outcomes
+  ---
+  duration_ms: 0.4415
+  type: 'test'
+  ...
+# Subtest: malformed geometry and non-unit/zero directions are rejected
+ok 16 - malformed geometry and non-unit/zero directions are rejected
+  ---
+  duration_ms: 0.6656
+  type: 'test'
+  ...
+# Subtest: independent 100-point benchmark: ground 100%, height 1.5m 30%
+ok 17 - independent 100-point benchmark: ground 100%, height 1.5m 30%
+  ---
+  duration_ms: 1.8447
+  type: 'test'
+  ...
+# Subtest: HTTP serves browser modules, supports HEAD, rejects private paths and writes
+ok 18 - HTTP serves browser modules, supports HEAD, rejects private paths and writes
+  ---
+  duration_ms: 119.0016
+  type: 'test'
+  ...
+# Subtest: P0 locked packages are Three r160 and SunCalc 1.9.0
+ok 19 - P0 locked packages are Three r160 and SunCalc 1.9.0
+  ---
+  duration_ms: 1.2903
+  type: 'test'
+  ...
+# Subtest: S1 four artificial azimuths preserve east/up/south coordinates and unit length
+ok 20 - S1 four artificial azimuths preserve east/up/south coordinates and unit length
+  ---
+  duration_ms: 0.3109
+  type: 'test'
+  ...
+# Subtest: S2-S4 Dalian summer morning east, noon south, afternoon west
+ok 21 - S2-S4 Dalian summer morning east, noon south, afternoon west
+  ---
+  duration_ms: 2.6888
+  type: 'test'
+  ...
+# Subtest: S5-S6 midnight below horizon and winter noon lower than summer noon
+ok 22 - S5-S6 midnight below horizon and winter noon lower than summer noon
+  ---
+  duration_ms: 0.1704
+  type: 'test'
+  ...
+# Subtest: S7 +08:00 and UTC equivalent instants match exactly
+ok 23 - S7 +08:00 and UTC equivalent instants match exactly
+  ---
+  duration_ms: 1.6839
+  type: 'test'
+  ...
+# Subtest: S8 explicit Shanghai input is invariant across process timezones
+ok 24 - S8 explicit Shanghai input is invariant across process timezones
+  ---
+  duration_ms: 334.8181
+  type: 'test'
+  ...
+# Subtest: S9 0, 2, 5 degrees and threshold neighbours are handled without rounding
+ok 25 - S9 0, 2, 5 degrees and threshold neighbours are handled without rounding
+  ---
+  duration_ms: 0.1969
+  type: 'test'
+  ...
+# Subtest: S10 reject invalid dates, ambiguous inputs, invalid latitude and off-step time
+ok 26 - S10 reject invalid dates, ambiguous inputs, invalid latitude and off-step time
+  ---
+  duration_ms: 0.5761
+  type: 'test'
+  ...
+# Subtest: SunCalc 1.9.0 upstream published-commit position regression
+ok 27 - SunCalc 1.9.0 upstream published-commit position regression
+  ---
+  duration_ms: 0.1837
+  type: 'test'
+  ...
+# Subtest: P0 DirectionalLight sits toward sun and propagates opposite to sun vector
+ok 28 - P0 DirectionalLight sits toward sun and propagates opposite to sun vector
+  ---
+  duration_ms: 0.6384
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 566.2409
