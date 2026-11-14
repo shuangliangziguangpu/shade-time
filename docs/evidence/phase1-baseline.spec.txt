@@ -1,0 +1,36 @@
+✔ AI diagnostic without dedicated key is BLOCKED and sends zero requests (0.9256ms)
+✔ AI diagnostic checks configured model before sending a completion (MOCK transport) (21.9904ms)
+✔ AI diagnostic rejects unavailable model without substituting another (MOCK) (0.4382ms)
+✔ AI diagnostic handles HTTP authentication failure without exposing body (MOCK) (0.2984ms)
+✔ AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK) (2.5088ms)
+✔ AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms) (30.5871ms)
+✔ G1 no occluder gives direct sunlight (1.3319ms)
+✔ G2 analytical intersection with G is (1,1,0) (0.3607ms)
+✔ G3 box behind the positive ray cannot occlude (0.1547ms)
+✔ G4-G5 height 1.5m and a 75-degree sun pass over G (0.1518ms)
+✔ G6-G7 synthetic roof blocks vertical ray; moving it away removes block (0.318ms)
+✔ G8 parallel slab rays hit or miss without NaN (0.1875ms)
+✔ G9 original points inside or on box are invalid before epsilon offset (0.1651ms)
+✔ G10 multiple occluders count once with closest witness independent of array order (0.1624ms)
+✔ boundary tangent, just inside, and just outside have deterministic outcomes (0.1788ms)
+✔ malformed geometry and non-unit/zero directions are rejected (0.7159ms)
+✔ independent 100-point benchmark: ground 100%, height 1.5m 30% (1.9156ms)
+✔ HTTP serves browser modules, supports HEAD, rejects private paths and writes (78.5883ms)
+✔ P0 locked packages are Three r160 and SunCalc 1.9.0 (1.5192ms)
+✔ S1 four artificial azimuths preserve east/up/south coordinates and unit length (0.3173ms)
+✔ S2-S4 Dalian summer morning east, noon south, afternoon west (1.9555ms)
+✔ S5-S6 midnight below horizon and winter noon lower than summer noon (0.1352ms)
+✔ S7 +08:00 and UTC equivalent instants match exactly (0.6498ms)
+✔ S8 explicit Shanghai input is invariant across process timezones (260.589ms)
+✔ S9 0, 2, 5 degrees and threshold neighbours are handled without rounding (0.1451ms)
+✔ S10 reject invalid dates, ambiguous inputs, invalid latitude and off-step time (0.4868ms)
+✔ SunCalc 1.9.0 upstream published-commit position regression (0.1754ms)
+✔ P0 DirectionalLight sits toward sun and propagates opposite to sun vector (0.6131ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 455.1155
