@@ -1,0 +1,312 @@
+{
+  "checkedAt": "2026-11-14T11:47:33.718Z",
+  "comparedBrowserStates": 19,
+  "comparison": [
+    {
+      "label": "default_after_camera_fix",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "90%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "90%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "ground_height",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "reject_R2",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "reject_R5",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "canopy_R1",
+      "expected": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "observed": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "canopy_R4",
+      "expected": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "observed": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "canopy_R6",
+      "expected": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "observed": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "canopy_R3",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "region_R1",
+      "expected": {
+        "ground": "100%",
+        "elevated": "100%",
+        "rate": "100%"
+      },
+      "observed": {
+        "ground": "100%",
+        "elevated": "100%",
+        "rate": "100%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "region_R4",
+      "expected": {
+        "ground": "100%",
+        "elevated": "100%",
+        "rate": "100%"
+      },
+      "observed": {
+        "ground": "100%",
+        "elevated": "100%",
+        "rate": "100%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "region_R6",
+      "expected": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "observed": {
+        "ground": "0%",
+        "elevated": "0%",
+        "rate": "0%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "region_R3",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "20%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "time_12:00",
+      "expected": {
+        "ground": "90%",
+        "elevated": "100%",
+        "rate": "90%"
+      },
+      "observed": {
+        "ground": "90%",
+        "elevated": "100%",
+        "rate": "90%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "time_00:00",
+      "expected": {
+        "ground": "N/A",
+        "elevated": "N/A",
+        "rate": "N/A"
+      },
+      "observed": {
+        "ground": "N/A",
+        "elevated": "N/A",
+        "rate": "N/A"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "time_04:45",
+      "expected": {
+        "ground": "N/A",
+        "elevated": "N/A",
+        "rate": "N/A"
+      },
+      "observed": {
+        "ground": "N/A",
+        "elevated": "N/A",
+        "rate": "N/A"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "time_15:01",
+      "expected": {
+        "ground": "N/A",
+        "elevated": "N/A",
+        "rate": "N/A"
+      },
+      "observed": {
+        "ground": "N/A",
+        "elevated": "N/A",
+        "rate": "N/A"
+      },
+      "inputRejected": true,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "winter_noon",
+      "expected": {
+        "ground": "30%",
+        "elevated": "40%",
+        "rate": "30%"
+      },
+      "observed": {
+        "ground": "30%",
+        "elevated": "40%",
+        "rate": "30%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "final_reload",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "90%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "90%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    },
+    {
+      "label": "final_default",
+      "expected": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "90%"
+      },
+      "observed": {
+        "ground": "20%",
+        "elevated": "90%",
+        "rate": "90%"
+      },
+      "inputRejected": false,
+      "rejectedChoicePreserved": true,
+      "status": "PASS"
+    }
+  ],
+  "legacyPassed": true,
+  "pageWarnErrorCount": 0
+}

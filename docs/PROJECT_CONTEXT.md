@@ -94,3 +94,7 @@ Shadowmap 已有日照、时间、太阳路径和编辑等能力，不宣称这�
 ## 接管实查起点
 
 2026-11-14：`D:\ShadeTime` 可访问，main 干净；本地 HEAD 与远程 main 均为 `d63644dab01985196022cfa4882ade04589326d7`，仅 README/.gitignore。Node v24.22.1；本执行环境 PATH 找不到 npm。后续实现与验收以 DEVELOPMENT_LOG.md 和实际 Git 为准。
+
+## 阶段1验收更新
+
+2026-11-14在feature/phase1-courtyard-scene本地分支实现统一庭院、TD004结构、位置与净距验证、双高度单时刻计算和Three显示。原28项与新增27项全部通过；浏览器19个已记录状态与Node计算一致。main保持7bf34be基线，本轮不推送、不合并。具体提交、证据与未实现范围见PHASE1_ACCEPTANCE.md；AI三条业务链和完整比赛交付仍未完成。

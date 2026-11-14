@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-11-14T11:55:43.013Z",
+  "baseline": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "codeHead": "b5f546c78f709732da2e0ac7b92c4c995e166d06",
+  "branch": "feature/phase1-courtyard-scene",
+  "main": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "originMain": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "frozen": [
+    {
+      "path": "src/core/sun.js",
+      "unchanged": true,
+      "sha256": "e168425be4c04ba9d23dbb2f59b7d34dfe48fa6cca0b14babf07afebd5a1d679"
+    },
+    {
+      "path": "src/core/geometry.js",
+      "unchanged": true,
+      "sha256": "90034cd8234768ca515473d10bdf05326129a937495d9c079c97dd2474ada9c7"
+    },
+    {
+      "path": "src/probe/fixture.js",
+      "unchanged": true,
+      "sha256": "236cc3fd622b9e8f0b5d2e42059b2077a2113330c1f32ede64d799e3a918b491"
+    },
+    {
+      "path": "src/view/lighting.js",
+      "unchanged": true,
+      "sha256": "b6f528e38ee31c07ed2b3b91d150d00d935c9abbe26d7dec16a1861cf796a23b"
+    },
+    {
+      "path": "src/main.js",
+      "unchanged": true,
+      "sha256": "d5446b45ff2e2b058d62bae43b019904a1dc7c60c0eb118a2205350636a8e9a3"
+    },
+    {
+      "path": "public/index.html",
+      "unchanged": true,
+      "sha256": "c3a17c59f698d077177a7f7a2ada4868cf636f5af882c02ee545e198bfb3fcd7"
+    },
+    {
+      "path": "public/styles.css",
+      "unchanged": true,
+      "sha256": "d9de9cedfbf48495bc7a11dfba8a2f2d025f09dfc2d08d213495fd88f4a8e25d"
+    },
+    {
+      "path": "test/sun.test.js",
+      "unchanged": true,
+      "sha256": "b45f62faea6c3837cb876bc8ad1a501028fb6d6d5ddd10641b0ac72b2a797957"
+    },
+    {
+      "path": "test/geometry.test.js",
+      "unchanged": true,
+      "sha256": "6cca18673a7cc5fdaba9e68ce5c27ec515393dabe96bcf5e394cc79ad77c1184"
+    },
+    {
+      "path": "test/server.test.js",
+      "unchanged": true,
+      "sha256": "bf32d92a8c12a4981f5be23520364e8d0d280787d9d0e8bdd67535621bc55b11"
+    },
+    {
+      "path": "test/ai-connectivity.test.js",
+      "unchanged": true,
+      "sha256": "4007e5729c864a510bfd1267cfe1f8a7602d1c0cc3b532311719a1b40f779cb2"
+    },
+    {
+      "path": "package.json",
+      "unchanged": true,
+      "sha256": "8b73588d0b86d86836cbf6f13d6b3cbf9767992f6bed55308cf91ced727e5507"
+    },
+    {
+      "path": "package-lock.json",
+      "unchanged": true,
+      "sha256": "5da2cf58d73206b6183140e9061eef4154ea0eae405482a0337a0f2b44fb5dbd"
+    }
+  ],
+  "originalTestCount": 28,
+  "originalsPreserved": true,
+  "totalPass": 55,
+  "newPass": 27,
+  "browserChecks": 19,
+  "browserAllPass": true,
+  "checkedTextBlobs": 80,
+  "suspiciousPaths": [],
+  "findings": [],
+  "secretAuditScope": "Only committed and staged Git content. No .env file or secret environment value read. Common-format checks are not a universal secret detector.",
+  "evidence": [
+    {
+      "path": "docs/evidence/images/phase1-camera-before.jpg",
+      "sha256": "d0325d633a41949f7c0cfbb053aea72aa5a0bbbde21da20321a9705995f27ef4"
+    },
+    {
+      "path": "docs/evidence/images/phase1-courtyard.jpg",
+      "sha256": "23c8ef707c1f831ee8b4ce397050f0932d9b2d880880b85be3527c246694d1ba"
+    },
+    {
+      "path": "docs/evidence/images/phase1-night.jpg",
+      "sha256": "1af15e458d94b0d351d7d4a48973bb8e354010f5527ed521e098bdf064183d96"
+    },
+    {
+      "path": "docs/evidence/images/phase1-rejected.jpg",
+      "sha256": "d74f7a4152c89461df11d48d27099fb50038f2fc5fb6b2b370fc0dea71483479"
+    },
+    {
+      "path": "docs/evidence/images/phase1-top.jpg",
+      "sha256": "449047a3362fab4d38e40794c12446cbeda35758a9c1613b25b8753ee4d25f90"
+    },
+    {
+      "path": "docs/evidence/phase1-all-tests.spec.txt",
+      "sha256": "1b4f2a30798e0ed193df6f278af4201b4f09ae22213b4455cb86101e122f24e0"
+    },
+    {
+      "path": "docs/evidence/phase1-all-tests.tap",
+      "sha256": "e3f347373790b8c75613568ad512499ced044c498c16cb525dabca65f6dfac7f"
+    },
+    {
+      "path": "docs/evidence/phase1-baseline.spec.txt",
+      "sha256": "0ad8ffbf34e43003237f00704cc69cfe9d930a926e4e6b1f347e86cbcee9b459"
+    },
+    {
+      "path": "docs/evidence/phase1-browser-node-comparison.json",
+      "sha256": "99679dfe126c593481c1851e7a688084852adab23df3d237fbae53c061c7d443"
+    },
+    {
+      "path": "docs/evidence/phase1-browser-observations.json",
+      "sha256": "810a693fe554c56e2ee509f7f0d185e613702629b367b20bdc7e30095f89e3a3"
+    }
+  ]
+}
