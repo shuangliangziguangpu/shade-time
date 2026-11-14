@@ -4,6 +4,15 @@ import { AI_CONFIG } from './ai-connectivity.js';
 
 const files = new Map([
   ['/', ['../public/index.html', 'text/html; charset=utf-8']],
+  ['/courtyard', ['../public/courtyard.html', 'text/html; charset=utf-8']],
+  ['/courtyard.css', ['../public/courtyard.css', 'text/css; charset=utf-8']],
+  ['/src/courtyard.js', ['../src/courtyard.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/scene-config.js', ['../src/domain/scene-config.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/scene.js', ['../src/domain/scene.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/clearance.js', ['../src/domain/clearance.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/layout.js', ['../src/domain/layout.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/analysis.js', ['../src/domain/analysis.js', 'text/javascript; charset=utf-8']],
+  ['/src/view/courtyard-model.js', ['../src/view/courtyard-model.js', 'text/javascript; charset=utf-8']],
   ['/styles.css', ['../public/styles.css', 'text/css; charset=utf-8']],
   ['/src/main.js', ['../src/main.js', 'text/javascript; charset=utf-8']],
   ['/src/core/sun.js', ['../src/core/sun.js', 'text/javascript; charset=utf-8']],

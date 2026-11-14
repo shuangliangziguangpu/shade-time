@@ -1,0 +1,37 @@
+.courtyard-app header nav { display: flex; align-items: center; gap: 24px; }
+.courtyard-app nav a { color: #6c8274; text-decoration: none; font-size: 12px; }
+.court-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 324px; gap: 20px; }
+.court-viewport-panel { min-width: 0; display: flex; flex-direction: column; overflow: hidden; background: #e8ede4; border: 1px solid #dce4db; border-radius: 16px; }
+.view-actions { display: flex; gap: 7px; }
+#court-viewport { position: relative; min-height: 440px; flex: 1; }
+#court-viewport canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+#court-loading { position: absolute; inset: 40% 0 auto; text-align: center; color: #64776a; font-size: 13px; }
+.court-view-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 18px; color: #6b7d71; font-size: 11px; }
+.court-view-footer label { display: flex; align-items: center; gap: 7px; margin: 0; font-size: 11px; white-space: nowrap; }
+.court-view-footer input { width: auto; accent-color: #438779; }
+.court-controls { padding: 20px; }
+.court-controls hr { margin: 15px 0; }
+.court-controls .section-label { margin-bottom: 10px; }
+.court-controls .date-grid { margin: 0; }
+.placement-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.layout-message { color: #476d55; background: #edf4ea; border-radius: 6px; font-size: 11px; line-height: 1.6; padding: 8px 10px; margin-top: 10px; }
+.layout-message.error { color: #9c5146; background: #fbefea; }
+.court-controls .metric { margin: 14px 0 10px; }
+.court-controls .metric strong { font-size: 44px; }
+.court-controls .evidence { font-size: 11px; min-height: 55px; }
+.court-controls .state:empty { display: none; }
+.court-status { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 2px; border-bottom: 1px solid #dce4db; font-size: 11px; color: #607b68; }
+@media (max-width: 1050px) {
+  .court-workspace { grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; }
+  .court-view-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .court-controls { padding: 17px; }
+  .courtyard-app .viewport-heading { padding: 14px; gap: 8px; flex-wrap: wrap; }
+}
+@media (max-width: 760px) {
+  .court-workspace { grid-template-columns: 1fr; }
+  #court-viewport { min-height: 400px; height: 400px; flex: none; }
+  .court-view-footer { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .courtyard-app header nav { gap: 12px; }
+  .courtyard-app nav a { font-size: 10px; }
+  .court-controls { padding: 20px; }
+}

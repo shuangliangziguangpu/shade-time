@@ -23,6 +23,15 @@ test('P1 Three.js solid IDs, geometry dimensions and world bounds match all anal
       assert.ok(displayedBounds.max.distanceTo(entity.box.max) < 1e-7, entity.id);
       assert.equal(mesh.castShadow, true);
     }
+    const surfaces = [scene.courtyard, scene.corridor, ...scene.regionCandidates];
+    for (const descriptor of surfaces) {
+      const displayed = model.group.children.find(object => object.userData.entityId === descriptor.id);
+      assert.ok(displayed, descriptor.id);
+      assert.equal(displayed.geometry.parameters.width, descriptor.size[0]);
+      assert.equal(displayed.geometry.parameters.height, descriptor.size[2]);
+      assert.equal(displayed.position.x, descriptor.center[0]);
+      assert.equal(displayed.position.z, descriptor.center[2]);
+    }
     disposeModel(model.group);
   }
 });
