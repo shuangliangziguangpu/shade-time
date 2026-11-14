@@ -3,6 +3,7 @@ import { createShadowBinding, assertVisualBindings } from './shadow-proxies.js';
 import { createB1Facade } from './building-visuals.js';
 import { createPaving } from './ground-visuals.js';
 import { buildBoxParts } from './box-parts.js';
+import { createCanopySurface } from './canopy-visuals.js';
 
 export function createVisualScene(scene, materials) {
   const group = new THREE.Group();
@@ -15,7 +16,9 @@ export function createVisualScene(scene, materials) {
   let currentScene = scene;
   for (const entity of scene.occluders) {
     const binding = createShadowBinding(entity);
-    const visual = entity.id === 'B1' ? createB1Facade(entity, materials) : buildBoxParts([{min:entity.min,max:entity.max,material:entity.type === 'roof' ? 'roof' : entity.type === 'post' ? 'metal' : 'plaster'}], materials, entity.id);
+    const visual = entity.id === 'B1' ? createB1Facade(entity, materials)
+      : entity.type === 'roof' || entity.type === 'post' ? createCanopySurface(entity, materials)
+      : buildBoxParts([{min:entity.min,max:entity.max,material:'plaster'}], materials, entity.id);
     visual.traverse(object => { if (object.geometry) ownedGeometries.add(object.geometry); });
     binding.visual.add(visual);
     bindings.set(entity.id, binding);

@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 // Bake metre-based face UVs, then merge by material instead of retaining one mesh per detail.
-export function buildBoxParts(parts, materials, entityId) {
+export function buildBoxParts(parts, materials, entityId, uvOrigin = [0, 0, 0]) {
   const batches = new Map();
   for (const part of parts) {
     const size = part.max.map((value, axis) => value - part.min[axis]);
@@ -14,8 +14,8 @@ export function buildBoxParts(parts, materials, entityId) {
     const repeat = materials.get(part.material).userData.metresPerRepeat ?? 1;
     for (let index = 0; index < positions.count; index++) {
       const nx = Math.abs(normals.getX(index)), ny = Math.abs(normals.getY(index));
-      const u = nx > 0.5 ? positions.getZ(index) : positions.getX(index);
-      const v = ny > 0.5 ? positions.getZ(index) : positions.getY(index);
+      const u = nx > 0.5 ? positions.getZ(index) - uvOrigin[2] : positions.getX(index) - uvOrigin[0];
+      const v = ny > 0.5 ? positions.getZ(index) - uvOrigin[2] : positions.getY(index) - uvOrigin[1];
       uv.setXY(index, u / repeat, v / repeat);
     }
     if (!batches.has(part.material)) batches.set(part.material, []);

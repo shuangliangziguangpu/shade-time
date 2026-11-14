@@ -6,6 +6,10 @@ import { createVisualMaterials } from '../src/view/visual-materials.js';
 import { createVisualScene } from '../src/view/visual-scene.js';
 import { createB1Facade } from '../src/view/building-visuals.js';
 import { createPaving } from '../src/view/ground-visuals.js';
+import { createCanopySurface } from '../src/view/canopy-visuals.js';
+import { analyzeCourtyard } from '../src/domain/analysis.js';
+import { parseShanghaiDateTime } from '../src/core/sun.js';
+import { castSunRay } from '../src/core/geometry.js';
 
 const original = createCourtyardScene({regionId:'R3',canopyId:'R3'});
 
@@ -61,4 +65,49 @@ test('B1A static resources persist across region and canopy changes; seven bindi
   const after=[];visual.group.traverse(object=>{if(object.geometry&&object.userData.role!=='guide')after.push(object.geometry.uuid);});
   assert.deepEqual(after,geometryIds);
   visual.dispose(); library.dispose();
+});
+
+test('B1A refined roof and post finishes preserve every TD004 envelope at all four placements', () => {
+  const library=createVisualMaterials();
+  for(const canopyId of ['R1','R3','R4','R6']) {
+    const scene=createCourtyardScene({regionId:'R3',canopyId});
+    for(const entity of scene.occluders.filter(item=>item.type==='roof'||item.type==='post')) {
+      const visual=createCanopySurface(entity,library);
+      visual.updateMatrixWorld(true);
+      const bounds=new Box3().setFromObject(visual);
+      assert.ok(entity.box.clone().expandByScalar(1e-6).containsBox(bounds),entity.id);
+      assert.ok(bounds.min.distanceTo(entity.box.min)<1e-6);
+      assert.ok(bounds.max.distanceTo(entity.box.max)<1e-6);
+      assert.equal(visual.userData.geometryContract,'TD004');
+      visual.traverse(object=>{assert.equal(object.castShadow,false);object.geometry?.dispose();});
+    }
+  }
+  library.dispose();
+});
+
+test('B1A transformed render proxies reproduce all 200 reference rays for morning and afternoon placements', () => {
+  const library=createVisualMaterials(),visual=createVisualScene(original,library);
+  for(const canopyId of ['R1','R3','R4','R6'])for(const clock of ['08:00','12:00','15:00','16:00']){
+    const result=analyzeCourtyard({regionId:'R3',canopyId},parseShanghaiDateTime('2026-06-21',clock));
+    visual.update(result.scene);
+    const boxes=[...visual.bindings.values()].map(binding=>({id:binding.entityId,box:new Box3().setFromObject(binding.proxy)}));
+    for(const sample of [...result.ground.samples,...result.elevated.samples]){
+      const actual=castSunRay(sample.point,result.sun.direction,boxes);
+      assert.equal(actual.status,sample.status,`${canopyId}/${clock}/${sample.id}`);
+      assert.equal(actual.blockerId,sample.blockerId);
+    }
+  }
+  visual.dispose();library.dispose();
+});
+
+test('B1A disposing paving releases instance buffers once and retains library-owned textures', () => {
+  const library=createVisualMaterials(),paving=createPaving(original,library);
+  let instanceDisposals=0,textureDisposals=0;
+  paving.group.traverse(object=>{if(object.isInstancedMesh)object.addEventListener('dispose',()=>instanceDisposals++);});
+  for(const texture of library.textures)texture.addEventListener('dispose',()=>textureDisposals++);
+  paving.dispose();paving.dispose();
+  assert.equal(instanceDisposals,2);
+  assert.equal(textureDisposals,0);
+  library.dispose();
+  assert.equal(textureDisposals,15);
 });

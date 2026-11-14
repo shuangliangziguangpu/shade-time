@@ -3,7 +3,8 @@ import { VISUAL_VERSION } from './visual-config.js';
 
 export function createShadowBinding(entity) {
   const geometry = new THREE.BoxGeometry(...entity.size);
-  const material = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, depthTest: false, shadowSide: THREE.FrontSide });
+  // Closed-box back faces preserve external shadow occupancy while avoiding opaque-hull self-shadow on inset facades.
+  const material = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, depthTest: false, shadowSide: THREE.BackSide });
   const proxy = new THREE.Mesh(geometry, material);
   proxy.name = `shadow:${entity.id}`;
   proxy.position.fromArray(entity.center);

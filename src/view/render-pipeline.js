@@ -49,11 +49,13 @@ export function createRenderPipeline(viewport, sceneState, materialLibrary) {
   pmrem.dispose();
   environmentInput.dispose();
   let lastFrame = { calls: 0, triangles: 0, lines: 0, points: 0, shadowUpdated: false };
+  let previousDirection = null;
   const night = new THREE.Color(0x151e2c), day = new THREE.Color(0xd7e2e6);
   return {
     renderer, world, frame, sunlight,
     markShadowDirty() { renderer.shadowMap.needsUpdate = true; },
     applySun(sun) {
+      const directionChanged = !previousDirection || !previousDirection.equals(sun.direction);
       const appearance = daylightAppearance(sun.altitude);
       positionSunLight(sunlight, sun.direction, frame.center, frame.distance);
       sunlight.intensity = appearance.sun;
@@ -61,17 +63,19 @@ export function createRenderPipeline(viewport, sceneState, materialLibrary) {
       ambient.intensity = appearance.hemisphere;
       materialLibrary.setEnvironmentIntensity(appearance.environment);
       world.background.copy(night).lerp(day, Math.min(1, Math.sqrt(Math.max(0, Math.sin(sun.altitude))) * 1.4));
-      renderer.shadowMap.needsUpdate = true;
+      if(directionChanged)renderer.shadowMap.needsUpdate = true;
+      previousDirection = sun.direction.clone();
     },
     render(camera) {
+      const started=performance.now();
       const dirty = renderer.shadowMap.needsUpdate;
       renderer.info.reset();
       renderer.render(world, camera);
-      lastFrame = { ...renderer.info.render, shadowUpdated: dirty };
+      lastFrame = { ...renderer.info.render, shadowUpdated: dirty, renderCpuMs:performance.now()-started };
       return lastFrame;
     },
     get lastFrame() { return lastFrame; },
-    dispose() { environmentTarget.dispose(); renderer.dispose(); },
+    dispose() { renderer.setAnimationLoop(null);sunlight.shadow.dispose();environmentTarget.dispose();renderer.dispose(); },
   };
 }
 

@@ -22,6 +22,7 @@ const files = new Map([
   ['/src/view/box-parts.js', ['../src/view/box-parts.js', 'text/javascript; charset=utf-8']],
   ['/src/view/building-visuals.js', ['../src/view/building-visuals.js', 'text/javascript; charset=utf-8']],
   ['/src/view/ground-visuals.js', ['../src/view/ground-visuals.js', 'text/javascript; charset=utf-8']],
+  ['/src/view/canopy-visuals.js', ['../src/view/canopy-visuals.js', 'text/javascript; charset=utf-8']],
   ['/vendor/BufferGeometryUtils.js', ['../node_modules/three/examples/jsm/utils/BufferGeometryUtils.js', 'text/javascript; charset=utf-8']],
   ['/styles.css', ['../public/styles.css', 'text/css; charset=utf-8']],
   ['/src/main.js', ['../src/main.js', 'text/javascript; charset=utf-8']],

@@ -26,15 +26,15 @@ export function proceduralSurface(kind, size = VISUAL_CONFIG.textureSize, seed =
     roughness.set([rough, rough, rough, 255], index * 4);
     heights[index] = (fine - 0.5) * (kind === 'stone' ? 0.00035 : 0.00010);
     if (kind === 'roof') {
-      // Subtle grooves in a repeatable 1.5m panel sample, no geometric displacement.
-      const groove = Math.min(x % (size / 2), size / 2 - x % (size / 2));
+      // One-metre panel sample aligns with the local geometric seams.
+      const groove = Math.min(x, size - x);
       if (groove < 1.5) {
         heights[index] -= 0.0008;
         for (let axis = 0; axis < 3; axis++) color[index * 4 + axis] *= 0.89;
       }
     }
   }
-  const metres = kind === 'roof' ? 1.5 : kind === 'stone' ? VISUAL_CONFIG.pavingModule : 1;
+  const metres = kind === 'stone' ? VISUAL_CONFIG.pavingModule : 1;
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const sample = (u, v) => heights[((v + size) % size) * size + ((u + size) % size)];
     const dx = (sample(x + 1, y) - sample(x - 1, y)) / (2 * metres / size);
@@ -72,7 +72,7 @@ export function createVisualMaterials() {
     materials.set(kind, material);
   }
   const constants = {
-    glass: new THREE.MeshPhysicalMaterial({ color: 0x25444b, roughness: 0.17, metalness: 0, transmission: 0, ior: 1.5, clearcoat: 0.15 }),
+    glass: new THREE.MeshPhysicalMaterial({ color: 0x162f37, roughness: 0.10, metalness: 0, transmission: 0, ior: 1.5, clearcoat: 0.65, clearcoatRoughness: 0.10 }),
     frame: new THREE.MeshStandardMaterial({ color: 0x3e4948, roughness: 0.34, metalness: 0 }),
     sill: new THREE.MeshStandardMaterial({ color: 0xc9c6b7, roughness: 0.65 }),
     joint: new THREE.MeshStandardMaterial({ color: 0x747b73, roughness: 0.95 }),

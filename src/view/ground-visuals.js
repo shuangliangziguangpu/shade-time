@@ -77,5 +77,6 @@ export function createPaving(scene, library) {
     tileCount += tiles.length;
   }
   group.userData = { role: 'ground-visual', tileCount, topY: 0, corridor: { ...path } };
-  return { group, dispose() { group.traverse(object => object.geometry?.dispose()); for (const material of ownMaterials) material.dispose(); } };
+  let disposed=false;
+  return { group, dispose() { if(disposed)return;disposed=true;group.traverse(object => {if(object.isInstancedMesh)object.dispose();object.geometry?.dispose();}); for (const material of ownMaterials) material.dispose(); } };
 }
