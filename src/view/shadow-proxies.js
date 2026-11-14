@@ -9,6 +9,11 @@ export function createShadowBinding(entity) {
   proxy.position.fromArray(entity.center);
   proxy.visible = true;
   proxy.castShadow = true;
+  // The next shadow-target clear must not inherit this main-pass write mask.
+  proxy.onAfterRender = renderer => {
+    renderer.state.buffers.color.setMask(true);
+    renderer.state.buffers.depth.setMask(true);
+  };
   proxy.userData = { entityId: entity.id, role: 'shadow-proxy', geometryVersion: VISUAL_VERSION };
   return { entityId: entity.id, analysisBox: entity.box, proxy, visual: new THREE.Group(), geometryVersion: VISUAL_VERSION,
     dispose() { geometry.dispose(); material.dispose(); } };

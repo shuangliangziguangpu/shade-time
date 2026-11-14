@@ -8,21 +8,21 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/courtyard.css">
   <title>荫时 ShadeTime · 庭院实验</title>
-  <script type="importmap">{"imports":{"three":"/vendor/three.module.js","suncalc":"/vendor/suncalc-adapter.js"}}</script>
+  <script type="importmap">{"imports":{"three":"/vendor/three.module.js","suncalc":"/vendor/suncalc-adapter.js","three/addons/controls/OrbitControls.js":"/vendor/OrbitControls.js","three/addons/utils/BufferGeometryUtils.js":"/vendor/BufferGeometryUtils.js"}}</script>
   <script type="module" src="/src/courtyard.js"></script>
 </head>
 <body class="courtyard-app">
   <header>
     <a class="brand" href="/courtyard"><span class="mark">荫</span><span>荫时 <small>ShadeTime</small></span></a>
-    <nav><a href="/">盒G独立验证 ↗</a><span class="stage">PHASE 01 <b>庭院实验</b></span></nav>
+    <nav><a href="/">盒G独立验证 ↗</a><span class="stage">PHASE 1.5 <b>建筑样板 · Batch 1A</b></span></nav>
   </header>
   <main>
     <div class="intro"><p class="eyebrow">24 × 18米 · 一个庭院，一次空间实验</p><h1>同一处布置，看见不同高度的遮阴。</h1><p>选择活动区域与棚的位置，比较地面和离地1.5米的采样结果。</p></div>
     <div class="court-workspace">
       <section class="court-viewport-panel" aria-label="完整庭院三维场景">
-        <div class="viewport-heading"><span><i class="live-dot"></i> 两栋固定建筑 · 一个实际遮阳棚</span><div class="view-actions"><button id="top-view" type="button">俯视</button><button id="reset-view" type="button">重置视角</button></div></div>
+        <div class="viewport-heading"><span><i class="live-dot"></i> <span id="view-status">庭院整体</span></span><div class="view-actions"><button id="reset-view" type="button">整体</button><button id="facade-view" type="button">立面</button><button id="paving-view" type="button">铺装</button><button id="canopy-view" type="button">棚体</button><button id="top-view" type="button">俯视</button><button id="expand-view" type="button">放大场景</button></div></div>
         <div id="court-viewport"><p id="court-loading">正在加载庭院与本地计算模块…</p></div>
-        <div class="court-view-footer"><span>拖动旋转 · 滚轮缩放 · 右键平移</span><label><input id="show-samples" type="checkbox" checked> 叠加参考采样点</label></div>
+        <div class="court-view-footer"><span>拖动旋转 · 滚轮缩放 · 右键平移</span><label><input id="show-samples" type="checkbox"> 实验辅助显示</label></div>
         <div class="legend"><span><i class="dot shade"></i>被遮挡</span><span><i class="dot direct"></i>模型内直射</span><span>实心棚为当前布置，虚线棚仅为候选。</span></div>
       </section>
       <aside class="controls court-controls" aria-label="庭院实验设置">
@@ -42,6 +42,7 @@
         <div class="comparison"><span>地面 <b id="ground-rate">—</b></span><span>离地1.5米 <b id="raised-rate">—</b></span></div>
         <p id="evidence" class="evidence" aria-live="polite">等待空间证据…</p>
         <p id="analysis-state" class="state" role="status" aria-live="polite"></p>
+        <details class="render-validation"><summary>渲染验证与性能</summary><label for="tone-mapping">相同曝光的色调映射对照</label><select id="tone-mapping"><option value="aces">ACES Filmic</option><option value="none">No Tone Mapping</option></select><button id="proxy-check" type="button">验证阴影代理</button><p id="proxy-result" role="status">尚未执行WebGL代理验证</p><button id="measure-performance" type="button">采样当前视角5秒</button><p id="performance-result" role="status">尚未测量</p><script id="render-diagnostics" type="application/json"></script></details>
       </aside>
     </div>
     <section class="court-status" aria-label="计算状态"><span id="runtime-status">庭院正在初始化…</span><span id="geometry-status">计算与显示使用统一几何数据</span><span>+X 东 / +Y 上 / +Z 南</span></section>
