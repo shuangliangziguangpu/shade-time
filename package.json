@@ -1,0 +1,18 @@
+{
+  "name": "shade-time",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "ShadeTime constrained AI spatial shade laboratory — phase zero",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "check:ai": "node --env-file-if-exists=.env scripts/check-ai.js",
+    "test": "node --test --test-reporter=spec",
+    "test:tap": "node --test --test-reporter=tap"
+  },
+  "dependencies": {
+    "suncalc": "1.9.0",
+    "three": "0.160.0"
+  }
+}
