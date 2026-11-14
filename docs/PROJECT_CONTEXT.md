@@ -98,3 +98,9 @@ Shadowmap 已有日照、时间、太阳路径和编辑等能力，不宣称这�
 ## 阶段1验收更新
 
 2026-11-14在feature/phase1-courtyard-scene本地分支实现统一庭院、TD004结构、位置与净距验证、双高度单时刻计算和Three显示。原28项与新增27项全部通过；浏览器19个已记录状态与Node计算一致。main保持7bf34be基线，本轮不推送、不合并。具体提交、证据与未实现范围见PHASE1_ACCEPTANCE.md；AI三条业务链和完整比赛交付仍未完成。
+
+## Phase 1.5 Batch 1A 更新
+
+2026-11-14在独立feature/phase1.5-batch1a-visual-foundation分支建立B1院侧双层程序化立面、0.6米实例铺装和TD004饰面。分析场景与全部原55项不改；新增十项后65 PASS。七个不可见主通道代理承担阴影，外观不重复投影。静态资源常驻，近景相机和光照不改数值。未引入外部资产、树木、AI或新依赖。
+
+性能记录同时保留1–4FPS等异常及用户确认Edge前台后的38.4–240FPS样本，不声称稳定240或跨设备保证。详见docs/reports/ShadeTime-Phase1.5-Batch1A-Acceptance.md；本批只在本地提交，main与阶段1分支不变，不推送、不进入Batch 1B。

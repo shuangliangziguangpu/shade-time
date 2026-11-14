@@ -2,11 +2,11 @@
 
 面向校园户外活动组织者的 AI 三维遮阴实验与布置决策实验室。
 
-目前完成**阶段0与阶段1工程原型**：完整24×18米庭院、固定建筑、一个TD004遮阳棚、有限位置选择、欧氏净距验证及两个参考面的单时刻遮阴计算。计算与显示来自统一几何数据。原盒G独立验证页继续保留。当前共55项自动化测试（原28项＋新增27项）通过。
+目前完成**阶段0、阶段1与Phase 1.5 Batch 1A视觉样板**：完整24×18米庭院及可信单时刻分析保留，新增B1双层立面、米制实例铺装、TD004精细饰面、共享程序化PBR、太阳光照与可验证阴影代理。原盒G独立验证页继续保留。当前65项测试通过（阶段1原55项＋本批新增10项）。
 
-时段平均/候选排名、保存撤销、AI三条业务链和完整竞赛材料仍待后续开发。本原型不等于完整竞赛作品。阶段1只在本地功能分支，未经批准不推送、不合并main。
+时段平均/候选排名、保存撤销、AI三条业务链和完整竞赛材料仍待后续开发。Batch 1B、B2精细立面和树木没有启动。当前改动只在本地功能分支，未经批准不推送、不合并main。
 
-## 本地运行阶段1
+## 本地运行当前样板
 
 环境：Node.js 24.x（本机实测v24.22.1）和随Node发行的npm、支持WebGL的桌面浏览器。仅有两个精确依赖：Three.js 0.160.0、SunCalc 1.9.0；无构建步骤或数据库。
 
@@ -14,14 +14,14 @@
 
 ```powershell
 Set-Location -LiteralPath 'D:\ShadeTime'
-git switch feature/phase1-courtyard-scene
+git switch feature/phase1.5-batch1a-visual-foundation
 node --test --test-reporter=spec
 node server/index.js
 ```
 
 庭院入口：http://127.0.0.1:3000/courtyard 。独立盒G入口：http://127.0.0.1:3000/ 。若3000已有本项目服务，直接打开网页，不再启动第二个实例。
 
-在包含阶段1提交的干净源代码目录中，先执行 `npm ci --ignore-scripts`，再运行测试和服务，无构建步骤。当前GitHub main仍为阶段0基线；远程克隆不能获得尚未推送的阶段1分支。上述D盘工作目录已有锁定依赖，本轮未安装额外依赖。
+在包含当前样板提交的干净源代码目录中，先执行 `npm ci --ignore-scripts`，再运行测试和服务，无构建步骤。当前GitHub main仍为阶段0基线；远程克隆不能获得尚未推送的阶段1/1.5本地分支。上述D盘工作目录已有锁定依赖，本轮未安装额外依赖。
 
 若环境只有node而没有npm，可使用完整Node发行环境的npm，或通过 `node <npm安装目录>/bin/npm-cli.js ci --ignore-scripts` 调用官方npm CLI。阶段0曾使用校验过的临时npm 11.6.2；临时路径不属于项目依赖。
 
@@ -37,6 +37,8 @@ node server/index.js
 6. 切到2026-12-21 12:00，同布置实际为30%/40%，不是套用夏季结果。
 7. 俯视为北上东右；可旋转、缩放、重置视角。参考点叠加开关只影响辅助显示，阴影贴图不参与比例计算。
 8. 打开/的独立盒G页面，人工45°下仍为100%/30%，与业务庭院隔离。
+
+建筑样板可用“整体/立面/铺装/棚体/俯视”查看，或放大场景。实验辅助显示默认关闭；相机切换不调用业务分析。展开“渲染验证与性能”可对照ACES与NoToneMapping并执行实际WebGL代理A/B；画布下方按钮采样真实5秒RAF/render帧率。请保持独立Edge窗口前台，报告保留了低帧异常，不保证所有窗口条件稳定高帧。
 
 盒G页面中的区域X[-0.95,1.05]、Z[-1,1]只用于数学回归，不是合法庭院布置模板。阶段1净距规则见TD006：XZ矩形最短欧氏距离至少0.010米，含等号及斜对角。
 
@@ -70,6 +72,8 @@ node --env-file-if-exists=.env scripts/check-ai.js
 - `docs/DEVELOPMENT_ROADMAP.md`：阶段门槛；`docs/DEVELOPMENT_LOG.md`：真实过程。
 - `docs/PHASE0_ACCEPTANCE.md`、`docs/evidence/`：验收、输出与Prompt过程索引。
 - `docs/PHASE1_ACCEPTANCE.md`：阶段1验收及截图索引；`docs/evidence/phase1-all-tests.tap`：完整55项原始测试输出。
+- `src/view/visual-*.js`及其他样板模块：共享材质/静态场景/显式代理、立面、铺装、棚面和渲染管线。
+- `docs/reports/ShadeTime-Phase1.5-Batch1A-Acceptance.md`：本批验收；`docs/evidence/batch1a/`：65项原始测试、浏览器全部迭代/性能异常及实际截图。
 
 原始对话保留在当前Codex聊天。过程索引是摘录，尚不能替代赛事要求的至少3条完整Prompt链。访谈、用户测试、视频、最终PDF和性能验收尚未执行。
 

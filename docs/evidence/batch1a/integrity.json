@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-11-14T15:35:07.077Z",
+  "baseline": "50893b8bdce79e683ee639d7dd45560673fad727",
+  "codeHead": "a8ed43610afe546d0635f5bc13c290c31b36cda0",
+  "checks": {
+    "protectedUnchanged": true,
+    "original55Retained": true,
+    "total65Pass": true,
+    "new10Pass": true,
+    "mainUnchanged": true,
+    "phase1Unchanged": true,
+    "branchCorrect": true,
+    "noSuspiciousPaths": true,
+    "noCredentialSignatures": true,
+    "frontSamplesAbove30": true,
+    "cameraIndependent": true,
+    "stableStaticResources": true
+  },
+  "status": "PASS",
+  "textBlobs": 124,
+  "unsafePaths": [],
+  "findings": [],
+  "secretScope": "Committed and staged content only; no .env or real API key value read. Common-format scan is not a universal secret detector.",
+  "newFiles": [
+    "README.md",
+    "docs/DEVELOPMENT_ROADMAP.md",
+    "docs/PROJECT_CONTEXT.md",
+    "docs/evidence/PROMPT_CHAIN_INDEX.md",
+    "docs/evidence/batch1a/browser-records.json",
+    "docs/evidence/batch1a/images/batch1a-canopy.jpg",
+    "docs/evidence/batch1a/images/batch1a-edge-canopy.jpg",
+    "docs/evidence/batch1a/images/batch1a-edge-facade-sunlit.jpg",
+    "docs/evidence/batch1a/images/batch1a-edge-facade.jpg",
+    "docs/evidence/batch1a/images/batch1a-edge-paving.jpg",
+    "docs/evidence/batch1a/images/batch1a-facade.jpg",
+    "docs/evidence/batch1a/images/batch1a-low-sun.jpg",
+    "docs/evidence/batch1a/images/batch1a-night.jpg",
+    "docs/evidence/batch1a/images/batch1a-overview.jpg",
+    "docs/evidence/batch1a/images/batch1a-paving.jpg",
+    "docs/evidence/batch1a/images/batch1a-summer-afternoon.jpg",
+    "docs/evidence/batch1a/images/batch1a-summer-morning.jpg",
+    "docs/evidence/batch1a/images/batch1a-tone-aces.jpg",
+    "docs/evidence/batch1a/images/batch1a-tone-none.jpg",
+    "docs/evidence/batch1a/images/self-shadow-before.jpg",
+    "docs/evidence/batch1a/proxy-foundation-pass.json",
+    "docs/evidence/batch1a/proxy-initial-failure.json",
+    "docs/evidence/batch1a/summary.json",
+    "docs/reports/ShadeTime-Phase1.5-Batch1A-Acceptance.md"
+  ],
+  "evidenceHashes": [
+    {
+      "path": "docs/evidence/batch1a/all-tests.spec.txt",
+      "sha256": "3d46df8cb12b23969748f54b76be9130c8722edf93dc1af3f05e93cab7980918"
+    },
+    {
+      "path": "docs/evidence/batch1a/all-tests.tap",
+      "sha256": "f2c086bd41e74a2377446f6c970baef1b7ae414526bd353c1bc04d68f46b4e9c"
+    },
+    {
+      "path": "docs/evidence/batch1a/browser-records.json",
+      "sha256": "3cc8b48e292e7d95966b609d3aa0cab4decf4b1d4ea9a54440281070bee80cde"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-canopy.jpg",
+      "sha256": "82eb88ad8a0b65122b320ef19796a085ab31a2f7f5cd1dcad91c31bf0d34e5bd"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-edge-canopy.jpg",
+      "sha256": "275b6fee843328040050fd3a82766368e725f322a9d137c067f00e261b1b487c"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-edge-facade-sunlit.jpg",
+      "sha256": "6ed687054dbdaf2704609aaa3bf4de1d756e3330ed6bbafcf001e224a3cef238"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-edge-facade.jpg",
+      "sha256": "f6cde28f78a276183e43b49d4a7f73bbc8db1b6fc035283815d34556856e810b"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-edge-paving.jpg",
+      "sha256": "f851aa93d8c6325e2b29b58eab9d8fcc40c19b2d643678aa3f7ae06ad62ec5cc"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-facade.jpg",
+      "sha256": "7a2ec56a7a0c7b56cb3c4c728eb5ddb7cf25752f04b6f325cdd57760d379c420"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-low-sun.jpg",
+      "sha256": "adf8b66a679cdf1d12542887ffdc5cec14580857cb4a570e061885e7ff430e22"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-night.jpg",
+      "sha256": "b0743d5e9f4a065297d860cbe8b66e40c01ab09e68201713d804b8b51fac3cd8"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-overview.jpg",
+      "sha256": "37ad4c669959a488676cc3702ad54bbfbad6ed43664450c4fe6c352eabfed5d8"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-paving.jpg",
+      "sha256": "ea651c58b42cfbff4bdd22f11b44b41ff821a27e941c763ef863749240024fd2"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-summer-afternoon.jpg",
+      "sha256": "4b6949d1a8a0364ab1bc5c716f76a158adaf54cbc3e96203079550756494141e"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-summer-morning.jpg",
+      "sha256": "cb4cd56b09c28873fef360b6d905aa9aafb1301c432816b4404ed2100d6a952f"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-tone-aces.jpg",
+      "sha256": "e904d3752d026d4131dc0bb528395dffb77436a78a6a1efd4a597e668a72be56"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/batch1a-tone-none.jpg",
+      "sha256": "52f7cb25e2814e4f065fd060aae1644b337642216de9f9899e93763efa8f3299"
+    },
+    {
+      "path": "docs/evidence/batch1a/images/self-shadow-before.jpg",
+      "sha256": "69d478187b2a29c69f39808ab001231d65018801a8709b35e2f0770bc018d240"
+    },
+    {
+      "path": "docs/evidence/batch1a/proxy-foundation-pass.json",
+      "sha256": "49b23dc6bb3fa805f17355488fa477bebd65cd144c205e437ac97d07a3cbef73"
+    },
+    {
+      "path": "docs/evidence/batch1a/proxy-initial-failure.json",
+      "sha256": "dcf855ab9e1fa74a7721ee6012f055a1f7985c4c855fb1ce69c4f9a046cc7bae"
+    },
+    {
+      "path": "docs/evidence/batch1a/summary.json",
+      "sha256": "60a20902e44eeb13809cd97b275d3699387f71c139bf2640fa8041dc498394e5"
+    }
+  ]
+}

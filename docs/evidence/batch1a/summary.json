@@ -1,0 +1,757 @@
+{
+  "createdAt": "2026-11-14T15:26:46.506Z",
+  "baseline": "50893b8bdce79e683ee639d7dd45560673fad727",
+  "codeHead": "a8ed43610afe546d0635f5bc13c290c31b36cda0",
+  "protectedChanges": [],
+  "originalTestFiles": [
+    "test/ai-connectivity.test.js",
+    "test/analysis.test.js",
+    "test/courtyard-http.test.js",
+    "test/courtyard-model.test.js",
+    "test/geometry.test.js",
+    "test/layout.test.js",
+    "test/scene-config.test.js",
+    "test/scene.test.js",
+    "test/server.test.js",
+    "test/sun.test.js"
+  ],
+  "foreground": [
+    {
+      "label": "edge_user_confirmed_foreground",
+      "measuredAt": "2026-11-14T15:08:57.219Z",
+      "durationMs": 5000.200000000012,
+      "frames": 1200,
+      "fps": 239.99040038398408,
+      "p50Ms": 4.2000000000116415,
+      "p95Ms": 4.2999999999883585,
+      "cpuSubmitP50Ms": 0.20000000298023224,
+      "cpuSubmitP95Ms": 0.30000000447034836,
+      "rafStallsOver250Ms": 0,
+      "drawCalls": 27,
+      "triangles": 17546,
+      "view": "overview",
+      "visibleThroughout": true,
+      "focusedThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "visibility": "visible",
+        "documentHasFocus": true,
+        "screenWidth": 1707,
+        "screenHeight": 1067,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 1643,
+        "cssHeight": 666,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          2464,
+          999
+        ]
+      },
+      "analysisRuns": 1
+    },
+    {
+      "label": "edge_foreground_facade",
+      "measuredAt": "2026-11-14T15:10:13.797Z",
+      "durationMs": 5000.200000000012,
+      "frames": 548,
+      "fps": 109.59561617535273,
+      "p50Ms": 8.300000000046566,
+      "p95Ms": 8.599999999976717,
+      "cpuSubmitP50Ms": 0.20000000298023224,
+      "cpuSubmitP95Ms": 0.3999999985098839,
+      "rafStallsOver250Ms": 0,
+      "drawCalls": 9,
+      "triangles": 17186,
+      "view": "facade",
+      "visibleThroughout": true,
+      "focusedThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "visibility": "visible",
+        "documentHasFocus": true,
+        "screenWidth": 1707,
+        "screenHeight": 1067,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 1643,
+        "cssHeight": 666,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          2464,
+          999
+        ]
+      },
+      "analysisRuns": 1
+    },
+    {
+      "label": "edge_foreground_paving",
+      "measuredAt": "2026-11-14T15:10:22.394Z",
+      "durationMs": 5804.299999999988,
+      "frames": 274,
+      "fps": 47.206381475802516,
+      "p50Ms": 8.300000000046566,
+      "p95Ms": 20.899999999965075,
+      "cpuSubmitP50Ms": 0.29999999701976776,
+      "cpuSubmitP95Ms": 0.5,
+      "rafStallsOver250Ms": 4,
+      "drawCalls": 27,
+      "triangles": 17546,
+      "view": "paving",
+      "visibleThroughout": true,
+      "focusedThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "visibility": "visible",
+        "documentHasFocus": true,
+        "screenWidth": 1707,
+        "screenHeight": 1067,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 1643,
+        "cssHeight": 666,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          2464,
+          999
+        ]
+      },
+      "analysisRuns": 1
+    },
+    {
+      "label": "edge_foreground_canopy",
+      "measuredAt": "2026-11-14T15:10:29.614Z",
+      "durationMs": 5254.399999999965,
+      "frames": 202,
+      "fps": 38.443970767357136,
+      "p50Ms": 8.399999999965075,
+      "p95Ms": 29.20000000001164,
+      "cpuSubmitP50Ms": 0.29999999701976776,
+      "cpuSubmitP95Ms": 0.5,
+      "rafStallsOver250Ms": 4,
+      "drawCalls": 27,
+      "triangles": 17546,
+      "view": "canopy",
+      "visibleThroughout": true,
+      "focusedThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "visibility": "visible",
+        "documentHasFocus": true,
+        "screenWidth": 1707,
+        "screenHeight": 1067,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 1643,
+        "cssHeight": 666,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          2464,
+          999
+        ]
+      },
+      "analysisRuns": 1
+    }
+  ],
+  "lowSamples": [
+    {
+      "label": "performance_overview_final_cache",
+      "measuredAt": "2026-11-14T14:54:56.701Z",
+      "durationMs": 5133.299999999988,
+      "frames": 13,
+      "fps": 2.5324839771686887,
+      "p50Ms": 4.400000000023283,
+      "p95Ms": 1004.0999999999767,
+      "drawCalls": 27,
+      "triangles": 17546,
+      "view": "overview",
+      "visibleThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 831,
+        "cssHeight": 653,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          1246,
+          979
+        ]
+      },
+      "analysisRuns": 6
+    },
+    {
+      "label": "foreground_overview_retest",
+      "measuredAt": "2026-11-14T15:01:25.837Z",
+      "durationMs": 5004.9000000000015,
+      "frames": 5,
+      "fps": 0.9990209594597291,
+      "p50Ms": 1000.0999999999985,
+      "p95Ms": 1004.1000000000022,
+      "cpuSubmitP50Ms": 0.5,
+      "cpuSubmitP95Ms": 0.7000000029802322,
+      "rafStallsOver250Ms": 5,
+      "drawCalls": 27,
+      "triangles": 17546,
+      "view": "overview",
+      "visibleThroughout": true,
+      "focusedThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "visibility": "visible",
+        "documentHasFocus": true,
+        "screenWidth": 1707,
+        "screenHeight": 1067,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 831,
+        "cssHeight": 653,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          1246,
+          979
+        ]
+      },
+      "analysisRuns": 1
+    },
+    {
+      "label": "edge_overview",
+      "measuredAt": "2026-11-14T15:04:30.293Z",
+      "durationMs": 5021.200000000001,
+      "frames": 22,
+      "fps": 4.381422767465944,
+      "p50Ms": 212.5,
+      "p95Ms": 537.5999999999985,
+      "cpuSubmitP50Ms": 0.5,
+      "cpuSubmitP95Ms": 0.6000000014901161,
+      "rafStallsOver250Ms": 8,
+      "drawCalls": 27,
+      "triangles": 17546,
+      "view": "overview",
+      "visibleThroughout": true,
+      "focusedThroughout": true,
+      "device": {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+        "logicalCores": 32,
+        "deviceMemoryGiB": 16,
+        "visibility": "visible",
+        "documentHasFocus": true,
+        "screenWidth": 1707,
+        "screenHeight": 1067,
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "cssWidth": 1643,
+        "cssHeight": 670,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          2464,
+          1005
+        ]
+      },
+      "analysisRuns": 1
+    }
+  ],
+  "proxyPasses": [
+    {
+      "label": "verified_proxy_afternoon",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 3420,
+        "summedRgbDifference": 765112
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "performance_overview",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 3420,
+        "summedRgbDifference": 765112
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "performance_facade",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 3420,
+        "summedRgbDifference": 765112
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "performance_paving",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 3420,
+        "summedRgbDifference": 765112
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "performance_canopy",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 3420,
+        "summedRgbDifference": 765112
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "morning_proxy",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 653,
+        "summedRgbDifference": 98119
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "afternoon_16_proxy",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 4904,
+        "summedRgbDifference": 775322
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "tone_aces",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 4904,
+        "summedRgbDifference": 775322
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    },
+    {
+      "label": "edge_proxy_final",
+      "status": "PASS",
+      "mainDifference": {
+        "changedPixels": 0,
+        "summedRgbDifference": 0
+      },
+      "shadowDifference": {
+        "changedPixels": 1955,
+        "summedRgbDifference": 438192
+      },
+      "proxyCount": 7,
+      "callsWithShadow": 34,
+      "callsWithoutShadow": 27,
+      "context": {
+        "selection": {
+          "regionId": "R3",
+          "canopyId": "R3"
+        },
+        "instant": "2026-06-21T07:00:00.000Z",
+        "view": "overview",
+        "camera": [
+          24.076150706056254,
+          22.76663186779922,
+          -28.088842490398946
+        ]
+      },
+      "transformedProxyRays": {
+        "compared": 200,
+        "matching": 200,
+        "mismatches": []
+      },
+      "casterCount": 7,
+      "casterIds": [
+        "B1",
+        "B2",
+        "C_ROOF",
+        "C_POST_NW",
+        "C_POST_SW",
+        "C_POST_NE",
+        "C_POST_SE"
+      ],
+      "analysisUnchanged": true
+    }
+  ],
+  "numericChecks": [
+    {
+      "label": "final_proxy_afternoon",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "verified_proxy_afternoon",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "performance_overview",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "performance_facade",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "performance_paving",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "performance_canopy",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "morning_proxy",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0,
+        "elevated": 0.7
+      }
+    },
+    {
+      "label": "afternoon_16_proxy",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0,
+        "elevated": 0.6
+      }
+    },
+    {
+      "label": "tone_aces_final",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0,
+        "elevated": 0.7
+      }
+    },
+    {
+      "label": "tone_none_final",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0,
+        "elevated": 0.7
+      }
+    },
+    {
+      "label": "performance_overview_final_cache",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "reject_rechecked_R2",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "reject_rechecked_R5",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "foreground_overview_retest",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "edge_overview",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "edge_user_confirmed_foreground",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "edge_foreground_facade",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "edge_foreground_paving",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "edge_foreground_canopy",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "edge_proxy_final",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0.2,
+        "elevated": 0.9
+      }
+    },
+    {
+      "label": "final_edge_sunlit",
+      "status": "PASS",
+      "metrics": {
+        "ground": 0,
+        "elevated": 0.7
+      }
+    }
+  ],
+  "cameraIndependence": {
+    "before": 1,
+    "after": 1,
+    "metricsEqual": true
+  },
+  "resourceSwitch20": {
+    "before": {
+      "geometries": 27,
+      "textures": 17,
+      "programs": 11
+    },
+    "after": {
+      "geometries": 27,
+      "textures": 17,
+      "programs": 11
+    },
+    "staticGroupEqual": true
+  },
+  "logs": {
+    "edge": [],
+    "iab": []
+  },
+  "caveats": [
+    "All low-FPS samples and implementation-time diagnostic failures remain in browser-records.json.",
+    "RAF intervals are application cadence, CPU submit times are not GPU timers.",
+    "Resource counts are not byte-accurate VRAM measurements."
+  ]
+}

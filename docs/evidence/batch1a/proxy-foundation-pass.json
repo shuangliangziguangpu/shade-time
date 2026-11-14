@@ -1,0 +1,382 @@
+{
+  "version": "batch1a-v1",
+  "view": "overview",
+  "selection": {
+    "regionId": "R3",
+    "canopyId": "R3"
+  },
+  "analysisRuns": 1,
+  "metrics": {
+    "ground": 0.2,
+    "elevated": 0.9
+  },
+  "device": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+    "logicalCores": 32,
+    "deviceMemoryGiB": 16,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "cssWidth": 509,
+    "cssHeight": 560,
+    "dpr": 1.5,
+    "drawingBuffer": [
+      763,
+      840
+    ]
+  },
+  "camera": {
+    "position": [
+      26.17739021927522,
+      24.605216441865817,
+      -30.54028858915441
+    ],
+    "target": [
+      0,
+      1.7,
+      0
+    ],
+    "aspect": 0.9089285714285714
+  },
+  "frame": {
+    "frame": 20,
+    "calls": 15,
+    "triangles": 170,
+    "points": 0,
+    "lines": 0,
+    "shadowUpdated": false
+  },
+  "resources": {
+    "geometries": 15,
+    "textures": 14,
+    "programs": 5
+  },
+  "staticGroupId": "39f663fa-8cac-48f8-b113-b7f15673e4af",
+  "bindings": [
+    {
+      "entityId": "B1",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        -12,
+        0,
+        -9
+      ],
+      "proxyMax": [
+        -8,
+        6,
+        9
+      ],
+      "visualMin": [
+        -12,
+        0,
+        -9
+      ],
+      "visualMax": [
+        -8,
+        6,
+        9
+      ]
+    },
+    {
+      "entityId": "B2",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        2,
+        0,
+        6
+      ],
+      "proxyMax": [
+        10,
+        4,
+        9
+      ],
+      "visualMin": [
+        2,
+        0,
+        6
+      ],
+      "visualMax": [
+        10,
+        4,
+        9
+      ]
+    },
+    {
+      "entityId": "C_ROOF",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        3.5,
+        2.399999999254942,
+        -3.5
+      ],
+      "proxyMax": [
+        6.5,
+        2.5000000007450582,
+        -0.5
+      ],
+      "visualMin": [
+        3.5,
+        2.399999999254942,
+        -3.5
+      ],
+      "visualMax": [
+        6.5,
+        2.5000000007450582,
+        -0.5
+      ]
+    },
+    {
+      "entityId": "C_POST_NW",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        3.4999999992549418,
+        -4.768371586472142e-8,
+        -3.5000000007450582
+      ],
+      "proxyMax": [
+        3.600000000745058,
+        2.400000047683716,
+        -3.399999999254942
+      ],
+      "visualMin": [
+        3.4999999992549418,
+        -4.768371586472142e-8,
+        -3.5000000007450582
+      ],
+      "visualMax": [
+        3.600000000745058,
+        2.400000047683716,
+        -3.399999999254942
+      ]
+    },
+    {
+      "entityId": "C_POST_SW",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        3.4999999992549418,
+        -4.768371586472142e-8,
+        -0.6000000007450581
+      ],
+      "proxyMax": [
+        3.600000000745058,
+        2.400000047683716,
+        -0.499999999254942
+      ],
+      "visualMin": [
+        3.4999999992549418,
+        -4.768371586472142e-8,
+        -0.6000000007450581
+      ],
+      "visualMax": [
+        3.600000000745058,
+        2.400000047683716,
+        -0.499999999254942
+      ]
+    },
+    {
+      "entityId": "C_POST_NE",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        6.399999999254942,
+        -4.768371586472142e-8,
+        -3.5000000007450582
+      ],
+      "proxyMax": [
+        6.500000000745058,
+        2.400000047683716,
+        -3.399999999254942
+      ],
+      "visualMin": [
+        6.399999999254942,
+        -4.768371586472142e-8,
+        -3.5000000007450582
+      ],
+      "visualMax": [
+        6.500000000745058,
+        2.400000047683716,
+        -3.399999999254942
+      ]
+    },
+    {
+      "entityId": "C_POST_SE",
+      "geometryVersion": "batch1a-v1",
+      "proxyMin": [
+        6.399999999254942,
+        -4.768371586472142e-8,
+        -0.6000000007450581
+      ],
+      "proxyMax": [
+        6.500000000745058,
+        2.400000047683716,
+        -0.499999999254942
+      ],
+      "visualMin": [
+        6.399999999254942,
+        -4.768371586472142e-8,
+        -0.6000000007450581
+      ],
+      "visualMax": [
+        6.500000000745058,
+        2.400000047683716,
+        -0.499999999254942
+      ]
+    }
+  ],
+  "proxyCheck": {
+    "status": "PASS",
+    "mainDifference": {
+      "changedPixels": 0,
+      "summedRgbDifference": 0
+    },
+    "shadowDifference": {
+      "changedPixels": 5979,
+      "summedRgbDifference": 1109527
+    },
+    "proxyCount": 7,
+    "callsWithShadow": 22,
+    "callsWithoutShadow": 15,
+    "analysisUnchanged": true
+  },
+  "performance": null,
+  "loading": {
+    "navigation": [
+      {
+        "duration": 393.69999999925494,
+        "domContentLoaded": 335
+      }
+    ],
+    "resources": [
+      {
+        "name": "/styles.css",
+        "duration": 16.899999998509884,
+        "transferSize": 6158,
+        "decodedBodySize": 5858
+      },
+      {
+        "name": "/courtyard.css",
+        "duration": 18.600000001490116,
+        "transferSize": 3958,
+        "decodedBodySize": 3658
+      },
+      {
+        "name": "/src/courtyard.js",
+        "duration": 18.199999999254942,
+        "transferSize": 12195,
+        "decodedBodySize": 11895
+      },
+      {
+        "name": "/vendor/three.module.js",
+        "duration": 19,
+        "transferSize": 1273272,
+        "decodedBodySize": 1272972
+      },
+      {
+        "name": "/src/domain/scene-config.js",
+        "duration": 12.799999997019768,
+        "transferSize": 2736,
+        "decodedBodySize": 2436
+      },
+      {
+        "name": "/src/domain/analysis.js",
+        "duration": 13.100000001490116,
+        "transferSize": 2438,
+        "decodedBodySize": 2138
+      },
+      {
+        "name": "/src/domain/layout.js",
+        "duration": 14.5,
+        "transferSize": 1729,
+        "decodedBodySize": 1429
+      },
+      {
+        "name": "/src/core/sun.js",
+        "duration": 13.600000001490116,
+        "transferSize": 2617,
+        "decodedBodySize": 2317
+      },
+      {
+        "name": "/src/view/render-pipeline.js",
+        "duration": 16.099999997764826,
+        "transferSize": 6932,
+        "decodedBodySize": 6632
+      },
+      {
+        "name": "/src/view/visual-scene.js",
+        "duration": 16.5,
+        "transferSize": 3969,
+        "decodedBodySize": 3669
+      },
+      {
+        "name": "/src/view/visual-materials.js",
+        "duration": 13.599999997764826,
+        "transferSize": 5168,
+        "decodedBodySize": 4868
+      },
+      {
+        "name": "/src/view/camera-rig.js",
+        "duration": 15.700000002980232,
+        "transferSize": 3336,
+        "decodedBodySize": 3036
+      },
+      {
+        "name": "/src/core/geometry.js",
+        "duration": 4.599999997764826,
+        "transferSize": 2071,
+        "decodedBodySize": 1771
+      },
+      {
+        "name": "/src/domain/clearance.js",
+        "duration": 5.399999998509884,
+        "transferSize": 1935,
+        "decodedBodySize": 1635
+      },
+      {
+        "name": "/src/domain/scene.js",
+        "duration": 4.699999999254942,
+        "transferSize": 3263,
+        "decodedBodySize": 2963
+      },
+      {
+        "name": "/src/view/lighting.js",
+        "duration": 5.5,
+        "transferSize": 789,
+        "decodedBodySize": 489
+      },
+      {
+        "name": "/src/view/courtyard-model.js",
+        "duration": 4.699999999254942,
+        "transferSize": 5831,
+        "decodedBodySize": 5531
+      },
+      {
+        "name": "/src/view/visual-config.js",
+        "duration": 4.899999998509884,
+        "transferSize": 1149,
+        "decodedBodySize": 849
+      },
+      {
+        "name": "/src/view/shadow-proxies.js",
+        "duration": 5.899999998509884,
+        "transferSize": 2720,
+        "decodedBodySize": 2420
+      },
+      {
+        "name": "/vendor/suncalc-adapter.js",
+        "duration": 5.100000001490116,
+        "transferSize": 580,
+        "decodedBodySize": 280
+      },
+      {
+        "name": "/vendor/suncalc.js",
+        "duration": 2.300000000745058,
+        "transferSize": 9416,
+        "decodedBodySize": 9116
+      },
+      {
+        "name": "/vendor/OrbitControls.js",
+        "duration": 4.199999999254942,
+        "transferSize": 30168,
+        "decodedBodySize": 29868
+      }
+    ]
+  }
+}
