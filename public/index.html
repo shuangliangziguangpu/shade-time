@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <title>荫时 ShadeTime · 核心验证</title>
+  <script type="importmap">
+    {"imports":{"three":"/vendor/three.module.js","suncalc":"/vendor/suncalc-adapter.js"}}
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/" aria-label="荫时 ShadeTime 首页"><span class="mark">荫</span><span>荫时 <small>ShadeTime</small></span></a>
+    <span class="stage">PHASE 00 <b>核心技术验证</b></span>
+  </header>
+  <main>
+    <div class="intro"><p class="eyebrow">让空间关系成为可验证的证据</p><h1>同一束阳光，不同的参考高度。</h1><p>在一个独立几何实验中，检查太阳方向、射线遮挡与三维光照。</p></div>
+    <div class="workspace">
+      <section class="viewport-panel" aria-label="三维遮挡实验">
+        <div class="viewport-heading"><span><i class="live-dot"></i> 独立盒 G · 2米高</span><button id="reset-view" type="button">重置视角</button></div>
+        <div id="viewport"><p id="loading">正在加载本地三维模块…</p></div>
+        <div class="view-caption"><span>拖动旋转 · 滚轮缩放 · 右键平移</span><span>+X 东 / +Y 上 / +Z 南</span></div>
+        <div class="legend"><span><i class="dot shade"></i>被遮挡</span><span><i class="dot direct"></i>模型内直射</span><span>蓝线：证据射线　金色箭头：指向太阳</span></div>
+      </section>
+      <aside class="controls" aria-label="实验设置">
+        <div class="section-label">01 / 太阳条件</div>
+        <label for="mode">实验模式</label>
+        <select id="mode"><option value="fixture">人工基准 · 正东 / 高度45°</option><option value="solar">真实日期 · 大连近似坐标</option></select>
+        <div id="date-fields" hidden>
+          <div class="date-grid"><div><label for="date">日期</label><input id="date" type="date" value="2026-06-21"></div><div><label for="time">时间</label><input id="time" type="time" step="300" value="12:00"></div></div>
+          <p class="hint">Asia/Shanghai · 38.914°N / 121.614°E</p>
+        </div>
+        <dl class="solar-readout"><div><dt>太阳高度</dt><dd id="altitude">—</dd></div><div><dt>太阳方位</dt><dd id="azimuth">—</dd></div></dl>
+        <p class="hint">罗盘方位以北为0°，顺时针增加。</p>
+        <hr>
+        <div class="section-label">02 / 观察参考面</div>
+        <div class="segmented" role="group" aria-label="参考高度"><button id="height-ground" aria-pressed="true">地面 · 0米</button><button id="height-person" aria-pressed="false">离地 · 1.5米</button></div>
+        <div class="metric"><span>当前采样点遮阴率</span><strong id="rate">—</strong><p id="sample-count">正在计算100个采样点</p></div>
+        <div class="comparison"><span>地面 <b id="ground-rate">—</b></span><span>离地1.5米 <b id="raised-rate">—</b></span></div>
+        <p id="evidence" class="evidence" aria-live="polite">等待几何证据…</p>
+        <p id="analysis-state" class="state" aria-live="polite"></p>
+      </aside>
+    </div>
+    <section class="verification" aria-label="运行状态"><span id="browser-status">浏览器：正在验证…</span><span id="server-status">HTTP：正在检查…</span><span id="ai-status">AI：尚未检查</span></section>
+    <p class="scope">阶段0最小原型，仅验证独立盒G，不是完整庭院。100点采样与阴影贴图分别计算；人工基准不代表某个真实时刻。1.5米是实验参考高度，结果不用于推算紫外线、温度或人体防晒安全。</p>
+  </main>
+</body>
+</html>
