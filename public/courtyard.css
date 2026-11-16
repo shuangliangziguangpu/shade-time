@@ -89,3 +89,10 @@ button:disabled { opacity: .45; cursor: default; }
   .courtyard-app nav a { font-size: 10px; }
   .court-controls { padding: 20px; }
 }
+.ai-assistant{margin:0 0 22px;padding:22px;border:1px solid #dfe5dc;border-radius:18px;background:#fff}
+.ai-heading{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px}.ai-heading h2{font-size:20px;margin:0}.ai-heading span{font-size:12px;color:#6b786f}
+.ai-assistant label{display:block;font-size:13px;margin:8px 0}.ai-assistant textarea{display:block;width:100%;box-sizing:border-box;padding:12px;border:1px solid #d7dfd4;border-radius:10px;background:#fafbf7;color:#25463e;font:inherit;line-height:1.6;resize:vertical}
+.ai-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.ai-actions button,#ai-result button{font:inherit;font-size:13px;padding:9px 13px;border:1px solid #cbd8c9;border-radius:8px;background:#eff4e9;color:#254d43;cursor:pointer}.ai-actions button:disabled{opacity:.45;cursor:default}
+#ai-status{font-size:13px;line-height:1.6;border-left:3px solid #79988c;padding-left:10px}#ai-status[data-state=APPLIED]{border-color:#326c55}#ai-status[data-state=INVALID_AI_RESPONSE],#ai-status[data-state=VALIDATION_REJECTED]{border-color:#ab7841}
+#ai-result:not(:empty){border-top:1px solid #e5e9e0;padding-top:10px}#ai-result h3{font-size:15px;margin:5px 0}#ai-result p{font-size:13px;line-height:1.6;margin:8px 0;overflow-wrap:anywhere}.ai-facts{background:#f0f5ed;padding:10px;border-radius:8px}.ai-question{color:#89602e}
+@media(max-width:650px){.ai-heading{display:block}.ai-heading span{display:block;margin-top:6px}.ai-assistant{padding:16px}}

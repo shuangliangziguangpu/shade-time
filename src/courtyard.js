@@ -14,6 +14,7 @@ import { createVisualMaterials } from './view/visual-materials.js';
 import { createVisualScene } from './view/visual-scene.js';
 import { createRenderPipeline, verifyProxyRendering } from './view/render-pipeline.js';
 import { createCameraRig } from './view/camera-rig.js';
+import { createAiPanel } from './view/ai-panel.js';
 
 const $ = id => document.getElementById(id);
 let selection = { regionId: 'R3', canopyId: 'R3' };
@@ -58,6 +59,7 @@ function start() {
   let analysis, periodAnalysis=null, selectedSampleIndex=0, periodDurationMs=0, analysisRuns = 0, bindingRows = [];
   let comparison=null, preview=null, shown='A', candidateDurationMs=null;
   let selectedEvidence=null,comparisonRequest=null;
+  let aiPanel=null;
   let proxyCheck = null, performanceResult = null, measuring = null;
   let latestTimestamp = 0, firstRenderReturnedMs = null;
   function invalidatePerformance() { performanceResult=null;measuring=null;$('performance-result').textContent='当前视角尚未测量帧率'; }
@@ -169,7 +171,7 @@ function start() {
   function changeHeight(height){referenceHeight=height;session.update({height});if(periodAnalysis)session.acceptAnalysis(periodAnalysis);clearComparison();showSelectedSample();}
   $('height-ground').addEventListener('click',()=>changeHeight(0));
   $('height-person').addEventListener('click',()=>changeHeight(1.5));
-  function readConstraints(){const mode=$('movement-mode').value;const text=$('minimum-target').value;if(!['region','canopy','both'].includes(mode)||!text.trim())throw new RangeError('请选择已支持的移动权限并输入0–100%的最低目标');return normalizeConstraints({regionMovable:mode!=='canopy',canopyMovable:mode!=='region',minimumShade:Number(text)/100});}
+  function readConstraints(){const mode=$('movement-mode').value;const text=$('minimum-target').value;if(!['region','canopy','both','none'].includes(mode)||!text.trim())throw new RangeError('请选择已支持的移动权限并输入0–100%的最低目标');return normalizeConstraints({regionMovable:['region','both'].includes(mode),canopyMovable:['canopy','both'].includes(mode),minimumShade:Number(text)/100});}
   function updateComparisonPanel(){renderCandidatePanel(comparison,preview,referenceHeight,shown,candidateDurationMs);}
   for(const id of ['movement-mode','minimum-target'])$(id).addEventListener('change',()=>{clearComparison();try{const constraints=readConstraints();if(!periodAnalysis){refresh();return;}session.update({constraints});session.acceptAnalysis(periodAnalysis);showSelectedSample();}catch(error){session.invalidate();showSelectedSample();$('candidate-status').textContent=error.message;publish();}});
   $('compare-candidates').addEventListener('click',()=>{
@@ -182,9 +184,19 @@ function start() {
     catch(error){clearComparison();$('candidate-status').textContent=error.message;showSelectedSample();}
   });
   for(const mode of ['A','B'])$('show-'+mode.toLowerCase()).addEventListener('click',()=>{if(preview){shown=mode;updateComparisonPanel();showSelectedSample();}});
-  $('reject-candidate').addEventListener('click',()=>{preview=null;shown='A';updateComparisonPanel();showSelectedSample();});
+  $('reject-candidate').addEventListener('click',()=>{if(aiPanel?.hasAiPreview()){void aiPanel.reject();return;}preview=null;shown='A';updateComparisonPanel();showSelectedSample();});
+  function applyVisiblePreview(verified=null){
+    if(!preview||!comparison||comparison.key!==comparisonKey(periodAnalysis,referenceHeight))throw new Error('预览已过期');
+    if(verified){
+      if(verified.selection.regionId!==preview.selection.regionId||verified.selection.canopyId!==preview.selection.canopyId||verified.recomputed!==true)throw new Error('服务端方案与预览不一致');
+      const fresh=analyzePeriod(preview.selection,periodAnalysis.period),layer=referenceHeight===0?'ground':'elevated';
+      if(fresh.status!=='valid'||Math.abs(fresh[layer].minimum-verified.metrics.minimum)>1e-12||Math.abs(fresh[layer].average-verified.metrics.average)>1e-12)throw new Error('本地与服务端重算不一致');
+    }
+    session.update({constraints:readConstraints()});periodAnalysis=session.applyCandidate(preview.candidateId);analysisRuns++;selection=session.snapshot().selection;$('region-id').value=selection.regionId;$('canopy-id').value=selection.canopyId;$('layout-message').classList.remove('error');$('layout-message').textContent=`区域 ${selection.regionId} / 棚 ${selection.canopyId} · 用户确认后已应用`;clearComparison();showSelectedSample();
+  }
   $('apply-candidate').addEventListener('click',()=>{
-    try{if(!preview||!comparison||comparison.key!==comparisonKey(periodAnalysis,referenceHeight))throw new Error('预览已过期');session.update({constraints:readConstraints()});periodAnalysis=session.applyCandidate(preview.candidateId);analysisRuns++;selection=session.snapshot().selection;$('region-id').value=selection.regionId;$('canopy-id').value=selection.canopyId;$('layout-message').classList.remove('error');$('layout-message').textContent=`区域 ${selection.regionId} / 棚 ${selection.canopyId} · 用户确认后已应用`;clearComparison();showSelectedSample();}
+    if(aiPanel?.hasAiPreview()){void aiPanel.apply();return;}
+    try{applyVisiblePreview();}
     catch(error){clearComparison();$('candidate-status').textContent=error.message;showSelectedSample();}
   });
   $('show-samples').addEventListener('change',drawAnalysis);
@@ -207,7 +219,7 @@ function start() {
     device:device(),sun:analysis?{direction:analysis.sun.direction.toArray(),lightToSun:pipeline.sunlight.position.clone().sub(pipeline.frame.center).normalize().toArray(),propagation:pipeline.sunlight.target.position.clone().sub(pipeline.sunlight.position).normalize().toArray()}:null,camera:{position:rig.camera.position.toArray(),target:rig.controls.target.toArray(),aspect:rig.camera.aspect},frame:pipeline.lastFrame,resources:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,programs:renderer.info.programs.length},
     staticGroupId:model.staticGroup.uuid,bindings:bindingRows,proxyCheck,performance:performanceResult,
     loading:{proceduralTextureMs,firstRenderReturnedMs,navigation:performance.getEntriesByType('navigation').map(entry=>({duration:entry.duration,domContentLoaded:entry.domContentLoadedEventEnd})),resources:performance.getEntriesByType('resource').filter(entry=>new URL(entry.name).origin===location.origin).map(entry=>({name:new URL(entry.name).pathname,duration:entry.duration,transferSize:entry.transferSize,decodedBodySize:entry.decodedBodySize}))}}; }
-  function publish() {$('render-diagnostics').textContent=JSON.stringify(diagnostics(),null,2);}
+  function publish() {aiPanel?.contextChanged();$('render-diagnostics').textContent=JSON.stringify(diagnostics(),null,2);}
   $('proxy-check').addEventListener('click',()=>{
     const runs=analysisRuns;
     if(analysis?.status!=='valid'){proxyCheck={status:'NOT_RUN',reason:'requires-valid-sun'};$('proxy-result').textContent='NOT RUN · 请选太阳高度至少5°的有效时刻';publish();return;}
@@ -235,10 +247,31 @@ function start() {
   renderer.setSize(viewport.clientWidth,viewport.clientHeight,false);rig.resize(viewport.clientWidth,viewport.clientHeight);
   $('region-id').value=selection.regionId;$('canopy-id').value=selection.canopyId;
   changePlacement();
+  aiPanel=createAiPanel({
+    getContext:()=>periodAnalysis&&session.snapshot().analysisId?{snapshot:session.snapshot(),sampleIndex:selectedSampleIndex,pointIndex:selectedEvidence?.pointIndex??null,evidenceRefs:selectedEvidence?[selectedEvidence.ground.evidenceId,selectedEvidence.elevated.evidenceId]:[],previewId:preview?.candidateId??null,shown}:null,
+    applyDraft(draft){
+      const constraints=normalizeConstraints({regionMovable:['region','both'].includes(draft.movementMode),canopyMovable:['canopy','both'].includes(draft.movementMode),minimumShade:draft.minimumShade});
+      const period={date:draft.date,startTime:draft.startTime,endTime:draft.endTime,intervalMinutes:draft.intervalMinutes,timeZone:draft.timeZone};
+      session.update({selection:draft.selection,period,height:draft.height,constraints});selection=session.snapshot().selection;referenceHeight=draft.height;
+      for(const [id,value] of [['region-id',selection.regionId],['canopy-id',selection.canopyId],['date',draft.date],['start-time',draft.startTime],['end-time',draft.endTime],['sample-interval',draft.intervalMinutes],['movement-mode',draft.movementMode],['minimum-target',draft.minimumShade*100]])$(id).value=String(value);
+      $('layout-message').textContent=`区域 ${selection.regionId} / 棚 ${selection.canopyId} · 已确认AI约束草案`;refresh();
+    },
+    preview(proposal){
+      if(!periodAnalysis)throw new Error('没有当前时段');
+      const computed=enumerateCandidates(selection,periodAnalysis.period,referenceHeight,session.snapshot().constraints);
+      const expected=computed.candidates.find(row=>row.selection.regionId===proposal.selection.regionId&&row.selection.canopyId===proposal.selection.canopyId);
+      if(!expected?.qualified||Math.abs(expected.metrics.minimum-proposal.metrics.minimum)>1e-12||Math.abs(expected.metrics.average-proposal.metrics.average)>1e-12)throw new Error('服务器候选与本地重算不一致');
+      comparisonRequest=session.beginRequest('candidates');comparison={...computed,candidates:session.registerCandidates(comparisonRequest,computed)};
+      preview=comparison.candidates.find(row=>row.id===expected.id);shown='B';updateComparisonPanel();showSelectedSample();return preview.candidateId;
+    },
+    apply(candidateId,verified){if(preview?.candidateId!==candidateId)throw new Error('AI预览已失效');applyVisiblePreview(verified);},
+    restore(candidateId){if(preview?.candidateId===candidateId){preview=null;shown='A';updateComparisonPanel();showSelectedSample();}},
+    focus(facts){if(!selectedEvidence||selectedEvidence.ground.evidenceId!==facts.ground.evidenceId||selectedEvidence.elevated.evidenceId!==facts.elevated.evidenceId)throw new Error('证据已过期');dualEvidenceView.update(selectedEvidence);viewport.scrollIntoView({block:'center',behavior:'smooth'});},
+  });
   $('court-loading').hidden=true;
   $('runtime-status').textContent='时段实验已就绪 · 含结束时刻 / 双高度100点';
   renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();$('runtime-status').textContent='WebGL上下文丢失，请刷新';});
-  rig.controls.addEventListener('change',()=>{if(selectedEvidence){clearPointEvidence();publish();}else session.observe();});
+  rig.controls.addEventListener('change',()=>{if(selectedEvidence){clearPointEvidence();publish();}else {session.observe();aiPanel?.contextChanged();}});
   renderer.setAnimationLoop(timestamp=>{
     latestTimestamp=timestamp;rig.update();const frame=pipeline.render(rig.camera);
     if(firstRenderReturnedMs===null)firstRenderReturnedMs=performance.now();

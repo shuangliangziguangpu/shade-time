@@ -1,0 +1,30 @@
+✖ B1C an applied layout acknowledgement survives a later observation-only refresh (5.4531ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 164.9031
+
+✖ failing tests:
+
+test at test\ai-workflow.test.js:19:1
+✖ B1C an applied layout acknowledgement survives a later observation-only refresh (5.4531ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'STALE_CONTEXT'
+  - 'APPLIED'
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/ai-workflow.test.js:21:39)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'STALE_CONTEXT',
+    expected: 'APPLIED',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

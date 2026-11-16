@@ -1,0 +1,13 @@
+✔ B1C frontend draft never mutates scene; only explicit draft and proposal confirmations invoke bridges (3.9058ms)
+✔ B1C rejecting an AI preview restores A and never applies it (0.6693ms)
+✔ B1C changing analysis invalidates old AI results and blocks confirmation (0.6306ms)
+✔ B1C AI timeout leaves manual bridges untouched and reports its actual failure status (0.4351ms)
+✔ B1C late AI response after a local context change is discarded even when transport ignores abort (0.5456ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.8615

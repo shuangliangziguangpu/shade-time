@@ -50,7 +50,7 @@ test('B1C candidate recommendation uses genuine server metrics and confirmation 
   assert.equal((await f.call('apply',{proposalId:r.data.proposalId,confirmed:true})).status,'STALE_CONTEXT');
 });
 test('B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK)',async()=>{
-  for(const patch of [{candidateId:'R2/arbitrary'},{minimum:1},{x:4},{summary:'保证全程达到99%'}]){const f=fixture({change:(v,t)=>{if(t.includes('TASK:RECOMMEND'))Object.assign(v,patch);}});await approved(f);assert.equal((await f.call('recommend',{text:'推荐'})).status,'INVALID_AI_RESPONSE');}
+  for(const patch of [{candidateId:'R2/arbitrary'},{candidateId:'ai-3:R3/R3'},{minimum:1},{x:4},{summary:'保证全程达到99%'},{summary:'最低遮阴为八成'},{summary:'太阳高度为五十度'}]){const f=fixture({change:(v,t)=>{if(t.includes('TASK:RECOMMEND'))Object.assign(v,patch);}});await approved(f);assert.equal((await f.call('recommend',{text:'推荐'})).status,'INVALID_AI_RESPONSE');}
 });
 test('B1C infeasible frozen movement and target return explicit no-candidate without lowering the target',async()=>{
   const f=fixture({change:(v,t)=>{if(t.includes('TASK:PARSE'))v.movementMode='none';}});await f.sync();const p=await f.call('parse',{text:'两者都不能动，目标不降低'});await f.call('confirm-draft',{draftId:p.data.draftId,confirmed:true});
@@ -85,4 +85,14 @@ test('B1C changing context while real transport is pending cannot return an appl
   const client={complete:async()=>{entered();await new Promise(r=>release=r);return {value:draft};}};
   const svc=createAiService({client});const f=fixture();const r=await svc.handle('context',{revision:1,snapshot:f.session.snapshot(),sampleIndex:0,pointIndex:null});const {sessionId,contextId}=r.data;
   const pending=svc.handle('parse',{sessionId,contextId,requestId:'ai-1',text:'输入'});await started;await svc.handle('invalidate',{sessionId,revision:2});release();assert.equal((await pending).status,'STALE_CONTEXT');
+});
+test('B1C a later parsing request revokes the old draft and its old approval capability (MOCK)',async()=>{
+  const f=fixture();await f.sync();const first=await f.call('parse',{text:'第一份需求'});const second=await f.call('parse',{text:'重新描述需求'});assert.equal(second.status,'SUCCESS');
+  assert.equal((await f.call('confirm-draft',{draftId:first.data.draftId,confirmed:true})).status,'VALIDATION_REJECTED');
+  assert.equal((await f.call('recommend',{text:'尚未确认第二份需求'})).status,'VALIDATION_REJECTED');
+});
+test('B1C reversed request IDs are rejected even with the same valid context',async()=>{
+  const f=fixture();await f.sync();const request={sessionId:f.context.sessionId,contextId:f.context.contextId,text:'需求'};
+  assert.equal((await f.svc.handle('parse',{...request,requestId:'ai-2'})).status,'SUCCESS');
+  assert.equal((await f.svc.handle('parse',{...request,requestId:'ai-1'})).status,'STALE_CONTEXT');
 });

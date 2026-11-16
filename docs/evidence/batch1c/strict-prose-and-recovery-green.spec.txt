@@ -1,0 +1,28 @@
+✔ B1C HTTP accepts bounded same-origin AI JSON, rejects foreign writes and never serves secrets (143.541ms)
+✔ B1C parsed constraints stay a draft until an explicit confirmation (MOCK transport, real domain) (71.4855ms)
+✔ B1C AI draft rejects invalid fields and mathematical constraints rather than accepting coordinates or rates (MOCK) (95.4677ms)
+✔ B1C unsupported conditions produce clarification and cannot be confirmed (MOCK) (10.6421ms)
+✔ B1C candidate recommendation uses genuine server metrics and confirmation revalidates the legal layout (MOCK) (30.2819ms)
+✔ B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK) (163.6716ms)
+✔ B1C infeasible frozen movement and target return explicit no-candidate without lowering the target (12.1758ms)
+✔ B1C requests reject stale versions, reversed sequences, unknown inputs and forged geometry before AI calls (6.3645ms)
+✔ B1C a recommendation cannot apply after a new analysis, changed permissions, or explicit rejection (65.31ms)
+✔ B1C changed business inputs without increasing scene and analysis versions are rejected (6.5333ms)
+✔ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (9.2024ms)
+✔ B1C changing context while real transport is pending cannot return an applicable response (MOCK) (8.5064ms)
+✔ B1C a later parsing request revokes the old draft and its old approval capability (MOCK) (7.3066ms)
+✔ B1C reversed request IDs are rejected even with the same valid context (6.4467ms)
+✔ B1C frontend draft never mutates scene; only explicit draft and proposal confirmations invoke bridges (3.7157ms)
+✔ B1C rejecting an AI preview restores A and never applies it (0.6587ms)
+✔ B1C changing analysis invalidates old AI results and blocks confirmation (0.5239ms)
+✔ B1C AI timeout leaves manual bridges untouched and reports its actual failure status (0.3672ms)
+✔ B1C late AI response after a local context change is discarded even when transport ignores abort (0.5391ms)
+✔ B1C expired server sessions can be recreated only through a fresh request, never reused for application (0.5595ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 811.0277

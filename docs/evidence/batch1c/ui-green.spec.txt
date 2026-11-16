@@ -1,0 +1,25 @@
+✔ B1C parsed constraints stay a draft until an explicit confirmation (MOCK transport, real domain) (73.8028ms)
+✔ B1C AI draft rejects invalid fields and mathematical constraints rather than accepting coordinates or rates (MOCK) (86.8383ms)
+✔ B1C unsupported conditions produce clarification and cannot be confirmed (MOCK) (11.9865ms)
+✔ B1C candidate recommendation uses genuine server metrics and confirmation revalidates the legal layout (MOCK) (33.7735ms)
+✔ B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK) (90.9199ms)
+✔ B1C infeasible frozen movement and target return explicit no-candidate without lowering the target (19.8661ms)
+✔ B1C requests reject stale versions, reversed sequences, unknown inputs and forged geometry before AI calls (7.1061ms)
+✔ B1C a recommendation cannot apply after a new analysis, changed permissions, or explicit rejection (74.6263ms)
+✔ B1C changed business inputs without increasing scene and analysis versions are rejected (6.1376ms)
+✔ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (9.3259ms)
+✔ B1C changing context while real transport is pending cannot return an applicable response (MOCK) (6.2748ms)
+✔ B1C frontend draft never mutates scene; only explicit draft and proposal confirmations invoke bridges (3.9788ms)
+✔ B1C rejecting an AI preview restores A and never applies it (0.6674ms)
+✔ B1C changing analysis invalidates old AI results and blocks confirmation (0.5535ms)
+✔ B1C AI timeout leaves manual bridges untouched and reports its actual failure status (0.4536ms)
+✔ B1C late AI response after a local context change is discarded even when transport ignores abort (0.5025ms)
+✔ P1 courtyard page and complete shared ESM import graph are served without exposing private files (136.6249ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 710.1489

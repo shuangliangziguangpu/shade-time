@@ -1,0 +1,26 @@
+✔ B1C parsed constraints stay a draft until an explicit confirmation (MOCK transport, real domain) (72.4355ms)
+✔ B1C AI draft rejects invalid fields and mathematical constraints rather than accepting coordinates or rates (MOCK) (86.524ms)
+✔ B1C unsupported conditions produce clarification and cannot be confirmed (MOCK) (11.9405ms)
+✔ B1C candidate recommendation uses genuine server metrics and confirmation revalidates the legal layout (MOCK) (29.8487ms)
+✔ B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK) (91.8736ms)
+✔ B1C infeasible frozen movement and target return explicit no-candidate without lowering the target (18.7992ms)
+✔ B1C requests reject stale versions, reversed sequences, unknown inputs and forged geometry before AI calls (6.6562ms)
+✔ B1C a recommendation cannot apply after a new analysis, changed permissions, or explicit rejection (75.6521ms)
+✔ B1C changed business inputs without increasing scene and analysis versions are rejected (6.0363ms)
+✔ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (9.6063ms)
+✔ B1C changing context while real transport is pending cannot return an applicable response (MOCK) (6.7148ms)
+✔ B1C a later parsing request revokes the old draft and its old approval capability (MOCK) (10.0553ms)
+✔ B1C reversed request IDs are rejected even with the same valid context (6.5229ms)
+✔ B1C frontend draft never mutates scene; only explicit draft and proposal confirmations invoke bridges (4.4695ms)
+✔ B1C rejecting an AI preview restores A and never applies it (0.6165ms)
+✔ B1C changing analysis invalidates old AI results and blocks confirmation (0.5422ms)
+✔ B1C AI timeout leaves manual bridges untouched and reports its actual failure status (0.3753ms)
+✔ B1C late AI response after a local context change is discarded even when transport ignores abort (0.8202ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 735.9855

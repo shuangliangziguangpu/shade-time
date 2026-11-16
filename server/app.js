@@ -1,12 +1,15 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { AI_CONFIG } from './ai-connectivity.js';
+import { createAiHandler } from './ai-http.js';
 
 const files = new Map([
   ['/', ['../public/index.html', 'text/html; charset=utf-8']],
   ['/courtyard', ['../public/courtyard.html', 'text/html; charset=utf-8']],
   ['/courtyard.css', ['../public/courtyard.css', 'text/css; charset=utf-8']],
   ['/src/courtyard.js', ['../src/courtyard.js', 'text/javascript; charset=utf-8']],
+  ['/src/view/ai-panel.js', ['../src/view/ai-panel.js', 'text/javascript; charset=utf-8']],
+  ['/src/view/ai-workflow.js', ['../src/view/ai-workflow.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/scene-config.js', ['../src/domain/scene-config.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/scene.js', ['../src/domain/scene.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/clearance.js', ['../src/domain/clearance.js', 'text/javascript; charset=utf-8']],
@@ -43,18 +46,20 @@ const files = new Map([
   ['/vendor/OrbitControls.js', ['../node_modules/three/examples/jsm/controls/OrbitControls.js', 'text/javascript; charset=utf-8']],
 ]);
 
-export function createShadeServer() {
+export function createShadeServer({ aiService } = {}) {
+  const aiHandler = createAiHandler(aiService);
   const server = createServer(async (request, response) => {
     response.setHeader('X-Content-Type-Options', 'nosniff');
     response.setHeader('Cache-Control', 'no-store');
     response.setHeader('Referrer-Policy', 'no-referrer');
     response.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'");
+    const path = request.url?.split('?')[0];
+    if (path?.startsWith('/api/ai/')) { await aiHandler(request,response,path); return; }
     if (!['GET', 'HEAD'].includes(request.method)) {
       response.writeHead(405, { Allow: 'GET, HEAD' }).end();
       return;
     }
     // Match exact public paths only. No filesystem joins with user-controlled paths.
-    const path = request.url?.split('?')[0];
     if (path === '/api/health') {
       const body = JSON.stringify({
         status: 'ok', phase: 0, three: '0.160.0', suncalc: '1.9.0',

@@ -14,7 +14,7 @@ export function inputText(value) {
 }
 export function aiText(value) {
   // Numerical/geometric facts are rendered from server data, never from prose.
-  if(typeof value!=='string'||!value.trim()||value.length>600||/[0-9０-９%％°]|百分|坐标|全局最优|保证|全程|整个区域|全天|树荫|树木|sk-[A-Za-z0-9_-]{16}/u.test(value))throw new AiError('INVALID_AI_RESPONSE');
+  if(typeof value!=='string'||!value.trim()||value.length>600||/[0-9０-９%％°]|百分|坐标|全局最优|保证|全程|整个区域|全天|树荫|树木|[零〇一二两三四五六七八九十百千万半点]+(?:成|度|米|厘米|毫米|分钟|小时)|[零〇一二两三四五六七八九十百千万]+点[零〇一二两三四五六七八九十]|sk-[A-Za-z0-9_-]{16}/u.test(value))throw new AiError('INVALID_AI_RESPONSE');
   return value;
 }
 export function aiList(value) {

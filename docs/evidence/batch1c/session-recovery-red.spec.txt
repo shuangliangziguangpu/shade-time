@@ -1,0 +1,30 @@
+✖ B1C expired server sessions can be recreated only through a fresh request, never reused for application (4.5889ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165.0769
+
+✖ failing tests:
+
+test at test\ai-workflow.test.js:29:1
+✖ B1C expired server sessions can be recreated only through a fresh request, never reused for application (4.5889ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'STALE_CONTEXT'
+  - 'WAITING_DRAFT_CONFIRMATION'
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/ai-workflow.test.js:31:229)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'STALE_CONTEXT',
+    expected: 'WAITING_DRAFT_CONFIRMATION',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

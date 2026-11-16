@@ -118,3 +118,7 @@
 - 服务端权威会话/草案/候选/应用/证据及HTTP边界先写RED再实现。一次证据错误分类把一条伪造引用混入真实引用判成过期，修正为两条均为旧式引用才归为过期，保留service-green-attempt失败。追加无递增版本却变更业务参数的RED→GREEN，防止只相信客户端版本。
 - 首轮真实API：正常解析SUCCESS、非法高度/目标VALIDATION_REJECTED、证据解释SUCCESS；建议因含协议禁止的“保证”词，澄清因selection使用内部null对象，均INVALID_AI_RESPONSE，没有应用。保留ai-live-initial.json原始脱敏回复。明确提示文本和澄清null结构后重测，真实建议→确认重算应用SUCCESS、澄清SUCCESS、解释SUCCESS；非法输入第二次返回INVALID_AI_RESPONSE，仍安全拒绝，保留ai-live-protocol-recheck.json。没有放宽验证或把失败重写成成功。
 - 端到端前代码全套115 PASS（原93＋新增22），0 FAIL/SKIP/CANCELLED，3458.9303ms。浏览器联调尚待执行，Node耗时不当作浏览器性能。
+- 中断后服务与原CUA接口不可用；原生sky通道按指导重试/重置仍无法连接。使用工作目录外置playwright-core 1.65.1（官方npm registry、ignore-scripts）驱动本机已有Edge，不下载浏览器、不改项目依赖。第一次独立页面探测错误等待隐藏JSON脚本“可见”超时，纠正验收器为等待其内容，不改应用断言。
+- 真实Edge headless首次全链7场景PASS：解析/确认/推荐/A/B/拒绝/重荐/重算应用；双高度解释/引用定位/失效；未支持条件澄清；非法高度拒绝；无可行方案目标不降；离线AI失败后手动比较仍可用；取消不修改场景。原始HTTP输入/结果、快照和截图见browser-initial。该批不是Mock成功截图。
+- 自查再补草案撤销与逆序测试，发现新解析后旧草案仍可确认，先保留RED再清空旧草案/审批/建议能力，并在返回时校验最新请求序号。另补中文数值（八成/五十度）拒绝与服务端过期会话恢复RED→GREEN。
+- 首轮截图复核发现正式应用后的迟到观察刷新把APPLIED覆盖为STALE_CONTEXT，虽然初轮即时断言已通过。保留原截图；新增观察刷新回归先RED再修复，保留当前业务版本的已应用事实卡，业务变化仍失效；浏览器验收器追加截图后两帧再检查，待最终运行。

@@ -62,7 +62,7 @@ export function createAiService({client=createAiClient(),now=Date.now}={}){
       const number=/^ai-([1-9]\d{0,12})$/.exec(input.requestId)?.[1];
       if(!number||Number(number)<=s.lastRequest)throw new AiError('STALE_CONTEXT');
       s.lastRequest=Number(number);
-      const current=()=>{if(s.context!==ctx)throw new AiError('STALE_CONTEXT');};
+      const current=()=>{if(s.context!==ctx||s.lastRequest!==Number(number))throw new AiError('STALE_CONTEXT');};
       const success=data=>({status:'SUCCESS',requestId:responseId,contextId:ctx.id,data});
       const invoke=async(system,data)=>{
         s.active.get(action)?.abort();const controller=new AbortController();s.active.set(action,controller);
@@ -72,6 +72,7 @@ export function createAiService({client=createAiClient(),now=Date.now}={}){
         finally{if(s.active.get(action)===controller)s.active.delete(action);}
       };
       if(action==='parse'){
+        s.drafts.clear();s.proposals.clear();s.approved=null;
         const value=validateDraft(await invoke(PARSE_RULES,{text:inputText(input.text),current:{...ctx.state,allowedRegionIds:SCENE_CONFIG.positions.map(p=>p.id),allowedCanopyIds:SCENE_CONFIG.canopyPositionIds}}));
         if(value.needsClarification)return {status:'NEEDS_CLARIFICATION',requestId:responseId,contextId:ctx.id,data:{draftId:null,draft:value}};
         const draftId=randomUUID();s.drafts.set(draftId,value);return success({draftId,draft:value});
