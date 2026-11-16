@@ -1,0 +1,19 @@
+✔ B1C missing dedicated key blocks the real request before transport (2.4427ms)
+✔ B1C business client uses only configured endpoint/model and parses strict JSON (MOCK transport) (41.5115ms)
+✔ B1C unavailable model and authentication failures do not fall back or expose bodies (MOCK) (0.9698ms)
+✔ B1C empty/malformed/object-free/secret-bearing content is rejected safely (MOCK) (3.4424ms)
+✔ B1C timeout and external cancellation abort network work with safe statuses (MOCK) (15.6468ms)
+✔ AI diagnostic without dedicated key is BLOCKED and sends zero requests (1.4574ms)
+✔ AI diagnostic checks configured model before sending a completion (MOCK transport) (45.0257ms)
+✔ AI diagnostic rejects unavailable model without substituting another (MOCK) (0.7438ms)
+✔ AI diagnostic handles HTTP authentication failure without exposing body (MOCK) (0.4959ms)
+✔ AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK) (3.0854ms)
+✔ AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms) (22.7195ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1288.8151
