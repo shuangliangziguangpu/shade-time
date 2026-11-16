@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-11-16T15:04:21.168Z",
+  "kind": "PUBLIC_CLONE_FRESH_INSTALL",
+  "command": "node <official npm CLI> ci --ignore-scripts --no-fund --registry=https://registry.npmjs.org --cache <new-empty-cache> --userconfig <empty-config>",
+  "cacheWasEmpty": true,
+  "configWasEmpty": true,
+  "envFilePresent": false,
+  "originalModulesCopied": false,
+  "exitCode": 0,
+  "elapsedMs": 44664,
+  "stdout": "\nadded 2 packages, and audited 3 packages in 44s\n\nfound 0 vulnerabilities\n",
+  "stderr": "npm notice\nnpm notice New major version of npm available! 11.6.2 -> 12.2.2\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2\nnpm notice To update run: npm install -g npm@12.2.2\nnpm notice\n"
+}

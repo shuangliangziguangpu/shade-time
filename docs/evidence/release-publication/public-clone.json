@@ -1,0 +1,13 @@
+{
+  "kind": "ANONYMOUS_PUBLIC_CLONE",
+  "capturedAt": "2026-11-16T14:59:54.149Z",
+  "source": "https://github.com/shuangliangziguangpu/shade-time.git",
+  "branch": "feature/phase1.5-batch1d-release",
+  "credentialHelpersDisabled": true,
+  "elapsedMs": 10022,
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "Cloning into 'C:/Users/admin/Documents/Codex/2026-11-14/shadetime-gpt-6-astra-max-v1-2/work/phase15-publication/public-clone'...\n",
+  "sourceModulesCopied": false,
+  "sourceEnvCopied": false
+}

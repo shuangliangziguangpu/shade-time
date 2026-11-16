@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-11-16T14:58:53.040Z",
+  "kind": "ACTUAL_GIT_PUSH",
+  "command": "git [command-scoped verified transport options] push -u origin feature/phase1.5-batch1d-release",
+  "remoteBefore": [
+    {
+      "sha": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+      "ref": "refs/heads/main"
+    }
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "stdout": "branch 'feature/phase1.5-batch1d-release' set up to track 'origin/feature/phase1.5-batch1d-release'.\n",
+  "stderr": "remote: \nremote: Create a pull request for 'feature/phase1.5-batch1d-release' on GitHub by visiting:        \nremote:      https://github.com/shuangliangziguangpu/shade-time/pull/new/feature/phase1.5-batch1d-release        \nremote: \nTo https://github.com/shuangliangziguangpu/shade-time.git\n * [new branch]      feature/phase1.5-batch1d-release -> feature/phase1.5-batch1d-release\n",
+  "errorCode": null,
+  "forced": false,
+  "mainIncluded": false
+}

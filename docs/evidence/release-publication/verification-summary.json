@@ -1,0 +1,33 @@
+{
+  "capturedAt": "2026-11-16T15:12:33.425Z",
+  "candidateUnderTest": "28207836e2c2992397a8c511b18baa5994e8d0b0",
+  "main": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "branch": "feature/phase1.5-batch1d-release",
+  "publication": "PASS",
+  "publicClone": "PASS",
+  "manualAcceptance": "NOT RUN",
+  "video": "NOT RUN",
+  "technicalPdf": "NOT DONE",
+  "applicationAndTestsUnchanged": true,
+  "tests": {
+    "local": {
+      "PASS": 130,
+      "FAIL": 0,
+      "SKIP": 0,
+      "CANCELLED": 0
+    },
+    "cleanArchive": {
+      "PASS": 130,
+      "FAIL": 0,
+      "SKIP": 0,
+      "CANCELLED": 0
+    },
+    "publicClone": {
+      "PASS": 130,
+      "FAIL": 0,
+      "SKIP": 0,
+      "CANCELLED": 0
+    }
+  },
+  "note": "Final evidence-only archive commit follows; exact delivered HEAD is checked independently after that push, avoiding self-referential commit metadata."
+}

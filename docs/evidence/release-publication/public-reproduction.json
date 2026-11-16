@@ -1,0 +1,34 @@
+{
+  "capturedAt": "2026-11-16T15:11:01.746Z",
+  "status": "PASS",
+  "source": "anonymous public GitHub branch",
+  "head": "28207836e2c2992397a8c511b18baa5994e8d0b0",
+  "fullHistoryCommits": 31,
+  "node": "v24.22.1",
+  "tests": {
+    "PASS": 130,
+    "FAIL": 0,
+    "SKIP": 0,
+    "CANCELLED": 0
+  },
+  "browserChecks": 6,
+  "cloneMs": 10022,
+  "installMs": 44664,
+  "testMs": 1479.6496,
+  "measuredCloneStartToBrowserCompletionMs": 544787,
+  "envIncluded": false,
+  "originalModulesOrCacheCopied": false,
+  "freshNpmCache": true,
+  "npmAuditSummary": "0 vulnerabilities in 3 audited packages, provider JSON is not a security proof",
+  "noKeyAiStatus": "AI_UNAVAILABLE",
+  "genuineLiveApiRerun": "NOT RUN, prior evidence retained",
+  "runtime": "http://127.0.0.1:43116/courtyard",
+  "publicCloneClean": true,
+  "deterministicResults": {
+    "elevatedAverage": 0.7625,
+    "elevatedMinimum": 0.6,
+    "groundAverage": 0.05000000000000001,
+    "groundMinimum": 0
+  },
+  "humanAcceptance": "NOT RUN"
+}
