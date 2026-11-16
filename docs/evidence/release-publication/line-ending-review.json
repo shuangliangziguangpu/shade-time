@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-11-16T15:23:41.451Z",
+  "kind": "MANIFEST_PORTABILITY_ROOT_CAUSE",
+  "initialWorktreeByteCheck": "FAIL",
+  "affectedFiles": [
+    {
+      "path": "docs/evidence/release-publication/archive-130.spec.txt",
+      "rawBytes": 13058,
+      "gitBlobBytes": 12920,
+      "rawHashDiffers": true,
+      "normalizedLfAndGitBlobMatchRecordedHash": true
+    },
+    {
+      "path": "docs/evidence/release-publication/local-130.spec.txt",
+      "rawBytes": 13058,
+      "gitBlobBytes": 12920,
+      "rawHashDiffers": true,
+      "normalizedLfAndGitBlobMatchRecordedHash": true
+    },
+    {
+      "path": "docs/evidence/release-publication/public-130.spec.txt",
+      "rawBytes": 13050,
+      "gitBlobBytes": 12912,
+      "rawHashDiffers": true,
+      "normalizedLfAndGitBlobMatchRecordedHash": true
+    }
+  ],
+  "rootCause": "Windows Git checkout expands LF test report lines to CRLF; immutable Git blob content matches all recorded digests",
+  "resolution": "Declare LF-normalized UTF-8 for text, exact bytes for binary in the release manifest; no test outputs or Git global settings changed",
+  "applicationTestsUnaffected": true
+}

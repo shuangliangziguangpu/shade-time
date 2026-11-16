@@ -88,4 +88,6 @@
 
 本轮发布记录：`docs/evidence/release-publication/`中的preflight、history-safety-audit、push-initial、public-clone、public-install、public-130.spec/tap、public-reproduction与public-browser。历史final/manifest记录35dbde3时的文件哈希，用户授权新增README内容后不改写旧manifest；检查旧快照需使用其当时提交，发布新增记录单独建立哈希索引。
 
+发布后的跨目录哈希核对曾有三份`.spec.txt`的工作区字节不一致：Windows Git检出将LF展开为CRLF。实际Git blob及去掉CRLF差异后的内容均与原记录SHA256一致，应用130项结果无变化。记录见line-ending-review.json；发布manifest现明确对UTF-8文本先将CRLF规范为LF、二进制按原字节核对。未修改原输出、旧manifest、全局Git设置或测试断言；该修正只保证索引跨平台可复核。
+
 ![公开GitHub分支独立克隆、无密钥保存恢复后的真实页面](../../evidence/release-publication/public-clone-restored.jpg)
