@@ -1,0 +1,11 @@
+✔ B1B paired evidence uses one horizontal sample at two exact heights and actual hits (2.8328ms)
+✔ B1B evidence rejects unknown point/sample indexes and unavailable analysis (1.794ms)
+✔ B1B references expire after layout/time/analysis/observation change and A-to-B-to-A cannot revive them (4.3532ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 211.2681

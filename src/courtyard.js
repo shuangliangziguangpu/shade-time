@@ -5,6 +5,8 @@ import { analyzePeriod } from './domain/period.js';
 import { renderPeriodPanel } from './view/period-panel.js';
 import { enumerateCandidates, comparePeriods, comparisonKey, normalizeConstraints } from './domain/candidates.js';
 import { renderCandidatePanel } from './view/candidate-panel.js';
+import { pointEvidence } from './domain/point-evidence.js';
+import { createPointEvidenceView } from './view/point-evidence.js';
 import { parseShanghaiDateTime, DEG } from './core/sun.js';
 import { castSunRay } from './core/geometry.js';
 import { createVisualMaterials } from './view/visual-materials.js';
@@ -31,6 +33,8 @@ function start() {
   const { renderer, world } = pipeline;
   const model = createVisualScene(initial, materials);
   world.add(model.group);
+  const dualEvidenceView=createPointEvidenceView();world.add(dualEvidenceView.group);
+  for(let point=0;point<100;point++)$('evidence-point').add(new Option(`P${point+1}`,String(point)));
   const rig = createCameraRig(renderer.domElement, initial);
   const markers = new THREE.InstancedMesh(new THREE.SphereGeometry(0.045, 6, 4), new THREE.MeshBasicMaterial({ depthTest: false, depthWrite: false }), 100);
   markers.frustumCulled = false;
@@ -46,12 +50,14 @@ function start() {
   sunArrow.visible=false;world.add(sunArrow);
   let analysis, periodAnalysis=null, selectedSampleIndex=0, periodDurationMs=0, analysisRuns = 0, bindingRows = [];
   let comparison=null, preview=null, shown='A', candidateDurationMs=null;
+  let evidenceContext={sceneVersion:1,analysisVersion:1,analysisId:'period-1',contextVersion:1},selectedEvidence=null;
   let proxyCheck = null, performanceResult = null, measuring = null;
   let latestTimestamp = 0, firstRenderReturnedMs = null;
   function invalidatePerformance() { performanceResult=null;measuring=null;$('performance-result').textContent='当前视角尚未测量帧率'; }
   function invalidateVerification() {proxyCheck=null;$('proxy-result').textContent='当前布局、时刻或视角尚未执行WebGL对照';}
   function clearComparison(){comparison=null;preview=null;shown='A';candidateDurationMs=null;renderCandidatePanel(null,null,referenceHeight);}
   const visiblePeriod=()=>shown==='B'&&preview?preview.result:periodAnalysis;
+  function clearPointEvidence(){evidenceContext={...evidenceContext,contextVersion:evidenceContext.contextVersion+1};selectedEvidence=null;dualEvidenceView.update(null);$('evidence-point').value='';$('dual-evidence-status').textContent='上下文已变化，请重新选择有效采样点。';$('ground-evidence').textContent=$('elevated-evidence').textContent='—';}
 
   function failure(message) {
     for (const id of ['rate','ground-rate','raised-rate']) $(id).textContent = 'N/A';
@@ -90,8 +96,10 @@ function start() {
     $('evidence').textContent = witness.status==='blocked' ? `${witness.id} → 最近命中 ${witness.blockerId}。` : `${witness.id} → 模型内直射。`;
   }
   function showSelectedSample() {
+    clearPointEvidence();
     invalidatePerformance();invalidateVerification();
     analysis=visiblePeriod()?.samples[selectedSampleIndex]?.analysis??null;
+    $('evidence-point').disabled=analysis?.status!=='valid';
     if(!analysis){failure('没有可用的采样时刻');return;}
     const modelUpdate=model.update(analysis.scene);bindingRows=modelUpdate.bindings;
     if(modelUpdate.moved)pipeline.markShadowDirty();
@@ -114,8 +122,9 @@ function start() {
       periodDurationMs=performance.now()-started;
       selectedSampleIndex=Math.max(0,periodAnalysis.samples.findIndex(sample=>sample.clock===previousClock));
       analysisRuns++;
+      evidenceContext={sceneVersion:evidenceContext.sceneVersion+1,analysisVersion:evidenceContext.analysisVersion+1,analysisId:`period-${analysisRuns}`,contextVersion:evidenceContext.contextVersion+1};
       showSelectedSample();
-    } catch(error) { analysis=null;periodAnalysis=null;renderPeriodPanel(null,referenceHeight,0);pipeline.sunlight.intensity=0;pipeline.markShadowDirty();$('altitude').textContent='—';$('azimuth').textContent='—';failure(error.message); }
+    } catch(error) { clearPointEvidence();$('evidence-point').disabled=true;analysis=null;periodAnalysis=null;renderPeriodPanel(null,referenceHeight,0);model.update(inspectLayout(selection).scene);pipeline.sunlight.intensity=0;pipeline.markShadowDirty();$('altitude').textContent='—';$('azimuth').textContent='—';failure(error.message); }
     finally { publish(); }
   }
   function changePlacement() {
@@ -161,6 +170,12 @@ function start() {
     catch(error){clearComparison();$('candidate-status').textContent=error.message;showSelectedSample();}
   });
   $('show-samples').addEventListener('change',drawAnalysis);
+  $('evidence-point').addEventListener('change',()=>{
+    try{const value=$('evidence-point').value;clearPointEvidence();if(value===''){publish();return;}$('evidence-point').value=value;selectedEvidence=pointEvidence(visiblePeriod(),selectedSampleIndex,Number(value),evidenceContext);dualEvidenceView.update(selectedEvidence);$('dual-evidence-status').textContent=`P${selectedEvidence.pointNumber} · ${visiblePeriod().samples[selectedSampleIndex].clock} · 当前${shown}布局`;
+      const describe=record=>`${record.status==='blocked'?`最近命中 ${record.blockerId}，交点(${record.hit.map(value=>value.toFixed(2)).join(', ')})m`:'未命中实体，模型内直射'}。证据 ${record.evidenceId}`;
+      $('ground-evidence').textContent=describe(selectedEvidence.ground);$('elevated-evidence').textContent=describe(selectedEvidence.elevated);publish();
+    }catch(error){clearPointEvidence();$('dual-evidence-status').textContent=error.message;publish();}
+  });
   $('expand-view').addEventListener('click',()=>{invalidatePerformance();document.body.classList.toggle('scene-expanded');$('expand-view').textContent=document.body.classList.contains('scene-expanded')?'恢复面板':'放大场景';});
   $('tone-mapping').addEventListener('change',()=>{renderer.toneMapping=$('tone-mapping').value==='aces'?THREE.ACESFilmicToneMapping:THREE.NoToneMapping;});
   const device = () => {
@@ -170,7 +185,7 @@ function start() {
       vendor:extension?gl.getParameter(extension.UNMASKED_VENDOR_WEBGL):gl.getParameter(gl.VENDOR),
       cssWidth:viewport.clientWidth,cssHeight:viewport.clientHeight,dpr:renderer.getPixelRatio(),drawingBuffer:renderer.getDrawingBufferSize(new THREE.Vector2()).toArray()};
   };
-  function diagnostics() { return {version:'batch1b-v1',view:rig.mode,selection,shownSelection:analysis?.scene.selection??null,shown,analysisRuns,periodDurationMs,candidateDurationMs,comparison:comparison?{status:comparison.status,height:comparison.height,key:comparison.key,examined:comparison.examined,rejected:comparison.rejected.length,candidates:comparison.candidates.map(item=>({id:item.id,selection:item.selection,minimum:item.metrics.minimum,average:item.metrics.average,movedCount:item.movedCount,qualified:item.qualified})),previewId:preview?.id??null}:null,period:periodAnalysis?{status:periodAnalysis.status,settings:periodAnalysis.period,selectedSampleIndex,ground:periodAnalysis.ground,elevated:periodAnalysis.elevated,samples:periodAnalysis.samples.map(sample=>({timestamp:sample.timestamp,clock:sample.clock,status:sample.status,ground:sample.analysis.ground?.rate??null,elevated:sample.analysis.elevated?.rate??null,groundValidCount:sample.groundValidCount,elevatedValidCount:sample.elevatedValidCount}))}:null,metrics:analysis?.status==='valid'?{ground:analysis.ground.rate,elevated:analysis.elevated.rate}:null,
+  function diagnostics() { return {version:'batch1b-v1',view:rig.mode,selection,evidenceContext,selectedEvidence,shownSelection:analysis?.scene.selection??null,shown,analysisRuns,periodDurationMs,candidateDurationMs,comparison:comparison?{status:comparison.status,height:comparison.height,key:comparison.key,examined:comparison.examined,rejected:comparison.rejected.length,candidates:comparison.candidates.map(item=>({id:item.id,selection:item.selection,minimum:item.metrics.minimum,average:item.metrics.average,movedCount:item.movedCount,qualified:item.qualified})),previewId:preview?.id??null}:null,period:periodAnalysis?{status:periodAnalysis.status,settings:periodAnalysis.period,selectedSampleIndex,ground:periodAnalysis.ground,elevated:periodAnalysis.elevated,samples:periodAnalysis.samples.map(sample=>({timestamp:sample.timestamp,clock:sample.clock,status:sample.status,ground:sample.analysis.ground?.rate??null,elevated:sample.analysis.elevated?.rate??null,groundValidCount:sample.groundValidCount,elevatedValidCount:sample.elevatedValidCount}))}:null,metrics:analysis?.status==='valid'?{ground:analysis.ground.rate,elevated:analysis.elevated.rate}:null,
     device:device(),sun:analysis?{direction:analysis.sun.direction.toArray(),lightToSun:pipeline.sunlight.position.clone().sub(pipeline.frame.center).normalize().toArray(),propagation:pipeline.sunlight.target.position.clone().sub(pipeline.sunlight.position).normalize().toArray()}:null,camera:{position:rig.camera.position.toArray(),target:rig.controls.target.toArray(),aspect:rig.camera.aspect},frame:pipeline.lastFrame,resources:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,programs:renderer.info.programs.length},
     staticGroupId:model.staticGroup.uuid,bindings:bindingRows,proxyCheck,performance:performanceResult,
     loading:{proceduralTextureMs,firstRenderReturnedMs,navigation:performance.getEntriesByType('navigation').map(entry=>({duration:entry.duration,domContentLoaded:entry.domContentLoadedEventEnd})),resources:performance.getEntriesByType('resource').filter(entry=>new URL(entry.name).origin===location.origin).map(entry=>({name:new URL(entry.name).pathname,duration:entry.duration,transferSize:entry.transferSize,decodedBodySize:entry.decodedBodySize}))}}; }
@@ -217,7 +232,7 @@ function start() {
     }
   });
   setTimeout(publish,1000);
-  window.addEventListener('pagehide',event=>{if(event.persisted)return;rig.dispose();model.dispose();sunArrow.dispose();markers.dispose();markers.geometry.dispose();markers.material.dispose();reference.geometry.dispose();reference.material.dispose();evidenceRay.geometry.dispose();evidenceRay.material.dispose();materials.dispose();pipeline.dispose();});
+  window.addEventListener('pagehide',event=>{if(event.persisted)return;rig.dispose();model.dispose();dualEvidenceView.dispose();sunArrow.dispose();markers.dispose();markers.geometry.dispose();markers.material.dispose();reference.geometry.dispose();reference.material.dispose();evidenceRay.geometry.dispose();evidenceRay.material.dispose();materials.dispose();pipeline.dispose();});
 }
 
 try{start();}catch(error){$('runtime-status').textContent=`初始化失败：${error.message}`;$('court-loading').textContent=error.message;console.error(error);}
