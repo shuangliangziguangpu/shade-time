@@ -1,0 +1,24 @@
+✔ B1B region-only comparison keeps canopy, rejects corridor and ranks genuine interval results (39.4668ms)
+✔ B1B canopy-only and both-movable modes honor finite IDs and current baseline (105.4815ms)
+✔ B1B unavailable required times stop all normal rankings and infeasible constraints are explicit (17.3271ms)
+✔ B1B sort uses unrounded minimum, average, moved count then fixed ID order (0.3692ms)
+✔ B1B A/B rejects every mismatch in reference height, date, period, sampling or model versions (6.334ms)
+✔ B1B candidate entry rejects arbitrary geometry, unknown constraints and invalid target values (3.5333ms)
+✔ B1B period sequence includes start and end at explicit Shanghai instants (6.3864ms)
+✔ B1B partial final segments and different sampling intervals include endpoint exactly once (0.6658ms)
+✔ B1B frozen five-value trapezoid regression yields 76.25%, minimum60% at16:00 (0.5849ms)
+✔ B1B trapezoid weights the 5-minute final segment and handles zero/full/tied minimum (0.4126ms)
+✔ B1B one invalid necessary sample makes full-period metrics unavailable without shrinking samples (0.3745ms)
+✔ B1B series rejects nonmonotone timestamps, malformed rates and insufficient points (0.7141ms)
+✔ B1B period rejects crossing dates, invalid dates/steps/timezone and outside15–120min (0.7067ms)
+✔ B1B actual period preserves every single-time result and both reference layers (23.2886ms)
+✔ B1B night, mixed-validity dawn and invalid layout keep all samples but suppress aggregates (6.7596ms)
+✔ B1B period is independent of the host timezone (446.0102ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 729.9082

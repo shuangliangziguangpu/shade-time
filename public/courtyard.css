@@ -59,6 +59,16 @@ polyline.chart-current,polyline.chart-alternative { fill: none; }
 .period-panel th,.period-panel td { border-bottom: 1px solid #e8ede5; padding: 9px; text-align: left; }
 .scene-expanded .period-panel { display: none; }
 @media(max-width:760px) { .period-heading { flex-direction: column; align-items: flex-start; gap: 4px; } }
+.candidate-panel h2 { font-size: 17px; font-weight: 550; margin: 0 0 18px; }
+.candidate-controls { display: grid; grid-template-columns: minmax(200px,1.3fr) minmax(150px,1fr) auto; align-items: end; gap: 14px; }
+.candidate-controls button { background: #315e4e; color: #fff; padding: 10px 16px; }
+#candidate-status,#comparison-delta,#ab-status { font-size: 12px; line-height: 1.8; color: #5c7466; }
+.candidate-table { max-height: 300px; }
+.ab-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 18px; }
+.ab-actions button[aria-pressed="true"] { background: #e5eee1; }
+button:disabled { opacity: .45; cursor: default; }
+.scene-expanded .candidate-panel { display: none; }
+@media(max-width:760px) { .candidate-controls { grid-template-columns: 1fr; } }
 .court-status { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 2px; border-bottom: 1px solid #dce4db; font-size: 11px; color: #607b68; }
 @media (max-width: 1050px) {
   .court-workspace { grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; }

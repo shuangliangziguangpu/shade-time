@@ -3,6 +3,8 @@ import { SCENE_CONFIG } from './domain/scene-config.js';
 import { inspectLayout } from './domain/layout.js';
 import { analyzePeriod } from './domain/period.js';
 import { renderPeriodPanel } from './view/period-panel.js';
+import { enumerateCandidates, comparePeriods, comparisonKey, normalizeConstraints } from './domain/candidates.js';
+import { renderCandidatePanel } from './view/candidate-panel.js';
 import { parseShanghaiDateTime, DEG } from './core/sun.js';
 import { castSunRay } from './core/geometry.js';
 import { createVisualMaterials } from './view/visual-materials.js';
@@ -43,10 +45,13 @@ function start() {
   const sunArrow=new THREE.ArrowHelper(new THREE.Vector3(0,1,0),new THREE.Vector3(0,0.12,initial.courtyard.min[2]+2.2),3.2,0xc49542,0.35,0.18);
   sunArrow.visible=false;world.add(sunArrow);
   let analysis, periodAnalysis=null, selectedSampleIndex=0, periodDurationMs=0, analysisRuns = 0, bindingRows = [];
+  let comparison=null, preview=null, shown='A', candidateDurationMs=null;
   let proxyCheck = null, performanceResult = null, measuring = null;
   let latestTimestamp = 0, firstRenderReturnedMs = null;
   function invalidatePerformance() { performanceResult=null;measuring=null;$('performance-result').textContent='当前视角尚未测量帧率'; }
   function invalidateVerification() {proxyCheck=null;$('proxy-result').textContent='当前布局、时刻或视角尚未执行WebGL对照';}
+  function clearComparison(){comparison=null;preview=null;shown='A';candidateDurationMs=null;renderCandidatePanel(null,null,referenceHeight);}
+  const visiblePeriod=()=>shown==='B'&&preview?preview.result:periodAnalysis;
 
   function failure(message) {
     for (const id of ['rate','ground-rate','raised-rate']) $(id).textContent = 'N/A';
@@ -56,7 +61,8 @@ function start() {
     markers.visible = reference.visible = evidenceRay.visible = sunArrow.visible = false;
   }
   function drawAnalysis() {
-    renderPeriodPanel(periodAnalysis,referenceHeight,selectedSampleIndex);
+    const displayed=visiblePeriod();
+    renderPeriodPanel(displayed,referenceHeight,selectedSampleIndex,preview?(shown==='A'?preview.result:periodAnalysis):null);
     $('height-ground').setAttribute('aria-pressed', String(referenceHeight === 0));
     $('height-person').setAttribute('aria-pressed', String(referenceHeight === 1.5));
     const overlay = $('show-samples').checked;
@@ -85,7 +91,7 @@ function start() {
   }
   function showSelectedSample() {
     invalidatePerformance();invalidateVerification();
-    analysis=periodAnalysis?.samples[selectedSampleIndex]?.analysis??null;
+    analysis=visiblePeriod()?.samples[selectedSampleIndex]?.analysis??null;
     if(!analysis){failure('没有可用的采样时刻');return;}
     const modelUpdate=model.update(analysis.scene);bindingRows=modelUpdate.bindings;
     if(modelUpdate.moved)pipeline.markShadowDirty();
@@ -98,6 +104,7 @@ function start() {
     publish();
   }
   function refresh() {
+    clearComparison();
     invalidatePerformance();
     invalidateVerification();
     try {
@@ -130,10 +137,29 @@ function start() {
   for(const [id,name] of [['reset-view','overview'],['top-view','top'],['facade-view','facade'],['paving-view','paving'],['canopy-view','canopy']]) $(id).addEventListener('click',()=>setView(name));
   for(const id of ['region-id','canopy-id']) $(id).addEventListener('change',changePlacement);
   for(const id of ['date','start-time','end-time','sample-interval']) $(id).addEventListener('change',refresh);
-  $('time').addEventListener('change',()=>{selectedSampleIndex=periodAnalysis.samples.findIndex(sample=>sample.clock===$('time').value);showSelectedSample();});
+  $('time').addEventListener('change',()=>{selectedSampleIndex=visiblePeriod().samples.findIndex(sample=>sample.clock===$('time').value);showSelectedSample();});
   $('sample-times').addEventListener('click',event=>{const button=event.target.closest('button[data-sample-index]');if(button){selectedSampleIndex=Number(button.dataset.sampleIndex);showSelectedSample();}});
-  $('height-ground').addEventListener('click',()=>{referenceHeight=0;drawAnalysis();});
-  $('height-person').addEventListener('click',()=>{referenceHeight=1.5;drawAnalysis();});
+  function changeHeight(height){referenceHeight=height;clearComparison();showSelectedSample();}
+  $('height-ground').addEventListener('click',()=>changeHeight(0));
+  $('height-person').addEventListener('click',()=>changeHeight(1.5));
+  function readConstraints(){const mode=$('movement-mode').value;const text=$('minimum-target').value;if(!text.trim())throw new RangeError('请输入0–100%的最低目标');return normalizeConstraints({regionMovable:mode!=='canopy',canopyMovable:mode!=='region',minimumShade:Number(text)/100});}
+  function updateComparisonPanel(){renderCandidatePanel(comparison,preview,referenceHeight,shown,candidateDurationMs);}
+  for(const id of ['movement-mode','minimum-target'])$(id).addEventListener('change',()=>{clearComparison();showSelectedSample();});
+  $('compare-candidates').addEventListener('click',()=>{
+    try{if(!periodAnalysis)throw new Error('先修正时段输入');const started=performance.now();comparison=enumerateCandidates(selection,periodAnalysis.period,referenceHeight,readConstraints());candidateDurationMs=performance.now()-started;preview=null;shown='A';updateComparisonPanel();showSelectedSample();publish();}
+    catch(error){clearComparison();$('candidate-status').textContent=error.message;publish();}
+  });
+  $('candidate-rows').addEventListener('click',event=>{
+    const button=event.target.closest('button[data-candidate-id]');if(!button)return;
+    try{if(!comparison||comparison.key!==comparisonKey(periodAnalysis,referenceHeight))throw new Error('旧候选条件已过期');preview=comparison.candidates.find(item=>item.id===button.dataset.candidateId);if(!preview)throw new Error('未知候选ID');comparePeriods(periodAnalysis,preview.result,referenceHeight);shown='B';updateComparisonPanel();showSelectedSample();}
+    catch(error){clearComparison();$('candidate-status').textContent=error.message;showSelectedSample();}
+  });
+  for(const mode of ['A','B'])$('show-'+mode.toLowerCase()).addEventListener('click',()=>{if(preview){shown=mode;updateComparisonPanel();showSelectedSample();}});
+  $('reject-candidate').addEventListener('click',()=>{preview=null;shown='A';updateComparisonPanel();showSelectedSample();});
+  $('apply-candidate').addEventListener('click',()=>{
+    try{if(!preview||!comparison||comparison.key!==comparisonKey(periodAnalysis,referenceHeight))throw new Error('预览已过期');const fresh=enumerateCandidates(selection,periodAnalysis.period,referenceHeight,readConstraints()).candidates.find(item=>item.id===preview.id);if(!fresh)throw new Error('当前权限不允许此方案');comparePeriods(periodAnalysis,fresh.result,referenceHeight);selection=fresh.selection;$('region-id').value=selection.regionId;$('canopy-id').value=selection.canopyId;$('layout-message').textContent=`区域 ${selection.regionId} / 棚 ${selection.canopyId} · 用户确认后已应用`;refresh();}
+    catch(error){clearComparison();$('candidate-status').textContent=error.message;showSelectedSample();}
+  });
   $('show-samples').addEventListener('change',drawAnalysis);
   $('expand-view').addEventListener('click',()=>{invalidatePerformance();document.body.classList.toggle('scene-expanded');$('expand-view').textContent=document.body.classList.contains('scene-expanded')?'恢复面板':'放大场景';});
   $('tone-mapping').addEventListener('change',()=>{renderer.toneMapping=$('tone-mapping').value==='aces'?THREE.ACESFilmicToneMapping:THREE.NoToneMapping;});
@@ -144,7 +170,7 @@ function start() {
       vendor:extension?gl.getParameter(extension.UNMASKED_VENDOR_WEBGL):gl.getParameter(gl.VENDOR),
       cssWidth:viewport.clientWidth,cssHeight:viewport.clientHeight,dpr:renderer.getPixelRatio(),drawingBuffer:renderer.getDrawingBufferSize(new THREE.Vector2()).toArray()};
   };
-  function diagnostics() { return {version:'batch1b-v1',view:rig.mode,selection,analysisRuns,periodDurationMs,period:periodAnalysis?{status:periodAnalysis.status,settings:periodAnalysis.period,selectedSampleIndex,ground:periodAnalysis.ground,elevated:periodAnalysis.elevated,samples:periodAnalysis.samples.map(sample=>({timestamp:sample.timestamp,clock:sample.clock,status:sample.status,ground:sample.analysis.ground?.rate??null,elevated:sample.analysis.elevated?.rate??null,groundValidCount:sample.groundValidCount,elevatedValidCount:sample.elevatedValidCount}))}:null,metrics:analysis?.status==='valid'?{ground:analysis.ground.rate,elevated:analysis.elevated.rate}:null,
+  function diagnostics() { return {version:'batch1b-v1',view:rig.mode,selection,shownSelection:analysis?.scene.selection??null,shown,analysisRuns,periodDurationMs,candidateDurationMs,comparison:comparison?{status:comparison.status,height:comparison.height,key:comparison.key,examined:comparison.examined,rejected:comparison.rejected.length,candidates:comparison.candidates.map(item=>({id:item.id,selection:item.selection,minimum:item.metrics.minimum,average:item.metrics.average,movedCount:item.movedCount,qualified:item.qualified})),previewId:preview?.id??null}:null,period:periodAnalysis?{status:periodAnalysis.status,settings:periodAnalysis.period,selectedSampleIndex,ground:periodAnalysis.ground,elevated:periodAnalysis.elevated,samples:periodAnalysis.samples.map(sample=>({timestamp:sample.timestamp,clock:sample.clock,status:sample.status,ground:sample.analysis.ground?.rate??null,elevated:sample.analysis.elevated?.rate??null,groundValidCount:sample.groundValidCount,elevatedValidCount:sample.elevatedValidCount}))}:null,metrics:analysis?.status==='valid'?{ground:analysis.ground.rate,elevated:analysis.elevated.rate}:null,
     device:device(),sun:analysis?{direction:analysis.sun.direction.toArray(),lightToSun:pipeline.sunlight.position.clone().sub(pipeline.frame.center).normalize().toArray(),propagation:pipeline.sunlight.target.position.clone().sub(pipeline.sunlight.position).normalize().toArray()}:null,camera:{position:rig.camera.position.toArray(),target:rig.controls.target.toArray(),aspect:rig.camera.aspect},frame:pipeline.lastFrame,resources:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,programs:renderer.info.programs.length},
     staticGroupId:model.staticGroup.uuid,bindings:bindingRows,proxyCheck,performance:performanceResult,
     loading:{proceduralTextureMs,firstRenderReturnedMs,navigation:performance.getEntriesByType('navigation').map(entry=>({duration:entry.duration,domContentLoaded:entry.domContentLoadedEventEnd})),resources:performance.getEntriesByType('resource').filter(entry=>new URL(entry.name).origin===location.origin).map(entry=>({name:new URL(entry.name).pathname,duration:entry.duration,transferSize:entry.transferSize,decodedBodySize:entry.decodedBodySize}))}}; }
