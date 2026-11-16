@@ -18,6 +18,7 @@ const files = new Map([
   ['/src/view/candidate-panel.js', ['../src/view/candidate-panel.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/point-evidence.js', ['../src/domain/point-evidence.js', 'text/javascript; charset=utf-8']],
   ['/src/view/point-evidence.js', ['../src/view/point-evidence.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/decision-session.js', ['../src/domain/decision-session.js', 'text/javascript; charset=utf-8']],
   ['/src/view/courtyard-model.js', ['../src/view/courtyard-model.js', 'text/javascript; charset=utf-8']],
   ['/src/view/visual-config.js', ['../src/view/visual-config.js', 'text/javascript; charset=utf-8']],
   ['/src/view/visual-materials.js', ['../src/view/visual-materials.js', 'text/javascript; charset=utf-8']],

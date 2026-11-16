@@ -1,0 +1,18 @@
+✔ B1B session snapshots are immutable and versions cannot regress after A-to-B-to-A (20.1855ms)
+✔ B1B latest-request gate rejects reverse returns, forged tokens and stale scene/analysis/observation (10.6523ms)
+✔ B1B candidate references exist only in the current registered list and application recomputes (28.8817ms)
+✔ B1B period, height and permission changes invalidate old comparisons and cannot apply a stale preview (56.5955ms)
+✔ B1B session rejects inconsistent or tampered analysis and candidate envelopes (20.0983ms)
+✔ B1B observation invalidates explanations but leaves numeric analysis and registered layout choices intact (14.7746ms)
+✔ B1B unqualified candidates can be inspected but cannot be confirmed under the active goal (18.2565ms)
+✔ B1B paired evidence uses one horizontal sample at two exact heights and actual hits (2.3481ms)
+✔ B1B evidence rejects unknown point/sample indexes and unavailable analysis (1.8065ms)
+✔ B1B references expire after layout/time/analysis/observation change and A-to-B-to-A cannot revive them (3.5681ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 375.3008

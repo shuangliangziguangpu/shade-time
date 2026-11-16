@@ -1,0 +1,568 @@
+TAP version 13
+# Subtest: AI diagnostic without dedicated key is BLOCKED and sends zero requests
+ok 1 - AI diagnostic without dedicated key is BLOCKED and sends zero requests
+  ---
+  duration_ms: 2.2606
+  type: 'test'
+  ...
+# Subtest: AI diagnostic checks configured model before sending a completion (MOCK transport)
+ok 2 - AI diagnostic checks configured model before sending a completion (MOCK transport)
+  ---
+  duration_ms: 59.0593
+  type: 'test'
+  ...
+# Subtest: AI diagnostic rejects unavailable model without substituting another (MOCK)
+ok 3 - AI diagnostic rejects unavailable model without substituting another (MOCK)
+  ---
+  duration_ms: 1.0663
+  type: 'test'
+  ...
+# Subtest: AI diagnostic handles HTTP authentication failure without exposing body (MOCK)
+ok 4 - AI diagnostic handles HTTP authentication failure without exposing body (MOCK)
+  ---
+  duration_ms: 0.8811
+  type: 'test'
+  ...
+# Subtest: AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK)
+ok 5 - AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK)
+  ---
+  duration_ms: 5.3301
+  type: 'test'
+  ...
+# Subtest: AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms)
+ok 6 - AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms)
+  ---
+  duration_ms: 33.7511
+  type: 'test'
+  ...
+# Subtest: P1 business analysis computes independent 100-point center grids at 0m and 1.5m
+ok 7 - P1 business analysis computes independent 100-point center grids at 0m and 1.5m
+  ---
+  duration_ms: 28.8736
+  type: 'test'
+  ...
+# Subtest: P1 independent noon bound: overhead canopy fully shields its 1.5m target while distant canopy does not
+ok 8 - P1 independent noon bound: overhead canopy fully shields its 1.5m target while distant canopy does not
+  ---
+  duration_ms: 16.3205
+  type: 'test'
+  ...
+# Subtest: P1 higher reference and real time changes are recomputed, not copied from the G benchmark
+ok 9 - P1 higher reference and real time changes are recomputed, not copied from the G benchmark
+  ---
+  duration_ms: 6.795
+  type: 'test'
+  ...
+# Subtest: P1 invalid layout, night and low sun return no normal metrics and no removed samples
+ok 10 - P1 invalid layout, night and low sun return no normal metrics and no removed samples
+  ---
+  duration_ms: 4.8515
+  type: 'test'
+  ...
+# Subtest: P1 business analysis and G regression fixture remain independent across repeated layouts
+ok 11 - P1 business analysis and G regression fixture remain independent across repeated layouts
+  ---
+  duration_ms: 9.3099
+  type: 'test'
+  ...
+# Subtest: B1B region-only comparison keeps canopy, rejects corridor and ranks genuine interval results
+ok 12 - B1B region-only comparison keeps canopy, rejects corridor and ranks genuine interval results
+  ---
+  duration_ms: 82.4113
+  type: 'test'
+  ...
+# Subtest: B1B canopy-only and both-movable modes honor finite IDs and current baseline
+ok 13 - B1B canopy-only and both-movable modes honor finite IDs and current baseline
+  ---
+  duration_ms: 263.6716
+  type: 'test'
+  ...
+# Subtest: B1B unavailable required times stop all normal rankings and infeasible constraints are explicit
+ok 14 - B1B unavailable required times stop all normal rankings and infeasible constraints are explicit
+  ---
+  duration_ms: 52.302
+  type: 'test'
+  ...
+# Subtest: B1B sort uses unrounded minimum, average, moved count then fixed ID order
+ok 15 - B1B sort uses unrounded minimum, average, moved count then fixed ID order
+  ---
+  duration_ms: 0.8814
+  type: 'test'
+  ...
+# Subtest: B1B A/B rejects every mismatch in reference height, date, period, sampling or model versions
+ok 16 - B1B A/B rejects every mismatch in reference height, date, period, sampling or model versions
+  ---
+  duration_ms: 19.5634
+  type: 'test'
+  ...
+# Subtest: B1B candidate entry rejects arbitrary geometry, unknown constraints and invalid target values
+ok 17 - B1B candidate entry rejects arbitrary geometry, unknown constraints and invalid target values
+  ---
+  duration_ms: 4.8838
+  type: 'test'
+  ...
+# Subtest: P1 courtyard page and complete shared ESM import graph are served without exposing private files
+ok 18 - P1 courtyard page and complete shared ESM import graph are served without exposing private files
+  ---
+  duration_ms: 225.9895
+  type: 'test'
+  ...
+# Subtest: P1 Three.js solid IDs, geometry dimensions and world bounds match all analytical layouts
+ok 19 - P1 Three.js solid IDs, geometry dimensions and world bounds match all analytical layouts
+  ---
+  duration_ms: 77.9876
+  type: 'test'
+  ...
+# Subtest: P1 three inactive canopy wireframes and six candidate outlines cannot cast shadows
+ok 20 - P1 three inactive canopy wireframes and six candidate outlines cannot cast shadows
+  ---
+  duration_ms: 12.9228
+  type: 'test'
+  ...
+# Subtest: P1 derived shadow camera encloses courtyard and buildings for multiple sun directions
+ok 21 - P1 derived shadow camera encloses courtyard and buildings for multiple sun directions
+  ---
+  duration_ms: 7.7207
+  type: 'test'
+  ...
+# Subtest: B1B session snapshots are immutable and versions cannot regress after A-to-B-to-A
+ok 22 - B1B session snapshots are immutable and versions cannot regress after A-to-B-to-A
+  ---
+  duration_ms: 49.6235
+  type: 'test'
+  ...
+# Subtest: B1B latest-request gate rejects reverse returns, forged tokens and stale scene/analysis/observation
+ok 23 - B1B latest-request gate rejects reverse returns, forged tokens and stale scene/analysis/observation
+  ---
+  duration_ms: 34.0552
+  type: 'test'
+  ...
+# Subtest: B1B candidate references exist only in the current registered list and application recomputes
+ok 24 - B1B candidate references exist only in the current registered list and application recomputes
+  ---
+  duration_ms: 80.7157
+  type: 'test'
+  ...
+# Subtest: B1B period, height and permission changes invalidate old comparisons and cannot apply a stale preview
+ok 25 - B1B period, height and permission changes invalidate old comparisons and cannot apply a stale preview
+  ---
+  duration_ms: 170.8615
+  type: 'test'
+  ...
+# Subtest: B1B session rejects inconsistent or tampered analysis and candidate envelopes
+ok 26 - B1B session rejects inconsistent or tampered analysis and candidate envelopes
+  ---
+  duration_ms: 43.4061
+  type: 'test'
+  ...
+# Subtest: B1B observation invalidates explanations but leaves numeric analysis and registered layout choices intact
+ok 27 - B1B observation invalidates explanations but leaves numeric analysis and registered layout choices intact
+  ---
+  duration_ms: 45.3919
+  type: 'test'
+  ...
+# Subtest: B1B unqualified candidates can be inspected but cannot be confirmed under the active goal
+ok 28 - B1B unqualified candidates can be inspected but cannot be confirmed under the active goal
+  ---
+  duration_ms: 40.7308
+  type: 'test'
+  ...
+# Subtest: G1 no occluder gives direct sunlight
+ok 29 - G1 no occluder gives direct sunlight
+  ---
+  duration_ms: 2.5183
+  type: 'test'
+  ...
+# Subtest: G2 analytical intersection with G is (1,1,0)
+ok 30 - G2 analytical intersection with G is (1,1,0)
+  ---
+  duration_ms: 0.9276
+  type: 'test'
+  ...
+# Subtest: G3 box behind the positive ray cannot occlude
+ok 31 - G3 box behind the positive ray cannot occlude
+  ---
+  duration_ms: 0.5559
+  type: 'test'
+  ...
+# Subtest: G4-G5 height 1.5m and a 75-degree sun pass over G
+ok 32 - G4-G5 height 1.5m and a 75-degree sun pass over G
+  ---
+  duration_ms: 0.4314
+  type: 'test'
+  ...
+# Subtest: G6-G7 synthetic roof blocks vertical ray; moving it away removes block
+ok 33 - G6-G7 synthetic roof blocks vertical ray; moving it away removes block
+  ---
+  duration_ms: 0.5635
+  type: 'test'
+  ...
+# Subtest: G8 parallel slab rays hit or miss without NaN
+ok 34 - G8 parallel slab rays hit or miss without NaN
+  ---
+  duration_ms: 0.4046
+  type: 'test'
+  ...
+# Subtest: G9 original points inside or on box are invalid before epsilon offset
+ok 35 - G9 original points inside or on box are invalid before epsilon offset
+  ---
+  duration_ms: 0.3833
+  type: 'test'
+  ...
+# Subtest: G10 multiple occluders count once with closest witness independent of array order
+ok 36 - G10 multiple occluders count once with closest witness independent of array order
+  ---
+  duration_ms: 0.4923
+  type: 'test'
+  ...
+# Subtest: boundary tangent, just inside, and just outside have deterministic outcomes
+ok 37 - boundary tangent, just inside, and just outside have deterministic outcomes
+  ---
+  duration_ms: 0.4986
+  type: 'test'
+  ...
+# Subtest: malformed geometry and non-unit/zero directions are rejected
+ok 38 - malformed geometry and non-unit/zero directions are rejected
+  ---
+  duration_ms: 1.7645
+  type: 'test'
+  ...
+# Subtest: independent 100-point benchmark: ground 100%, height 1.5m 30%
+ok 39 - independent 100-point benchmark: ground 100%, height 1.5m 30%
+  ---
+  duration_ms: 3.2987
+  type: 'test'
+  ...
+# Subtest: P1 R2 and R5 are rejected by real corridor geometry for every canopy position
+ok 40 - P1 R2 and R5 are rejected by real corridor geometry for every canopy position
+  ---
+  duration_ms: 11.0903
+  type: 'test'
+  ...
+# Subtest: P1 sixteen non-corridor ID pairs are legal including target under its own canopy
+ok 41 - P1 sixteen non-corridor ID pairs are legal including target under its own canopy
+  ---
+  duration_ms: 9.3204
+  type: 'test'
+  ...
+# Subtest: P1 business entry rejects extra coordinates, forged geometry and unknown placement IDs
+ok 42 - P1 business entry rejects extra coordinates, forged geometry and unknown placement IDs
+  ---
+  duration_ms: 0.7416
+  type: 'test'
+  ...
+# Subtest: P1 approved separation boundaries: 0 and 0.009 fail; 0.010 and 0.011 pass on both axes
+ok 43 - P1 approved separation boundaries: 0 and 0.009 fail; 0.010 and 0.011 pass on both axes
+  ---
+  duration_ms: 0.651
+  type: 'test'
+  ...
+# Subtest: P1 clearance uses Euclidean diagonal distance rather than square inflation
+ok 44 - P1 clearance uses Euclidean diagonal distance rather than square inflation
+  ---
+  duration_ms: 0.3993
+  type: 'test'
+  ...
+# Subtest: P1 courtyard edges enforce clearance including exact 1cm on all four boundaries
+ok 45 - P1 courtyard edges enforce clearance including exact 1cm on all four boundaries
+  ---
+  duration_ms: 0.5877
+  type: 'test'
+  ...
+# Subtest: P1 real building, post and canopy-ground footprints detect contact and overlap
+ok 46 - P1 real building, post and canopy-ground footprints detect contact and overlap
+  ---
+  duration_ms: 0.7908
+  type: 'test'
+  ...
+# Subtest: P1 nonfinite, reversed or zero-area clearance fixtures fail closed
+ok 47 - P1 nonfinite, reversed or zero-area clearance fixtures fail closed
+  ---
+  duration_ms: 0.891
+  type: 'test'
+  ...
+# Subtest: B1B curve uses real elapsed time so the final5min segment is one quarter of the full width
+ok 48 - B1B curve uses real elapsed time so the final5min segment is one quarter of the full width
+  ---
+  duration_ms: 33.8462
+  type: 'test'
+  ...
+# Subtest: B1B invalid chart points remain explicit gaps rather than fabricated zero percentages
+ok 49 - B1B invalid chart points remain explicit gaps rather than fabricated zero percentages
+  ---
+  duration_ms: 11.6107
+  type: 'test'
+  ...
+# Subtest: B1B period sequence includes start and end at explicit Shanghai instants
+ok 50 - B1B period sequence includes start and end at explicit Shanghai instants
+  ---
+  duration_ms: 11.6094
+  type: 'test'
+  ...
+# Subtest: B1B partial final segments and different sampling intervals include endpoint exactly once
+ok 51 - B1B partial final segments and different sampling intervals include endpoint exactly once
+  ---
+  duration_ms: 1.0721
+  type: 'test'
+  ...
+# Subtest: B1B frozen five-value trapezoid regression yields 76.25%, minimum60% at16:00
+ok 52 - B1B frozen five-value trapezoid regression yields 76.25%, minimum60% at16:00
+  ---
+  duration_ms: 1.0479
+  type: 'test'
+  ...
+# Subtest: B1B trapezoid weights the 5-minute final segment and handles zero/full/tied minimum
+ok 53 - B1B trapezoid weights the 5-minute final segment and handles zero/full/tied minimum
+  ---
+  duration_ms: 0.6456
+  type: 'test'
+  ...
+# Subtest: B1B one invalid necessary sample makes full-period metrics unavailable without shrinking samples
+ok 54 - B1B one invalid necessary sample makes full-period metrics unavailable without shrinking samples
+  ---
+  duration_ms: 0.5561
+  type: 'test'
+  ...
+# Subtest: B1B series rejects nonmonotone timestamps, malformed rates and insufficient points
+ok 55 - B1B series rejects nonmonotone timestamps, malformed rates and insufficient points
+  ---
+  duration_ms: 0.892
+  type: 'test'
+  ...
+# Subtest: B1B period rejects crossing dates, invalid dates/steps/timezone and outside15–120min
+ok 56 - B1B period rejects crossing dates, invalid dates/steps/timezone and outside15–120min
+  ---
+  duration_ms: 0.8481
+  type: 'test'
+  ...
+# Subtest: B1B actual period preserves every single-time result and both reference layers
+ok 57 - B1B actual period preserves every single-time result and both reference layers
+  ---
+  duration_ms: 46.2666
+  type: 'test'
+  ...
+# Subtest: B1B night, mixed-validity dawn and invalid layout keep all samples but suppress aggregates
+ok 58 - B1B night, mixed-validity dawn and invalid layout keep all samples but suppress aggregates
+  ---
+  duration_ms: 14.6672
+  type: 'test'
+  ...
+# Subtest: B1B period is independent of the host timezone
+ok 59 - B1B period is independent of the host timezone
+  ---
+  duration_ms: 636.0848
+  type: 'test'
+  ...
+# Subtest: B1B paired evidence uses one horizontal sample at two exact heights and actual hits
+ok 60 - B1B paired evidence uses one horizontal sample at two exact heights and actual hits
+  ---
+  duration_ms: 5.0758
+  type: 'test'
+  ...
+# Subtest: B1B evidence rejects unknown point/sample indexes and unavailable analysis
+ok 61 - B1B evidence rejects unknown point/sample indexes and unavailable analysis
+  ---
+  duration_ms: 4.46
+  type: 'test'
+  ...
+# Subtest: B1B references expire after layout/time/analysis/observation change and A-to-B-to-A cannot revive them
+ok 62 - B1B references expire after layout/time/analysis/observation change and A-to-B-to-A cannot revive them
+  ---
+  duration_ms: 10.0794
+  type: 'test'
+  ...
+# Subtest: P1 configuration freezes the documented courtyard, buildings and corridor
+ok 63 - P1 configuration freezes the documented courtyard, buildings and corridor
+  ---
+  duration_ms: 3.0252
+  type: 'test'
+  ...
+# Subtest: P1 six region IDs and four canopy IDs have the exact frozen coordinates
+ok 64 - P1 six region IDs and four canopy IDs have the exact frozen coordinates
+  ---
+  duration_ms: 2.4655
+  type: 'test'
+  ...
+# Subtest: P1 only declared IDs can form a selection; coordinates and extra fields are rejected
+ok 65 - P1 only declared IDs can form a selection; coordinates and extra fields are rejected
+  ---
+  duration_ms: 1.6043
+  type: 'test'
+  ...
+# Subtest: P1 configuration cannot be mutated and entity IDs are globally unique
+ok 66 - P1 configuration cannot be mutated and entity IDs are globally unique
+  ---
+  duration_ms: 0.5075
+  type: 'test'
+  ...
+# Subtest: P1 scene contains exactly seven finite positive-volume analytical solids with stable unique IDs
+ok 67 - P1 scene contains exactly seven finite positive-volume analytical solids with stable unique IDs
+  ---
+  duration_ms: 6.5666
+  type: 'test'
+  ...
+# Subtest: P1 TD004 roof and four posts meet exactly at 2.4m at every approved canopy center
+ok 68 - P1 TD004 roof and four posts meet exactly at 2.4m at every approved canopy center
+  ---
+  duration_ms: 3.5249
+  type: 'test'
+  ...
+# Subtest: P1 generated target, candidate surfaces and corridor share the frozen descriptors
+ok 69 - P1 generated target, candidate surfaces and corridor share the frozen descriptors
+  ---
+  duration_ms: 1.0831
+  type: 'test'
+  ...
+# Subtest: P1 render-only surfaces and preview structures are never analytical occluders
+ok 70 - P1 render-only surfaces and preview structures are never analytical occluders
+  ---
+  duration_ms: 1.4843
+  type: 'test'
+  ...
+# Subtest: P1 scene creation rejects unknown IDs and state snapshots cannot mutate other layouts
+ok 71 - P1 scene creation rejects unknown IDs and state snapshots cannot mutate other layouts
+  ---
+  duration_ms: 4.8847
+  type: 'test'
+  ...
+# Subtest: P1 actual canopy posts and roof both produce nearest ray witnesses
+ok 72 - P1 actual canopy posts and roof both produce nearest ray witnesses
+  ---
+  duration_ms: 2.4865
+  type: 'test'
+  ...
+# Subtest: HTTP serves browser modules, supports HEAD, rejects private paths and writes
+ok 73 - HTTP serves browser modules, supports HEAD, rejects private paths and writes
+  ---
+  duration_ms: 219.3699
+  type: 'test'
+  ...
+# Subtest: P0 locked packages are Three r160 and SunCalc 1.9.0
+ok 74 - P0 locked packages are Three r160 and SunCalc 1.9.0
+  ---
+  duration_ms: 3.8696
+  type: 'test'
+  ...
+# Subtest: S1 four artificial azimuths preserve east/up/south coordinates and unit length
+ok 75 - S1 four artificial azimuths preserve east/up/south coordinates and unit length
+  ---
+  duration_ms: 0.8016
+  type: 'test'
+  ...
+# Subtest: S2-S4 Dalian summer morning east, noon south, afternoon west
+ok 76 - S2-S4 Dalian summer morning east, noon south, afternoon west
+  ---
+  duration_ms: 5.2281
+  type: 'test'
+  ...
+# Subtest: S5-S6 midnight below horizon and winter noon lower than summer noon
+ok 77 - S5-S6 midnight below horizon and winter noon lower than summer noon
+  ---
+  duration_ms: 0.4982
+  type: 'test'
+  ...
+# Subtest: S7 +08:00 and UTC equivalent instants match exactly
+ok 78 - S7 +08:00 and UTC equivalent instants match exactly
+  ---
+  duration_ms: 1.8954
+  type: 'test'
+  ...
+# Subtest: S8 explicit Shanghai input is invariant across process timezones
+ok 79 - S8 explicit Shanghai input is invariant across process timezones
+  ---
+  duration_ms: 559.6254
+  type: 'test'
+  ...
+# Subtest: S9 0, 2, 5 degrees and threshold neighbours are handled without rounding
+ok 80 - S9 0, 2, 5 degrees and threshold neighbours are handled without rounding
+  ---
+  duration_ms: 0.2643
+  type: 'test'
+  ...
+# Subtest: S10 reject invalid dates, ambiguous inputs, invalid latitude and off-step time
+ok 81 - S10 reject invalid dates, ambiguous inputs, invalid latitude and off-step time
+  ---
+  duration_ms: 1.1207
+  type: 'test'
+  ...
+# Subtest: SunCalc 1.9.0 upstream published-commit position regression
+ok 82 - SunCalc 1.9.0 upstream published-commit position regression
+  ---
+  duration_ms: 0.3162
+  type: 'test'
+  ...
+# Subtest: P0 DirectionalLight sits toward sun and propagates opposite to sun vector
+ok 83 - P0 DirectionalLight sits toward sun and propagates opposite to sun vector
+  ---
+  duration_ms: 1.0773
+  type: 'test'
+  ...
+# Subtest: B1A procedural PBR maps are deterministic, metre-based and correctly color-tagged
+ok 84 - B1A procedural PBR maps are deterministic, metre-based and correctly color-tagged
+  ---
+  duration_ms: 431.147
+  type: 'test'
+  ...
+# Subtest: B1A hidden-main-pass proxies stay visible to shadow renderer and detect protruding or duplicate visuals
+ok 85 - B1A hidden-main-pass proxies stay visible to shadow renderer and detect protruding or duplicate visuals
+  ---
+  duration_ms: 9.8174
+  type: 'test'
+  ...
+# Subtest: B1A visual daylight is continuous around horizon and leaves numeric domain out of scope
+ok 86 - B1A visual daylight is continuous around horizon and leaves numeric domain out of scope
+  ---
+  duration_ms: 0.428
+  type: 'test'
+  ...
+# Subtest: B1A all visual modules and local addon dependencies load through explicit static routes
+ok 87 - B1A all visual modules and local addon dependencies load through explicit static routes
+  ---
+  duration_ms: 196.0018
+  type: 'test'
+  ...
+# Subtest: B1A facade has extruded two-storey opaque construction inside B1, merged by material
+ok 88 - B1A facade has extruded two-storey opaque construction inside B1, merged by material
+  ---
+  duration_ms: 444.8808
+  type: 'test'
+  ...
+# Subtest: B1A paving uses two instanced batches, actual metre module and never rises above Y=0
+ok 89 - B1A paving uses two instanced batches, actual metre module and never rises above Y=0
+  ---
+  duration_ms: 335.189
+  type: 'test'
+  ...
+# Subtest: B1A static resources persist across region and canopy changes; seven bindings remain exact
+ok 90 - B1A static resources persist across region and canopy changes; seven bindings remain exact
+  ---
+  duration_ms: 310.4
+  type: 'test'
+  ...
+# Subtest: B1A refined roof and post finishes preserve every TD004 envelope at all four placements
+ok 91 - B1A refined roof and post finishes preserve every TD004 envelope at all four placements
+  ---
+  duration_ms: 321.3283
+  type: 'test'
+  ...
+# Subtest: B1A transformed render proxies reproduce all 200 reference rays for morning and afternoon placements
+ok 92 - B1A transformed render proxies reproduce all 200 reference rays for morning and afternoon placements
+  ---
+  duration_ms: 363.6662
+  type: 'test'
+  ...
+# Subtest: B1A disposing paving releases instance buffers once and retains library-owned textures
+ok 93 - B1A disposing paving releases instance buffers once and retains library-owned textures
+  ---
+  duration_ms: 313.4144
+  type: 'test'
+  ...
+1..93
+# tests 93
+# suites 0
+# pass 93
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2997.5705

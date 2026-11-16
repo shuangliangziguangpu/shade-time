@@ -1,0 +1,489 @@
+{
+  "state": {
+    "version": "batch1b-v1",
+    "view": "overview",
+    "selection": {
+      "regionId": "R3",
+      "canopyId": "R3"
+    },
+    "state": {
+      "sceneVersion": 3,
+      "analysisVersion": 2,
+      "analysisId": null,
+      "contextVersion": 10,
+      "selection": {
+        "regionId": "R3",
+        "canopyId": "R3"
+      },
+      "period": {
+        "date": "2026-06-21",
+        "startTime": "15:00",
+        "endTime": "16:00",
+        "intervalMinutes": 30,
+        "timeZone": "Asia/Shanghai",
+        "durationMinutes": 60
+      },
+      "height": 1.5,
+      "constraints": {
+        "regionMovable": true,
+        "canopyMovable": false,
+        "minimumShade": 0.8
+      },
+      "sceneGeometryVersion": "courtyard-v1",
+      "algorithmVersion": "ray-box-period-v1",
+      "samplingVersion": "grid10-center-eps1e-4-v1"
+    },
+    "evidenceContext": {
+      "sceneVersion": 3,
+      "analysisVersion": 2,
+      "analysisId": null,
+      "contextVersion": 10
+    },
+    "selectedEvidence": null,
+    "shownSelection": null,
+    "shown": "A",
+    "analysisRuns": 2,
+    "periodDurationMs": 3.5,
+    "candidateDurationMs": null,
+    "comparison": null,
+    "period": null,
+    "metrics": null,
+    "device": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+      "logicalCores": 32,
+      "deviceMemoryGiB": 16,
+      "visibility": "visible",
+      "documentHasFocus": true,
+      "screenWidth": 1707,
+      "screenHeight": 1067,
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "vendor": "Google Inc. (NVIDIA)",
+      "cssWidth": 509,
+      "cssHeight": 560,
+      "dpr": 1.5,
+      "drawingBuffer": [
+        763,
+        840
+      ]
+    },
+    "sun": null,
+    "camera": {
+      "position": [
+        26.17739021927522,
+        24.605216441865817,
+        -30.54028858915441
+      ],
+      "target": [
+        0,
+        1.7,
+        0
+      ],
+      "aspect": 0.9089285714285714
+    },
+    "frame": {
+      "frame": 32219,
+      "calls": 27,
+      "triangles": 17546,
+      "points": 0,
+      "lines": 0,
+      "shadowUpdated": false,
+      "renderCpuMs": 0.5
+    },
+    "resources": {
+      "geometries": 27,
+      "textures": 17,
+      "programs": 6
+    },
+    "staticGroupId": "2b8228d4-414f-4163-bc31-006aa6809361",
+    "bindings": [
+      {
+        "entityId": "B1",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          -12,
+          0,
+          -9
+        ],
+        "proxyMax": [
+          -8,
+          6,
+          9
+        ],
+        "visualMin": [
+          -12,
+          -7.1525572131747595e-9,
+          -9
+        ],
+        "visualMax": [
+          -8,
+          6,
+          9
+        ]
+      },
+      {
+        "entityId": "B2",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          2,
+          0,
+          6
+        ],
+        "proxyMax": [
+          10,
+          4,
+          9
+        ],
+        "visualMin": [
+          2,
+          0,
+          6
+        ],
+        "visualMax": [
+          10,
+          4,
+          9
+        ]
+      },
+      {
+        "entityId": "C_ROOF",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          3.5,
+          2.399999999254942,
+          -3.5
+        ],
+        "proxyMax": [
+          6.5,
+          2.5000000007450582,
+          -0.5
+        ],
+        "visualMin": [
+          3.5,
+          2.4000000953674316,
+          -3.5
+        ],
+        "visualMax": [
+          6.5,
+          2.5,
+          -0.5
+        ]
+      },
+      {
+        "entityId": "C_POST_NW",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          3.4999999992549418,
+          -4.768371586472142e-8,
+          -3.5000000007450582
+        ],
+        "proxyMax": [
+          3.600000000745058,
+          2.400000047683716,
+          -3.399999999254942
+        ],
+        "visualMin": [
+          3.5,
+          3.8743019903364484e-10,
+          -3.5
+        ],
+        "visualMax": [
+          3.5999999046325684,
+          2.4000000953674316,
+          -3.4000000953674316
+        ]
+      },
+      {
+        "entityId": "C_POST_SW",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          3.4999999992549418,
+          -4.768371586472142e-8,
+          -0.6000000007450581
+        ],
+        "proxyMax": [
+          3.600000000745058,
+          2.400000047683716,
+          -0.499999999254942
+        ],
+        "visualMin": [
+          3.5,
+          3.8743019903364484e-10,
+          -0.6000000238418579
+        ],
+        "visualMax": [
+          3.5999999046325684,
+          2.4000000953674316,
+          -0.5
+        ]
+      },
+      {
+        "entityId": "C_POST_NE",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          6.399999999254942,
+          -4.768371586472142e-8,
+          -3.5000000007450582
+        ],
+        "proxyMax": [
+          6.500000000745058,
+          2.400000047683716,
+          -3.399999999254942
+        ],
+        "visualMin": [
+          6.400000095367432,
+          3.8743019903364484e-10,
+          -3.5
+        ],
+        "visualMax": [
+          6.5,
+          2.4000000953674316,
+          -3.4000000953674316
+        ]
+      },
+      {
+        "entityId": "C_POST_SE",
+        "geometryVersion": "batch1a-v1",
+        "proxyMin": [
+          6.399999999254942,
+          -4.768371586472142e-8,
+          -0.6000000007450581
+        ],
+        "proxyMax": [
+          6.500000000745058,
+          2.400000047683716,
+          -0.499999999254942
+        ],
+        "visualMin": [
+          6.400000095367432,
+          3.8743019903364484e-10,
+          -0.6000000238418579
+        ],
+        "visualMax": [
+          6.5,
+          2.4000000953674316,
+          -0.5
+        ]
+      }
+    ],
+    "proxyCheck": null,
+    "performance": null,
+    "loading": {
+      "proceduralTextureMs": 392.40000000037253,
+      "firstRenderReturnedMs": 942.6000000005588,
+      "navigation": [
+        {
+          "duration": 949,
+          "domContentLoaded": 814.7999999998137
+        }
+      ],
+      "resources": [
+        {
+          "name": "/styles.css",
+          "duration": 18.59999999962747,
+          "transferSize": 6158,
+          "decodedBodySize": 5858
+        },
+        {
+          "name": "/courtyard.css",
+          "duration": 17.899999999441206,
+          "transferSize": 6897,
+          "decodedBodySize": 6597
+        },
+        {
+          "name": "/src/courtyard.js",
+          "duration": 18.5,
+          "transferSize": 24682,
+          "decodedBodySize": 24382
+        },
+        {
+          "name": "/vendor/three.module.js",
+          "duration": 16.200000000186265,
+          "transferSize": 1273272,
+          "decodedBodySize": 1272972
+        },
+        {
+          "name": "/src/domain/period.js",
+          "duration": 18.399999999441206,
+          "transferSize": 5614,
+          "decodedBodySize": 5314
+        },
+        {
+          "name": "/src/domain/scene-config.js",
+          "duration": 11.899999999441206,
+          "transferSize": 2736,
+          "decodedBodySize": 2436
+        },
+        {
+          "name": "/src/domain/layout.js",
+          "duration": 12,
+          "transferSize": 1729,
+          "decodedBodySize": 1429
+        },
+        {
+          "name": "/src/domain/candidates.js",
+          "duration": 16.59999999962747,
+          "transferSize": 5199,
+          "decodedBodySize": 4899
+        },
+        {
+          "name": "/src/view/period-panel.js",
+          "duration": 17.5,
+          "transferSize": 4900,
+          "decodedBodySize": 4600
+        },
+        {
+          "name": "/src/view/candidate-panel.js",
+          "duration": 30.5,
+          "transferSize": 3727,
+          "decodedBodySize": 3427
+        },
+        {
+          "name": "/src/domain/point-evidence.js",
+          "duration": 28.5,
+          "transferSize": 2657,
+          "decodedBodySize": 2357
+        },
+        {
+          "name": "/src/view/point-evidence.js",
+          "duration": 29.200000000186265,
+          "transferSize": 2034,
+          "decodedBodySize": 1734
+        },
+        {
+          "name": "/src/domain/decision-session.js",
+          "duration": 39.40000000037253,
+          "transferSize": 6872,
+          "decodedBodySize": 6572
+        },
+        {
+          "name": "/src/core/sun.js",
+          "duration": 36.200000000186265,
+          "transferSize": 2617,
+          "decodedBodySize": 2317
+        },
+        {
+          "name": "/src/view/visual-materials.js",
+          "duration": 39.89999999944121,
+          "transferSize": 5125,
+          "decodedBodySize": 4825
+        },
+        {
+          "name": "/src/core/geometry.js",
+          "duration": 38.799999999813735,
+          "transferSize": 2071,
+          "decodedBodySize": 1771
+        },
+        {
+          "name": "/src/view/visual-scene.js",
+          "duration": 37,
+          "transferSize": 4018,
+          "decodedBodySize": 3718
+        },
+        {
+          "name": "/src/view/render-pipeline.js",
+          "duration": 37.40000000037253,
+          "transferSize": 7263,
+          "decodedBodySize": 6963
+        },
+        {
+          "name": "/src/view/camera-rig.js",
+          "duration": 40.5,
+          "transferSize": 3445,
+          "decodedBodySize": 3145
+        },
+        {
+          "name": "/src/domain/analysis.js",
+          "duration": 9.700000000186265,
+          "transferSize": 2438,
+          "decodedBodySize": 2138
+        },
+        {
+          "name": "/src/domain/scene.js",
+          "duration": 6,
+          "transferSize": 3263,
+          "decodedBodySize": 2963
+        },
+        {
+          "name": "/src/domain/clearance.js",
+          "duration": 6.7000000001862645,
+          "transferSize": 1935,
+          "decodedBodySize": 1635
+        },
+        {
+          "name": "/src/view/visual-config.js",
+          "duration": 5.400000000372529,
+          "transferSize": 1149,
+          "decodedBodySize": 849
+        },
+        {
+          "name": "/vendor/suncalc-adapter.js",
+          "duration": 5.7999999998137355,
+          "transferSize": 580,
+          "decodedBodySize": 280
+        },
+        {
+          "name": "/src/view/lighting.js",
+          "duration": 5.7999999998137355,
+          "transferSize": 789,
+          "decodedBodySize": 489
+        },
+        {
+          "name": "/src/view/courtyard-model.js",
+          "duration": 6.900000000372529,
+          "transferSize": 5831,
+          "decodedBodySize": 5531
+        },
+        {
+          "name": "/vendor/OrbitControls.js",
+          "duration": 9.5,
+          "transferSize": 30168,
+          "decodedBodySize": 29868
+        },
+        {
+          "name": "/src/view/shadow-proxies.js",
+          "duration": 7.7000000001862645,
+          "transferSize": 2838,
+          "decodedBodySize": 2538
+        },
+        {
+          "name": "/src/view/building-visuals.js",
+          "duration": 7,
+          "transferSize": 3740,
+          "decodedBodySize": 3440
+        },
+        {
+          "name": "/src/view/ground-visuals.js",
+          "duration": 8.099999999627471,
+          "transferSize": 4679,
+          "decodedBodySize": 4379
+        },
+        {
+          "name": "/src/view/box-parts.js",
+          "duration": 8.700000000186265,
+          "transferSize": 2206,
+          "decodedBodySize": 1906
+        },
+        {
+          "name": "/src/view/canopy-visuals.js",
+          "duration": 9.200000000186265,
+          "transferSize": 1882,
+          "decodedBodySize": 1582
+        },
+        {
+          "name": "/vendor/suncalc.js",
+          "duration": 10.5,
+          "transferSize": 9416,
+          "decodedBodySize": 9116
+        },
+        {
+          "name": "/vendor/BufferGeometryUtils.js",
+          "duration": 4.7000000001862645,
+          "transferSize": 32206,
+          "decodedBodySize": 31906
+        }
+      ]
+    }
+  },
+  "groundPressed": "false",
+  "raisedPressed": "true"
+}

@@ -7,6 +7,7 @@ export function renderCandidatePanel(comparison, preview, height, shown = 'A', d
   body.replaceChildren();
   const buttonState = !preview;
   for (const id of ['show-a', 'show-b', 'apply-candidate', 'reject-candidate']) $(id).disabled = buttonState;
+  $('apply-candidate').disabled = !preview || !preview.qualified;
   $('show-a').setAttribute('aria-pressed', String(shown === 'A'));
   $('show-b').setAttribute('aria-pressed', String(shown === 'B'));
   $('comparison-delta').textContent = '';
@@ -26,7 +27,7 @@ export function renderCandidatePanel(comparison, preview, height, shown = 'A', d
       const cell = document.createElement('td'); cell.textContent = text; row.append(cell);
     }
     const cell = document.createElement('td'), button = document.createElement('button');
-    button.type = 'button'; button.dataset.candidateId = candidate.id; button.textContent = '预览';
+    button.type = 'button'; button.dataset.candidateId = candidate.candidateId ?? candidate.id; button.textContent = '预览';
     button.setAttribute('aria-label', `预览 ${candidate.selection.regionId} / ${candidate.selection.canopyId}`);
     cell.append(button); row.append(cell); body.append(row);
   }
