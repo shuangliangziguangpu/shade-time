@@ -2,9 +2,9 @@
 
 面向校园户外活动组织者的 AI 三维遮阴实验与布置决策实验室。
 
-目前完成**阶段0、阶段1、Phase 1.5 Batch 1A视觉样板和Batch 1B确定性布置决策**：在完整24×18米庭院、B1立面、米制铺装和TD004样板上，支持双高度活动时段分析、合法候选排序、A/B预览确认及单点射线证据。原盒G独立验证页继续保留。当前93项测试通过（Batch 1A原65项＋本批新增28项）。
+目前完成**阶段0、阶段1及Phase 1.5 Batch 1A/1B/1C**：在完整24×18米庭院与可信双高度时段分析上，新增真实DeepSeek需求解析、草案确认、合法候选建议、A/B预览与服务端重算应用，以及双高度证据解释。原盒G独立验证页保留。当前119项测试通过（原93项＋Batch 1C新增26项）；三条真实AI链已在本机Edge实际验收。
 
-保存撤销、真实AI业务链、完整竞赛材料、B2精细立面和树木仍待后续开发。本批没有接入模型或新增遮挡物。当前改动只在本地功能分支，未经批准不推送、不合并main。
+保存撤销、完整竞赛材料、B2精细立面和树木仍待后续开发。本批未新增遮挡物。当前改动只在本地功能分支，未经批准不推送、不合并main。AI失败或回复不合规时会拒绝并保留手动分析，不能保证每次模型调用成功。
 
 ## 本地运行当前样板
 
@@ -14,9 +14,9 @@
 
 ```powershell
 Set-Location -LiteralPath 'D:\ShadeTime'
-git switch feature/phase1.5-batch1b-decision
+git switch feature/phase1.5-batch1c-ai
 node --test --test-reporter=spec
-node server/index.js
+node --env-file-if-exists=.env server/index.js
 ```
 
 庭院入口：http://127.0.0.1:3000/courtyard 。独立盒G入口：http://127.0.0.1:3000/ 。若3000已有本项目服务，直接打开网页，不再启动第二个实例。
@@ -25,9 +25,13 @@ node server/index.js
 
 若环境只有node而没有npm，可使用完整Node发行环境的npm，或通过 `node <npm安装目录>/bin/npm-cli.js ci --ignore-scripts` 调用官方npm CLI。阶段0曾使用校验过的临时npm 11.6.2；临时路径不属于项目依赖。
 
-当前庭院运行不需要密钥，以上命令不加载.env。原/api/health保留阶段0兼容契约，旧验证页在此启动方式下显示AI未配置，不影响历史真实连通性证据。服务仅监听127.0.0.1。
+手动庭院功能不需要密钥；真实AI需要本机已有SHADETIME_AI_API_KEY。以上启动命令仅在Node服务端加载.env，密钥不进入浏览器。原/api/health保留阶段0兼容契约；服务仅监听127.0.0.1。没有配置时AI返回AI_UNAVAILABLE，手动分析仍可用。
 
 ## 手动验收
+
+AI闭环：在顶部“AI空间助手”解析默认活动需求，核对日期/时段/高度/权限/目标后点“确认约束草案”，再点“生成布置建议”。程序重算有限合法候选后，DeepSeek只能选择达标候选ID；点击“预览AI建议B”不会改变正式A，只有确认应用才进行服务端与本地二次计算并应用。可以切A/B或拒绝。改变业务条件使旧结果失效。
+
+证据解释：设置R1区域/R3棚、2026-06-21 14:00–14:15，在侧栏选择P56，再点“解释当前证据”。实际地面命中B1、1.5米未命中。AI只组织文字，命中对象、交点和引用由服务器重建；点击证据定位按钮显示对应双射线。切观察上下文后旧解释清除。
 
 1. 打开/courtyard，默认R3区域＋R3棚、2026-06-21 15:00–16:00，间隔15分钟。1.5米五值90/80/80/70/60%，梯形平均76.25%，最低60%在16:00。地面独立平均5%、最低0%。
 2. 切换参考高度或采样时刻：曲线、当前遮阴率与三维太阳联动，不重新执行整段计算。结束设15:20时包含15:00、15:15、15:20，末段按5分钟加权。
@@ -76,6 +80,10 @@ node --env-file-if-exists=.env scripts/check-ai.js
 - `docs/reports/ShadeTime-Phase1.5-Batch1A-Acceptance.md`：本批验收；`docs/evidence/batch1a/`：65项原始测试、浏览器全部迭代/性能异常及实际截图。
 - `src/domain/period.js`、`candidates.js`、`decision-session.js`、`point-evidence.js`：时段、合法比较、单调版本门禁、双高度证据。
 - `docs/reports/ShadeTime-Phase1.5-Batch1B-Acceptance.md`：本批验收；`docs/evidence/batch1b/`：93项spec/TAP、逐阶段RED/GREEN、浏览器/性能记录、终审失败与修复、最终截图和Node交叉复核。
+- `server/ai-client.js`、`ai-protocol.js`、`ai-service.js`、`ai-http.js`：固定供应商调用、严格协议、服务端权威会话与HTTP边界；`src/view/ai-workflow.js`、`ai-panel.js`接入真实交互。
+- `docs/reports/ShadeTime-Phase1.5-Batch1C-Acceptance.md`及`docs/evidence/batch1c/`：119项输出、真实API成功/失败、三链浏览器记录与截图、本轮完整指令转录。会话仅服务端内存，20分钟失效，重启需重新解析确认。
+
+自动化测试不调用真实供应商。`node --env-file-if-exists=.env scripts/check-ai-business.js <新的输出路径>`会发出真实业务请求。可选浏览器验收`node scripts/check-ai-browser.mjs <已有playwright-core/index.mjs绝对路径> <新的输出JSON路径>`使用本机Edge，无浏览器下载；测试工具不属于应用依赖。实际验收使用外置playwright-core 1.65.1。
 
 原始对话保留在当前Codex聊天。过程索引是摘录，尚不能替代赛事要求的至少3条完整Prompt链。访谈、用户测试、视频、最终PDF和跨设备性能验收尚未执行；本机浏览器性能样本见专项报告，不是跨设备保证。
 

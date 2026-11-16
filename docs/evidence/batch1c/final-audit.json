@@ -1,0 +1,154 @@
+{
+  "capturedAt": "2026-11-16T09:38:31.304Z",
+  "codeHead": "bc9b7a63e50c633333c35b82ed8b3afb86cce3ff",
+  "baseline": "e891cd1a3ffaea5352de04e8b5f7daeeefb7e794",
+  "branch": "feature/phase1.5-batch1c-ai",
+  "tests": {
+    "original": 93,
+    "new": 26,
+    "PASS": 119,
+    "FAIL": 0,
+    "SKIP": 0,
+    "CANCELLED": 0
+  },
+  "protectedFiles": {
+    "count": 51,
+    "unchanged": true,
+    "files": [
+      "package-lock.json",
+      "package.json",
+      "public/index.html",
+      "public/styles.css",
+      "server/ai-connectivity.js",
+      "src/core/geometry.js",
+      "src/core/sun.js",
+      "src/domain/analysis.js",
+      "src/domain/candidates.js",
+      "src/domain/clearance.js",
+      "src/domain/decision-session.js",
+      "src/domain/layout.js",
+      "src/domain/period.js",
+      "src/domain/point-evidence.js",
+      "src/domain/scene-config.js",
+      "src/domain/scene.js",
+      "src/main.js",
+      "src/probe/fixture.js",
+      "src/view/box-parts.js",
+      "src/view/building-visuals.js",
+      "src/view/camera-rig.js",
+      "src/view/candidate-panel.js",
+      "src/view/canopy-visuals.js",
+      "src/view/courtyard-model.js",
+      "src/view/ground-visuals.js",
+      "src/view/lighting.js",
+      "src/view/period-panel.js",
+      "src/view/point-evidence.js",
+      "src/view/render-pipeline.js",
+      "src/view/shadow-proxies.js",
+      "src/view/visual-config.js",
+      "src/view/visual-materials.js",
+      "src/view/visual-scene.js",
+      "test/ai-connectivity.test.js",
+      "test/analysis.test.js",
+      "test/candidates.test.js",
+      "test/courtyard-http.test.js",
+      "test/courtyard-model.test.js",
+      "test/decision-session.test.js",
+      "test/geometry.test.js",
+      "test/layout.test.js",
+      "test/period-panel.test.js",
+      "test/period.test.js",
+      "test/point-evidence.test.js",
+      "test/scene-config.test.js",
+      "test/scene.test.js",
+      "test/server.test.js",
+      "test/sun.test.js",
+      "test/visual-foundation.test.js",
+      "test/visual-http.test.js",
+      "test/visual-model.test.js"
+    ]
+  },
+  "browser": {
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "A-C-real-parse-confirm-recommend-preview-apply",
+        "status": "PASS"
+      },
+      {
+        "name": "B-real-evidence-explanation-focus-and-expiry",
+        "status": "PASS"
+      },
+      {
+        "name": "unsupported-condition-real-clarification",
+        "status": "PASS"
+      },
+      {
+        "name": "invalid-height-real-rejection",
+        "status": "PASS"
+      },
+      {
+        "name": "no-feasible-candidate-keeps-target",
+        "status": "PASS"
+      },
+      {
+        "name": "offline-AI-failure-manual-analysis-still-works",
+        "status": "PASS"
+      },
+      {
+        "name": "cancelled-live-request-does-not-modify-scene",
+        "status": "PASS"
+      }
+    ],
+    "pageErrors": [],
+    "browserVersion": "157.0.4341.60"
+  },
+  "secrets": {
+    "scannedFiles": 55,
+    "findings": [],
+    "trackedSensitivePaths": [],
+    "envIgnored": true
+  },
+  "main": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "originMainLocalReference": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "note": "No .env contents read by audit. Live Node server loads dedicated variable. No remote push or merge; local origin/main ref only.",
+  "liveApiFinal": {
+    "status": "PASS",
+    "kind": "LIVE_API",
+    "actions": [
+      {
+        "action": "parse",
+        "status": "SUCCESS"
+      },
+      {
+        "action": "confirm-draft",
+        "status": "SUCCESS"
+      },
+      {
+        "action": "recommend",
+        "status": "SUCCESS"
+      },
+      {
+        "action": "apply",
+        "status": "SUCCESS"
+      },
+      {
+        "action": "parse",
+        "status": "VALIDATION_REJECTED"
+      },
+      {
+        "action": "parse",
+        "status": "NEEDS_CLARIFICATION"
+      },
+      {
+        "action": "explain",
+        "status": "SUCCESS"
+      }
+    ]
+  },
+  "runtime": {
+    "url": "http://127.0.0.1:3000/courtyard",
+    "healthStatus": 200,
+    "archivedSessionsInvalidatedByRestart": true
+  }
+}

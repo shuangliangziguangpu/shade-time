@@ -30,7 +30,7 @@ if(!process.env.SHADETIME_AI_API_KEY?.trim()){
     if(recommendation.status==='SUCCESS')applied=await f.call('apply',{proposalId:recommendation.data.proposalId,confirmed:true});
   }
   const illegal=await make({regionId:'R3',canopyId:'R3'},{date:'2026-06-21',startTime:'15:00',endTime:'16:00'});
-  const rejected=await illegal.call('parse',{text:'活动在2026年6月21日15:00到16:00，参考高度设为2米，最低采样遮阴率要求120%，请保持原值，不要自行纠正。'});
+  const rejected=await illegal.call('parse',{text:'其他条件沿用当前设置，活动参考高度请设为2米，请保留这个高度原值，不要替换成其他值，交给程序检查。'});
   const clarification=await illegal.call('parse',{text:'活动希望靠近入口，并尽量舒服，其他条件沿用当前设置。'});
   const g=await make({regionId:'R1',canopyId:'R3'},{date:'2026-06-21',startTime:'14:00',endTime:'14:15'});
   const evidence=pointEvidence(g.result,0,55,g.session.context());
