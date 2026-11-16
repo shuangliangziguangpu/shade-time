@@ -90,3 +90,11 @@
 - 20次实际棚位切换前后renderer资源保持27份几何、17张纹理、11个程序，静态组ID相同。缓存阴影只在太阳/棚位变化或诊断要求时更新；正确释放实例缓冲、自有贴图和阴影目标，BFCache保留页面时不提前销毁。
 - 内嵌预览采集过约240FPS，也出现2.53/1.00FPS；独立Edge首次4.38FPS。所有异常保留。用户确认电脑解锁且Edge置前后，5秒前台样本为整体239.99、立面109.60、铺装47.21、棚体38.44FPS；后两组各有4次超过250ms的RAF间隔，根因未完全定位，不宣称稳定240。CPU提交P95为0.3–0.5ms，不当作GPU时间。
 - 最终一次Node运行同时保存spec/TAP，65 PASS、0 FAIL/SKIP/CANCELLED（原55项＋新增10项），1257.8795ms。保护路径Git diff为空。没有读取.env、调用AI、下载资产、安装依赖、推送或合并main。
+
+## 2026-11-16 Batch 1B 开发启动
+
+- 现场HEAD 003b7a3，Batch 1A四笔历史保留，工作区干净；原65项实跑全部PASS，0 FAIL/SKIP/CANCELLED，1460.0325ms。
+- 当前只有analyzeCourtyard单时刻入口，源码没有时段梯形汇总/候选或状态版本实现；不依据旧文档假设已有接口。
+- 新建feature/phase1.5-batch1b-decision，main及Batch 1A分支保留。按用户明确逐阶段指令执行，短清单docs/plans/2026-11-16-batch1b.md。
+- Ruling：同日15–120分钟和5分钟输入继续冻结；15分钟为默认采样。用户本轮要求不同间隔测试，另支持5/10/30分钟显式选项，A/B必须同规则，不能混比。用户指定真实目录独立分支，采用原checkout分支隔离，不再新建worktree。
+- Task 1 complete：先运行period测试因模块缺失RED；实现period.js后period10项＋旧analysis/sun15项共25 PASS（0 FAIL/SKIP/CANCELLED），726.9429ms。真实R3/R3 15–16点五值0.9/0.8/0.8/0.7/0.6，平均0.7625、最低0.6；末段/并列最低/混合无效/同日和跨主机时区验证通过。原数学与单时刻入口未改。原始red/green见evidence/batch1b。

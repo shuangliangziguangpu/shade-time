@@ -1,0 +1,33 @@
+✔ P1 business analysis computes independent 100-point center grids at 0m and 1.5m (10.2058ms)
+✔ P1 independent noon bound: overhead canopy fully shields its 1.5m target while distant canopy does not (4.5875ms)
+✔ P1 higher reference and real time changes are recomputed, not copied from the G benchmark (3.315ms)
+✔ P1 invalid layout, night and low sun return no normal metrics and no removed samples (2.3291ms)
+✔ P1 business analysis and G regression fixture remain independent across repeated layouts (6.0585ms)
+✔ B1B period sequence includes start and end at explicit Shanghai instants (4.9958ms)
+✔ B1B partial final segments and different sampling intervals include endpoint exactly once (0.5985ms)
+✔ B1B frozen five-value trapezoid regression yields 76.25%, minimum60% at16:00 (0.5461ms)
+✔ B1B trapezoid weights the 5-minute final segment and handles zero/full/tied minimum (0.319ms)
+✔ B1B one invalid necessary sample makes full-period metrics unavailable without shrinking samples (0.271ms)
+✔ B1B series rejects nonmonotone timestamps, malformed rates and insufficient points (0.5265ms)
+✔ B1B period rejects crossing dates, invalid dates/steps/timezone and outside15–120min (0.6499ms)
+✔ B1B actual period preserves every single-time result and both reference layers (23.9831ms)
+✔ B1B night, mixed-validity dawn and invalid layout keep all samples but suppress aggregates (8.1167ms)
+✔ B1B period is independent of the host timezone (453.8691ms)
+✔ P0 locked packages are Three r160 and SunCalc 1.9.0 (2.1504ms)
+✔ S1 four artificial azimuths preserve east/up/south coordinates and unit length (0.5919ms)
+✔ S2-S4 Dalian summer morning east, noon south, afternoon west (3.9437ms)
+✔ S5-S6 midnight below horizon and winter noon lower than summer noon (0.2502ms)
+✔ S7 +08:00 and UTC equivalent instants match exactly (1.0457ms)
+✔ S8 explicit Shanghai input is invariant across process timezones (411.6947ms)
+✔ S9 0, 2, 5 degrees and threshold neighbours are handled without rounding (0.3263ms)
+✔ S10 reject invalid dates, ambiguous inputs, invalid latitude and off-step time (0.82ms)
+✔ SunCalc 1.9.0 upstream published-commit position regression (0.3042ms)
+✔ P0 DirectionalLight sits toward sun and propagates opposite to sun vector (1.0842ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 726.9429
