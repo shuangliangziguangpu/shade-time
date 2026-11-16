@@ -98,3 +98,4 @@
 - 新建feature/phase1.5-batch1b-decision，main及Batch 1A分支保留。按用户明确逐阶段指令执行，短清单docs/plans/2026-11-16-batch1b.md。
 - Ruling：同日15–120分钟和5分钟输入继续冻结；15分钟为默认采样。用户本轮要求不同间隔测试，另支持5/10/30分钟显式选项，A/B必须同规则，不能混比。用户指定真实目录独立分支，采用原checkout分支隔离，不再新建worktree。
 - Task 1 complete：先运行period测试因模块缺失RED；实现period.js后period10项＋旧analysis/sun15项共25 PASS（0 FAIL/SKIP/CANCELLED），726.9429ms。真实R3/R3 15–16点五值0.9/0.8/0.8/0.7/0.6，平均0.7625、最低0.6；末段/并列最低/混合无效/同日和跨主机时区验证通过。原数学与单时刻入口未改。原始red/green见evidence/batch1b。
+- Task 2 complete：panel先RED缺模块，曲线横轴/无效缺口2项＋period10＋旧HTTP共13 PASS，719.0807ms。实际浏览器默认平均76.25/最低60/16:00；选择结束点得到60%，切地面平均5%、最低0%；15:20末段三点；04:45–05:30保留4个时刻但整段N/A。采样选择/高度切换均未增加period分析次数。初次截图发现SVG CSS填充覆盖polyline属性，补明确fill:none，重载核验通过。此阶段门槛通过后再启动候选。

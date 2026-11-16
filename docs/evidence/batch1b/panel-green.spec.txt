@@ -1,0 +1,21 @@
+✔ P1 courtyard page and complete shared ESM import graph are served without exposing private files (113.3023ms)
+✔ B1B curve uses real elapsed time so the final5min segment is one quarter of the full width (20.209ms)
+✔ B1B invalid chart points remain explicit gaps rather than fabricated zero percentages (4.1315ms)
+✔ B1B period sequence includes start and end at explicit Shanghai instants (5.9162ms)
+✔ B1B partial final segments and different sampling intervals include endpoint exactly once (0.6755ms)
+✔ B1B frozen five-value trapezoid regression yields 76.25%, minimum60% at16:00 (0.664ms)
+✔ B1B trapezoid weights the 5-minute final segment and handles zero/full/tied minimum (0.383ms)
+✔ B1B one invalid necessary sample makes full-period metrics unavailable without shrinking samples (0.3193ms)
+✔ B1B series rejects nonmonotone timestamps, malformed rates and insufficient points (0.6511ms)
+✔ B1B period rejects crossing dates, invalid dates/steps/timezone and outside15–120min (0.6306ms)
+✔ B1B actual period preserves every single-time result and both reference layers (25.346ms)
+✔ B1B night, mixed-validity dawn and invalid layout keep all samples but suppress aggregates (5.4564ms)
+✔ B1B period is independent of the host timezone (427.6201ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 719.0807

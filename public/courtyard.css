@@ -34,6 +34,31 @@
 .court-controls .metric strong { font-size: 44px; }
 .court-controls .evidence { font-size: 11px; min-height: 55px; }
 .court-controls .state:empty { display: none; }
+.court-controls .date-grid { margin-top: 10px; }
+.period-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.period-metrics span { display: block; font-size: 10px; color: #758476; }
+.period-metrics strong { color: #315e4e; font-size: 23px; font-weight: 550; }
+.period-panel { margin-top: 20px; padding: 22px; border: 1px solid #dce4db; border-radius: 16px; background: #fff; }
+.period-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.period-heading h2 { font-size: 17px; margin: 0; font-weight: 550; }
+.period-heading .section-label { margin: 0 0 6px; }
+#period-status { max-width: 530px; font-size: 11px; color: #708373; }
+#period-chart { display: block; width: 100%; max-height: 220px; }
+#period-chart text { fill: #7b887b; font-size: 10px; }
+.chart-grid { stroke: #e5ebe2; stroke-width: 1; }
+.chart-current { stroke: #3f897f; stroke-width: 2.4; fill: #3f897f; }
+.chart-alternative { stroke: #be8b38; stroke-width: 2.4; fill: #be8b38; }
+polyline.chart-current,polyline.chart-alternative { fill: none; }
+.chart-cursor { stroke: #829986; stroke-width: 1; stroke-dasharray: 3 4; }
+#sample-times { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 16px; }
+#sample-times button[aria-pressed="true"] { background: #315e4e; color: white; }
+.period-panel details { font-size: 12px; color: #63796c; }
+.period-panel summary { cursor: pointer; }
+.table-scroll { overflow-x: auto; margin-top: 12px; }
+.period-panel table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.period-panel th,.period-panel td { border-bottom: 1px solid #e8ede5; padding: 9px; text-align: left; }
+.scene-expanded .period-panel { display: none; }
+@media(max-width:760px) { .period-heading { flex-direction: column; align-items: flex-start; gap: 4px; } }
 .court-status { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 2px; border-bottom: 1px solid #dce4db; font-size: 11px; color: #607b68; }
 @media (max-width: 1050px) {
   .court-workspace { grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; }

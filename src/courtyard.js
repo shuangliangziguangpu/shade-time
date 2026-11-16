@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { SCENE_CONFIG } from './domain/scene-config.js';
 import { inspectLayout } from './domain/layout.js';
-import { analyzeCourtyard } from './domain/analysis.js';
+import { analyzePeriod } from './domain/period.js';
+import { renderPeriodPanel } from './view/period-panel.js';
 import { parseShanghaiDateTime, DEG } from './core/sun.js';
 import { castSunRay } from './core/geometry.js';
 import { createVisualMaterials } from './view/visual-materials.js';
@@ -41,7 +42,7 @@ function start() {
   world.add(evidenceRay);
   const sunArrow=new THREE.ArrowHelper(new THREE.Vector3(0,1,0),new THREE.Vector3(0,0.12,initial.courtyard.min[2]+2.2),3.2,0xc49542,0.35,0.18);
   sunArrow.visible=false;world.add(sunArrow);
-  let analysis, analysisRuns = 0, bindingRows = [];
+  let analysis, periodAnalysis=null, selectedSampleIndex=0, periodDurationMs=0, analysisRuns = 0, bindingRows = [];
   let proxyCheck = null, performanceResult = null, measuring = null;
   let latestTimestamp = 0, firstRenderReturnedMs = null;
   function invalidatePerformance() { performanceResult=null;measuring=null;$('performance-result').textContent='当前视角尚未测量帧率'; }
@@ -55,6 +56,7 @@ function start() {
     markers.visible = reference.visible = evidenceRay.visible = sunArrow.visible = false;
   }
   function drawAnalysis() {
+    renderPeriodPanel(periodAnalysis,referenceHeight,selectedSampleIndex);
     $('height-ground').setAttribute('aria-pressed', String(referenceHeight === 0));
     $('height-person').setAttribute('aria-pressed', String(referenceHeight === 1.5));
     const overlay = $('show-samples').checked;
@@ -81,23 +83,32 @@ function start() {
     evidenceRay.geometry = new THREE.BufferGeometry().setFromPoints([witness.point,witness.hit??witness.point.clone().addScaledVector(analysis.sun.direction,6)]);
     $('evidence').textContent = witness.status==='blocked' ? `${witness.id} → 最近命中 ${witness.blockerId}。` : `${witness.id} → 模型内直射。`;
   }
+  function showSelectedSample() {
+    invalidatePerformance();invalidateVerification();
+    analysis=periodAnalysis?.samples[selectedSampleIndex]?.analysis??null;
+    if(!analysis){failure('没有可用的采样时刻');return;}
+    const modelUpdate=model.update(analysis.scene);bindingRows=modelUpdate.bindings;
+    if(modelUpdate.moved)pipeline.markShadowDirty();
+    pipeline.applySun(analysis.sun);sunArrow.setDirection(analysis.sun.direction);
+    $('altitude').textContent=`${(analysis.sun.altitude/DEG).toFixed(1)}°`;
+    $('azimuth').textContent=`${((analysis.sun.azimuth/DEG+540)%360).toFixed(1)}°`;
+    $('geometry-status').textContent=`${bindingRows.length}个分析实体 · 视觉与投影绑定已校验`;
+    drawAnalysis();
+    if(analysis.status!=='valid')failure(analysis.status==='below-horizon'?'太阳位于地平线以下，当前时刻N/A。':analysis.status==='low-altitude'?'太阳高度低于5°，当前时刻N/A。':'布局或采样原点无效。');
+    publish();
+  }
   function refresh() {
     invalidatePerformance();
     invalidateVerification();
     try {
-      analysis = analyzeCourtyard(selection,parseShanghaiDateTime($('date').value,$('time').value));
+      const previousClock=$('time').value;
+      const started=performance.now();
+      periodAnalysis=analyzePeriod(selection,{date:$('date').value,startTime:$('start-time').value,endTime:$('end-time').value,intervalMinutes:Number($('sample-interval').value)});
+      periodDurationMs=performance.now()-started;
+      selectedSampleIndex=Math.max(0,periodAnalysis.samples.findIndex(sample=>sample.clock===previousClock));
       analysisRuns++;
-      const modelUpdate=model.update(analysis.scene);
-      bindingRows = modelUpdate.bindings;
-      if(modelUpdate.moved)pipeline.markShadowDirty();
-      pipeline.applySun(analysis.sun);
-      sunArrow.setDirection(analysis.sun.direction);
-      $('altitude').textContent = `${(analysis.sun.altitude/DEG).toFixed(1)}°`;
-      $('azimuth').textContent = `${((analysis.sun.azimuth/DEG+540)%360).toFixed(1)}°`;
-      $('geometry-status').textContent = `${bindingRows.length}个分析实体 · 视觉与投影绑定已校验`;
-      if(analysis.status!=='valid') failure(analysis.status==='below-horizon'?'太阳位于地平线以下，指标N/A。':analysis.status==='low-altitude'?'太阳高度低于5°，指标N/A。':'布局或采样原点无效。');
-      else drawAnalysis();
-    } catch(error) { analysis=null;pipeline.sunlight.intensity=0;pipeline.markShadowDirty();$('altitude').textContent='—';$('azimuth').textContent='—';failure(error.message); }
+      showSelectedSample();
+    } catch(error) { analysis=null;periodAnalysis=null;renderPeriodPanel(null,referenceHeight,0);pipeline.sunlight.intensity=0;pipeline.markShadowDirty();$('altitude').textContent='—';$('azimuth').textContent='—';failure(error.message); }
     finally { publish(); }
   }
   function changePlacement() {
@@ -118,7 +129,9 @@ function start() {
   function setView(name) { invalidatePerformance();invalidateVerification();rig.view(name,model.scene); $('view-status').textContent={overview:'庭院整体',facade:'B1立面近景',paving:'铺装近景',canopy:'TD004棚体近景',top:'北上俯视'}[name]; publish(); }
   for(const [id,name] of [['reset-view','overview'],['top-view','top'],['facade-view','facade'],['paving-view','paving'],['canopy-view','canopy']]) $(id).addEventListener('click',()=>setView(name));
   for(const id of ['region-id','canopy-id']) $(id).addEventListener('change',changePlacement);
-  for(const id of ['date','time']) $(id).addEventListener('change',refresh);
+  for(const id of ['date','start-time','end-time','sample-interval']) $(id).addEventListener('change',refresh);
+  $('time').addEventListener('change',()=>{selectedSampleIndex=periodAnalysis.samples.findIndex(sample=>sample.clock===$('time').value);showSelectedSample();});
+  $('sample-times').addEventListener('click',event=>{const button=event.target.closest('button[data-sample-index]');if(button){selectedSampleIndex=Number(button.dataset.sampleIndex);showSelectedSample();}});
   $('height-ground').addEventListener('click',()=>{referenceHeight=0;drawAnalysis();});
   $('height-person').addEventListener('click',()=>{referenceHeight=1.5;drawAnalysis();});
   $('show-samples').addEventListener('change',drawAnalysis);
@@ -131,7 +144,7 @@ function start() {
       vendor:extension?gl.getParameter(extension.UNMASKED_VENDOR_WEBGL):gl.getParameter(gl.VENDOR),
       cssWidth:viewport.clientWidth,cssHeight:viewport.clientHeight,dpr:renderer.getPixelRatio(),drawingBuffer:renderer.getDrawingBufferSize(new THREE.Vector2()).toArray()};
   };
-  function diagnostics() { return {version:'batch1a-v1',view:rig.mode,selection,analysisRuns,metrics:analysis?.status==='valid'?{ground:analysis.ground.rate,elevated:analysis.elevated.rate}:null,
+  function diagnostics() { return {version:'batch1b-v1',view:rig.mode,selection,analysisRuns,periodDurationMs,period:periodAnalysis?{status:periodAnalysis.status,settings:periodAnalysis.period,selectedSampleIndex,ground:periodAnalysis.ground,elevated:periodAnalysis.elevated,samples:periodAnalysis.samples.map(sample=>({timestamp:sample.timestamp,clock:sample.clock,status:sample.status,ground:sample.analysis.ground?.rate??null,elevated:sample.analysis.elevated?.rate??null,groundValidCount:sample.groundValidCount,elevatedValidCount:sample.elevatedValidCount}))}:null,metrics:analysis?.status==='valid'?{ground:analysis.ground.rate,elevated:analysis.elevated.rate}:null,
     device:device(),sun:analysis?{direction:analysis.sun.direction.toArray(),lightToSun:pipeline.sunlight.position.clone().sub(pipeline.frame.center).normalize().toArray(),propagation:pipeline.sunlight.target.position.clone().sub(pipeline.sunlight.position).normalize().toArray()}:null,camera:{position:rig.camera.position.toArray(),target:rig.controls.target.toArray(),aspect:rig.camera.aspect},frame:pipeline.lastFrame,resources:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,programs:renderer.info.programs.length},
     staticGroupId:model.staticGroup.uuid,bindings:bindingRows,proxyCheck,performance:performanceResult,
     loading:{proceduralTextureMs,firstRenderReturnedMs,navigation:performance.getEntriesByType('navigation').map(entry=>({duration:entry.duration,domContentLoaded:entry.domContentLoadedEventEnd})),resources:performance.getEntriesByType('resource').filter(entry=>new URL(entry.name).origin===location.origin).map(entry=>({name:new URL(entry.name).pathname,duration:entry.duration,transferSize:entry.transferSize,decodedBodySize:entry.decodedBodySize}))}}; }
@@ -164,7 +177,7 @@ function start() {
   $('region-id').value=selection.regionId;$('canopy-id').value=selection.canopyId;
   changePlacement();
   $('court-loading').hidden=true;
-  $('runtime-status').textContent='建筑样板已就绪 · 程序化PBR / 七实体分析';
+  $('runtime-status').textContent='时段实验已就绪 · 含结束时刻 / 双高度100点';
   renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();$('runtime-status').textContent='WebGL上下文丢失，请刷新';});
   renderer.setAnimationLoop(timestamp=>{
     latestTimestamp=timestamp;rig.update();const frame=pipeline.render(rig.camera);
