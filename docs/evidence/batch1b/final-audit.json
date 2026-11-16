@@ -1,0 +1,82 @@
+{
+  "capturedAt": "2026-11-16T08:14:27.486Z",
+  "codeHead": "02a5ac87df3540a70577aeca20998bb7986e3a60",
+  "branch": "feature/phase1.5-batch1b-decision",
+  "baseline": "003b7a38a69271dfab65bd82aef3bf2b47551011",
+  "node": "v24.22.1",
+  "dependencies": {
+    "suncalc": "1.9.0",
+    "three": "0.160.0"
+  },
+  "protectedFiles": {
+    "count": 38,
+    "unchanged": true,
+    "files": [
+      "package-lock.json",
+      "package.json",
+      "public/index.html",
+      "public/styles.css",
+      "src/core/geometry.js",
+      "src/core/sun.js",
+      "src/domain/analysis.js",
+      "src/domain/clearance.js",
+      "src/domain/layout.js",
+      "src/domain/scene-config.js",
+      "src/domain/scene.js",
+      "src/main.js",
+      "src/probe/fixture.js",
+      "src/view/box-parts.js",
+      "src/view/building-visuals.js",
+      "src/view/camera-rig.js",
+      "src/view/canopy-visuals.js",
+      "src/view/courtyard-model.js",
+      "src/view/ground-visuals.js",
+      "src/view/lighting.js",
+      "src/view/render-pipeline.js",
+      "src/view/shadow-proxies.js",
+      "src/view/visual-config.js",
+      "src/view/visual-materials.js",
+      "src/view/visual-scene.js",
+      "test/ai-connectivity.test.js",
+      "test/analysis.test.js",
+      "test/courtyard-http.test.js",
+      "test/courtyard-model.test.js",
+      "test/geometry.test.js",
+      "test/layout.test.js",
+      "test/scene-config.test.js",
+      "test/scene.test.js",
+      "test/server.test.js",
+      "test/sun.test.js",
+      "test/visual-foundation.test.js",
+      "test/visual-http.test.js",
+      "test/visual-model.test.js"
+    ]
+  },
+  "tests": {
+    "total": 93,
+    "PASS": 93,
+    "FAIL": 0,
+    "SKIP": 0,
+    "CANCELLED": 0
+  },
+  "browserNodeComparison": {
+    "records": 30,
+    "samples": 150,
+    "candidates": 136,
+    "rankedLists": 9,
+    "status": "PASS",
+    "tolerance": 1e-12,
+    "files": [
+      "stage2-browser.json",
+      "stage3-browser.json",
+      "stage4-browser.json",
+      "stage5-browser.json",
+      "final-browser.json"
+    ]
+  },
+  "sensitivePathsTracked": [],
+  "envIgnored": true,
+  "main": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "originMainLocalRef": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "note": "No fetch/push/merge or environment-secret reads. Remote reference is local only."
+}
