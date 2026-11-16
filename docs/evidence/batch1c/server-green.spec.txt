@@ -1,0 +1,26 @@
+✔ B1C missing dedicated key blocks the real request before transport (2.6602ms)
+✔ B1C business client uses only configured endpoint/model and parses strict JSON (MOCK transport) (47.4008ms)
+✔ B1C unavailable model and authentication failures do not fall back or expose bodies (MOCK) (1.2498ms)
+✔ B1C empty/malformed/object-free/secret-bearing content is rejected safely (MOCK) (4.0228ms)
+✔ B1C timeout and external cancellation abort network work with safe statuses (MOCK) (27.0058ms)
+✔ B1C HTTP accepts bounded same-origin AI JSON, rejects foreign writes and never serves secrets (147.7513ms)
+✔ B1C parsed constraints stay a draft until an explicit confirmation (MOCK transport, real domain) (80.0608ms)
+✔ B1C AI draft rejects invalid fields and mathematical constraints rather than accepting coordinates or rates (MOCK) (92.7663ms)
+✔ B1C unsupported conditions produce clarification and cannot be confirmed (MOCK) (11.6558ms)
+✔ B1C candidate recommendation uses genuine server metrics and confirmation revalidates the legal layout (MOCK) (35.2276ms)
+✔ B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK) (92.077ms)
+✔ B1C infeasible frozen movement and target return explicit no-candidate without lowering the target (17.6338ms)
+✔ B1C requests reject stale versions, reversed sequences, unknown inputs and forged geometry before AI calls (6.9746ms)
+✔ B1C a recommendation cannot apply after a new analysis, changed permissions, or explicit rejection (69.1848ms)
+✔ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (9.0544ms)
+✔ B1C changing context while real transport is pending cannot return an applicable response (MOCK) (6.1813ms)
+✔ P1 courtyard page and complete shared ESM import graph are served without exposing private files (138.2234ms)
+✔ HTTP serves browser modules, supports HEAD, rejects private paths and writes (180.942ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 777.9944

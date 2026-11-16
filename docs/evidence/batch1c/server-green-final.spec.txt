@@ -1,0 +1,26 @@
+✔ B1C missing dedicated key blocks the real request before transport (2.6176ms)
+✔ B1C business client uses only configured endpoint/model and parses strict JSON (MOCK transport) (42.739ms)
+✔ B1C unavailable model and authentication failures do not fall back or expose bodies (MOCK) (1.1112ms)
+✔ B1C empty/malformed/object-free/secret-bearing content is rejected safely (MOCK) (3.4333ms)
+✔ B1C timeout and external cancellation abort network work with safe statuses (MOCK) (15.0392ms)
+✔ B1C HTTP accepts bounded same-origin AI JSON, rejects foreign writes and never serves secrets (145.7464ms)
+✔ B1C parsed constraints stay a draft until an explicit confirmation (MOCK transport, real domain) (74.3316ms)
+✔ B1C AI draft rejects invalid fields and mathematical constraints rather than accepting coordinates or rates (MOCK) (90.6247ms)
+✔ B1C unsupported conditions produce clarification and cannot be confirmed (MOCK) (13.3517ms)
+✔ B1C candidate recommendation uses genuine server metrics and confirmation revalidates the legal layout (MOCK) (33.4016ms)
+✔ B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK) (91.6021ms)
+✔ B1C infeasible frozen movement and target return explicit no-candidate without lowering the target (19.8911ms)
+✔ B1C requests reject stale versions, reversed sequences, unknown inputs and forged geometry before AI calls (6.3981ms)
+✔ B1C a recommendation cannot apply after a new analysis, changed permissions, or explicit rejection (74.6311ms)
+✔ B1C changed business inputs without increasing scene and analysis versions are rejected (6.0623ms)
+✔ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (8.951ms)
+✔ B1C changing context while real transport is pending cannot return an applicable response (MOCK) (6.2062ms)
+✔ HTTP serves browser modules, supports HEAD, rejects private paths and writes (185.8055ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 790.7629

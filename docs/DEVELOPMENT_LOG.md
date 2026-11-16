@@ -109,3 +109,12 @@
 - 修复后全套重新执行，93 PASS、0 FAIL/SKIP/CANCELLED，3088.7553ms；原65项和冻结数学/配置路径保持不变。保存spec/TAP、最终时段/候选/双高度截图和全部浏览器阶段记录。
 - 本机嵌入Chromium前台5秒RAF/render对照：比较前169.03FPS、比较后167.74FPS、双高度证据167.56FPS，分别28/28/32 calls、17546/17546/17746 triangles；修复后另测167.45FPS。默认24组比较68.4ms；2小时/5分钟间隔25时刻最重案例211.4ms，高于路线中的200ms目标，作为非阻断性能限制保留。没有GPU计时、跨设备保证或用Node耗时冒充FPS。
 - 归档前额外编写可复运行的证据核对脚本。首版错误推断早期快照中缺失的移动权限，随后又把已确认A的period和显示B的shownSelection混用，分别触发断言；检查实际diagnostics()契约后修正核验器，不改应用计算。最终30个时段状态、150个采样时刻、136条候选指标和9份具备完整约束的排序列表与Node重算一致。38个冻结路径相对Batch 1A无差异，依赖/lockfile/已安装版本一致。
+
+## 2026-11-16 Batch 1C 真实AI闭环
+
+- 实查Batch 1B最终e891cd1、工作区干净、四笔Batch 1A及Batch 1B七笔历史完整；原93项重新执行全PASS（0 FAIL/SKIP/CANCELLED，3011.8377ms），创建feature/phase1.5-batch1c-ai。
+- 用户明确要求直接实施并砍掉多Agent，使用单工程师测试先行；沿用D盘真实目录独立分支，不新建worktree，不再Brainstorm待批。固定DeepSeek/deepseek-flash及无/v1的Base URL。当前进程未有专用变量，server-only node --env-file加载检查为true，未打印密钥或读取前端配置。
+- 统一AI JSON客户端先RED（模块缺失）后GREEN，相关11项通过；保留20秒、模型列表检查、不降级、取消、JSON校验和安全错误，不改原诊断函数。首笔2e6d4e5。
+- 服务端权威会话/草案/候选/应用/证据及HTTP边界先写RED再实现。一次证据错误分类把一条伪造引用混入真实引用判成过期，修正为两条均为旧式引用才归为过期，保留service-green-attempt失败。追加无递增版本却变更业务参数的RED→GREEN，防止只相信客户端版本。
+- 首轮真实API：正常解析SUCCESS、非法高度/目标VALIDATION_REJECTED、证据解释SUCCESS；建议因含协议禁止的“保证”词，澄清因selection使用内部null对象，均INVALID_AI_RESPONSE，没有应用。保留ai-live-initial.json原始脱敏回复。明确提示文本和澄清null结构后重测，真实建议→确认重算应用SUCCESS、澄清SUCCESS、解释SUCCESS；非法输入第二次返回INVALID_AI_RESPONSE，仍安全拒绝，保留ai-live-protocol-recheck.json。没有放宽验证或把失败重写成成功。
+- 端到端前代码全套115 PASS（原93＋新增22），0 FAIL/SKIP/CANCELLED，3458.9303ms。浏览器联调尚待执行，Node耗时不当作浏览器性能。

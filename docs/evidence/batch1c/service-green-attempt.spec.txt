@@ -1,0 +1,39 @@
+✔ B1C parsed constraints stay a draft until an explicit confirmation (MOCK transport, real domain) (69.5035ms)
+✔ B1C AI draft rejects invalid fields and mathematical constraints rather than accepting coordinates or rates (MOCK) (82.0741ms)
+✔ B1C unsupported conditions produce clarification and cannot be confirmed (MOCK) (12.2837ms)
+✔ B1C candidate recommendation uses genuine server metrics and confirmation revalidates the legal layout (MOCK) (31.0996ms)
+✔ B1C forged candidate IDs, claimed percentages and unknown reply fields are rejected (MOCK) (86.9785ms)
+✔ B1C infeasible frozen movement and target return explicit no-candidate without lowering the target (19.939ms)
+✔ B1C requests reject stale versions, reversed sequences, unknown inputs and forged geometry before AI calls (6.7212ms)
+✔ B1C a recommendation cannot apply after a new analysis, changed permissions, or explicit rejection (74.7261ms)
+✖ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (6.1435ms)
+✔ B1C changing context while real transport is pending cannot return an applicable response (MOCK) (6.0934ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 665.0655
+
+✖ failing tests:
+
+test at test\ai-service.test.js:73:1
+✖ B1C server regenerates paired evidence and rejects forged, old, or contradictory references (MOCK) (6.1435ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'STALE_CONTEXT'
+  - 'VALIDATION_REJECTED'
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/ai-service.test.js:76:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'STALE_CONTEXT',
+    expected: 'VALIDATION_REJECTED',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

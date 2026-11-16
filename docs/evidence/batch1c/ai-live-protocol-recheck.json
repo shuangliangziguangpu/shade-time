@@ -1,0 +1,408 @@
+{
+  "capturedAt": "2026-11-16T08:49:32.297Z",
+  "finishedAt": "2026-11-16T08:50:08.954Z",
+  "kind": "LIVE_API",
+  "status": "FAIL",
+  "records": [
+    {
+      "action": "parse",
+      "input": {
+        "text": "在2026年6月21日下午15:00到16:00举办活动，每15分钟采样，遮阳棚保持R3不动，只移动活动区域，使用离地1.5米参考面，希望最低采样遮阴率至少80%。请生成待确认草案。"
+      },
+      "requestId": "ai-1",
+      "response": {
+        "status": "SUCCESS",
+        "requestId": "ai-1",
+        "contextId": "d46945f8-f295-4131-8d77-d714f50c063f",
+        "data": {
+          "draftId": "17cfffa0-52f2-424a-80d6-ee594c947077",
+          "draft": {
+            "selection": {
+              "regionId": "R3",
+              "canopyId": "R3"
+            },
+            "date": "2026-06-21",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "timeZone": "Asia/Shanghai",
+            "intervalMinutes": 15,
+            "height": 1.5,
+            "movementMode": "region",
+            "minimumShade": 0.8,
+            "needsClarification": false,
+            "clarificationQuestions": [],
+            "summary": "已按指定日期、时段、采样间隔和遮阴目标生成待确认草案，遮阳棚固定，仅活动区域可移动。"
+          }
+        }
+      },
+      "elapsedMs": 5140.5692,
+      "kind": "LIVE_API_BUSINESS"
+    },
+    {
+      "action": "confirm-draft",
+      "input": {
+        "draftId": "17cfffa0-52f2-424a-80d6-ee594c947077",
+        "confirmed": true
+      },
+      "requestId": "ai-2",
+      "response": {
+        "status": "SUCCESS",
+        "requestId": "ai-2",
+        "contextId": "d46945f8-f295-4131-8d77-d714f50c063f",
+        "data": {
+          "draft": {
+            "selection": {
+              "regionId": "R3",
+              "canopyId": "R3"
+            },
+            "date": "2026-06-21",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "timeZone": "Asia/Shanghai",
+            "intervalMinutes": 15,
+            "height": 1.5,
+            "movementMode": "region",
+            "minimumShade": 0.8,
+            "needsClarification": false,
+            "clarificationQuestions": [],
+            "summary": "已按指定日期、时段、采样间隔和遮阴目标生成待确认草案，遮阳棚固定，仅活动区域可移动。"
+          },
+          "confirmed": true
+        }
+      },
+      "elapsedMs": 0.6183000000000902,
+      "kind": "LIVE_API_BUSINESS"
+    },
+    {
+      "action": "recommend",
+      "input": {
+        "text": "根据已经确认的条件，从本次有限合法候选选择适合的活动区域。"
+      },
+      "requestId": "ai-3",
+      "response": {
+        "status": "SUCCESS",
+        "requestId": "ai-3",
+        "contextId": "d46945f8-f295-4131-8d77-d714f50c063f",
+        "data": {
+          "proposalId": "fe958a29-22df-46b2-92dd-2b8fd198d23b",
+          "selection": {
+            "regionId": "R1",
+            "canopyId": "R3"
+          },
+          "metrics": {
+            "minimum": 1,
+            "average": 1,
+            "minimumTimes": [
+              "2026-06-21T07:00:00.000Z",
+              "2026-06-21T07:15:00.000Z",
+              "2026-06-21T07:30:00.000Z",
+              "2026-06-21T07:45:00.000Z",
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "baseline": {
+            "minimum": 0.6,
+            "average": 0.7625,
+            "minimumTimes": [
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "changes": [
+            {
+              "object": "region",
+              "from": "R3",
+              "to": "R1"
+            }
+          ],
+          "movedCount": 1,
+          "examined": 6,
+          "legal": 4,
+          "ai": {
+            "candidateId": "ai-3:R1/R3",
+            "summary": "首选候选，阴影条件达标且表现稳定。",
+            "reasonCodes": [
+              "meets_target",
+              "highest_minimum",
+              "higher_average"
+            ],
+            "explanation": "该候选的最低阴影与平均阴影均达到目标，并高于基线；最低阴影在候选中处于最高水平，平均阴影高于基线且不低于另一候选。移动对象数量与另一候选相同。",
+            "limitations": [
+              "当前结论仅基于离散采样与有限候选，未覆盖未采样时刻。"
+            ]
+          },
+          "source": "deepseek",
+          "conditions": {
+            "date": "2026-06-21",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "intervalMinutes": 15,
+            "timeZone": "Asia/Shanghai",
+            "durationMinutes": 60,
+            "sceneGeometryVersion": "courtyard-v1",
+            "algorithmVersion": "ray-box-period-v1",
+            "samplingVersion": "grid10-center-eps1e-4-v1",
+            "latitude": 38.914,
+            "longitude": 121.614
+          },
+          "height": 1.5
+        }
+      },
+      "elapsedMs": 9752.851999999999,
+      "kind": "LIVE_API_BUSINESS"
+    },
+    {
+      "action": "apply",
+      "input": {
+        "proposalId": "fe958a29-22df-46b2-92dd-2b8fd198d23b",
+        "confirmed": true
+      },
+      "requestId": "ai-4",
+      "response": {
+        "status": "SUCCESS",
+        "requestId": "ai-4",
+        "contextId": "d46945f8-f295-4131-8d77-d714f50c063f",
+        "data": {
+          "selection": {
+            "regionId": "R1",
+            "canopyId": "R3"
+          },
+          "metrics": {
+            "minimum": 1,
+            "average": 1,
+            "minimumTimes": [
+              "2026-06-21T07:00:00.000Z",
+              "2026-06-21T07:15:00.000Z",
+              "2026-06-21T07:30:00.000Z",
+              "2026-06-21T07:45:00.000Z",
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "recomputed": true
+        }
+      },
+      "elapsedMs": 6.315599999999904,
+      "kind": "LIVE_API_BUSINESS"
+    },
+    {
+      "action": "parse",
+      "input": {
+        "text": "活动在2026年6月21日15:00到16:00，参考高度设为2米，最低采样遮阴率要求120%，请保持原值，不要自行纠正。"
+      },
+      "requestId": "ai-1",
+      "response": {
+        "status": "INVALID_AI_RESPONSE",
+        "requestId": "ai-1",
+        "message": "请求未通过或AI暂不可用；当前场景未被此请求修改。"
+      },
+      "elapsedMs": 13283.844,
+      "kind": "LIVE_API_BUSINESS"
+    },
+    {
+      "action": "parse",
+      "input": {
+        "text": "活动希望靠近入口，并尽量舒服，其他条件沿用当前设置。"
+      },
+      "requestId": "ai-2",
+      "response": {
+        "status": "NEEDS_CLARIFICATION",
+        "requestId": "ai-2",
+        "contextId": "5769f9f9-cf62-4199-b443-65d4e4e48721",
+        "data": {
+          "draftId": null,
+          "draft": {
+            "selection": null,
+            "date": null,
+            "startTime": null,
+            "endTime": null,
+            "timeZone": null,
+            "intervalMinutes": null,
+            "height": null,
+            "movementMode": null,
+            "minimumShade": null,
+            "needsClarification": true,
+            "clarificationQuestions": [
+              "请用已有活动区域替换未支持的位置偏好，可以吗？",
+              "请移除或替换未支持的舒适偏好，可以吗？"
+            ],
+            "summary": "需求包含尚未支持的条件，需要先澄清。"
+          }
+        }
+      },
+      "elapsedMs": 2620.2212,
+      "kind": "LIVE_API_BUSINESS"
+    },
+    {
+      "action": "explain",
+      "input": {
+        "text": "为什么同一采样点地面被遮挡，较高参考面却可能直射？",
+        "evidenceRefs": [
+          "analysis-1-1:2:0:55:ground",
+          "analysis-1-1:2:0:55:elevated"
+        ]
+      },
+      "requestId": "ai-1",
+      "response": {
+        "status": "SUCCESS",
+        "requestId": "ai-1",
+        "contextId": "b9720fd3-363a-4286-81da-b3c94a33f28e",
+        "data": {
+          "facts": {
+            "pointNumber": 56,
+            "pointIndex": 55,
+            "timestamp": "2026-06-21T06:00:00.000Z",
+            "sampleIndex": 0,
+            "contextKey": "[1,1,\"analysis-1-1\",2,\"R1\",\"R3\",\"[\\\"2026-06-21\\\",\\\"14:00\\\",\\\"14:15\\\",15,\\\"Asia/Shanghai\\\",15,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T06:00:00.000Z\"]",
+            "selection": {
+              "regionId": "R1",
+              "canopyId": "R3"
+            },
+            "ground": {
+              "evidenceId": "analysis-1-1:2:0:55:ground",
+              "origin": [
+                -4.9,
+                0,
+                -1.9
+              ],
+              "direction": [
+                -0.4743133985769012,
+                0.8609476908050664,
+                0.1838365405131785
+              ],
+              "status": "blocked",
+              "blockerId": "B1",
+              "hit": [
+                -8,
+                5.62695013361084,
+                -0.698487925281631
+              ]
+            },
+            "elevated": {
+              "evidenceId": "analysis-1-1:2:0:55:elevated",
+              "origin": [
+                -4.9,
+                1.5,
+                -1.9
+              ],
+              "direction": [
+                -0.4743133985769012,
+                0.8609476908050664,
+                0.1838365405131785
+              ],
+              "status": "direct",
+              "blockerId": null,
+              "hit": null
+            },
+            "pattern": "ground-blocked-elevated-direct"
+          },
+          "ai": {
+            "summary": "同一水平采样点上，较低参考面被遮挡，较高参考面为直射。",
+            "explanation": "在该采样点，较低参考面的射线命中遮挡实体，因此状态为遮挡；较高参考面的射线未命中遮挡实体，因此状态为直射。两个参考面高度不同，所以同一水平位置也可能得到不同遮挡结果。此结果仅来自该采样点的离散射线证据，不能据此推断更大范围或未采样位置的情况。",
+            "pattern": "ground-blocked-elevated-direct",
+            "evidenceRefs": [
+              "analysis-1-1:2:0:55:ground",
+              "analysis-1-1:2:0:55:elevated"
+            ],
+            "limitations": [
+              "当前仅基于离散采样点与有限候选射线，未覆盖未采样位置和未采样时刻。",
+              "单点证据不等同于区域结论，不能外推到相邻采样点或其他参考面。"
+            ]
+          },
+          "source": "deepseek"
+        }
+      },
+      "elapsedMs": 5802.942099999997,
+      "kind": "LIVE_API_BUSINESS"
+    }
+  ],
+  "providerResponses": [
+    {
+      "task": "PARSE",
+      "receivedAt": "2026-11-16T08:49:37.471Z",
+      "elapsedMs": 5139.1419000000005,
+      "provider": "DeepSeek",
+      "model": "deepseek-flash",
+      "response": {
+        "selection": {
+          "regionId": "R3",
+          "canopyId": "R3"
+        },
+        "date": "2026-06-21",
+        "startTime": "15:00",
+        "endTime": "16:00",
+        "timeZone": "Asia/Shanghai",
+        "intervalMinutes": 15,
+        "height": 1.5,
+        "movementMode": "region",
+        "minimumShade": 0.8,
+        "needsClarification": false,
+        "clarificationQuestions": [],
+        "summary": "已按指定日期、时段、采样间隔和遮阴目标生成待确认草案，遮阳棚固定，仅活动区域可移动。"
+      }
+    },
+    {
+      "task": "RECOMMEND",
+      "receivedAt": "2026-11-16T08:49:47.225Z",
+      "elapsedMs": 9725.276,
+      "provider": "DeepSeek",
+      "model": "deepseek-flash",
+      "response": {
+        "candidateId": "ai-3:R1/R3",
+        "summary": "首选候选，阴影条件达标且表现稳定。",
+        "reasonCodes": [
+          "meets_target",
+          "highest_minimum",
+          "higher_average"
+        ],
+        "explanation": "该候选的最低阴影与平均阴影均达到目标，并高于基线；最低阴影在候选中处于最高水平，平均阴影高于基线且不低于另一候选。移动对象数量与另一候选相同。",
+        "limitations": [
+          "当前结论仅基于离散采样与有限候选，未覆盖未采样时刻。"
+        ]
+      }
+    },
+    {
+      "task": "PARSE",
+      "receivedAt": "2026-11-16T08:50:03.146Z",
+      "elapsedMs": 2620.006000000001,
+      "provider": "DeepSeek",
+      "model": "deepseek-flash",
+      "response": {
+        "selection": null,
+        "date": null,
+        "startTime": null,
+        "endTime": null,
+        "timeZone": null,
+        "intervalMinutes": null,
+        "height": null,
+        "movementMode": null,
+        "minimumShade": null,
+        "needsClarification": true,
+        "clarificationQuestions": [
+          "请用已有活动区域替换未支持的位置偏好，可以吗？",
+          "请移除或替换未支持的舒适偏好，可以吗？"
+        ],
+        "summary": "需求包含尚未支持的条件，需要先澄清。"
+      }
+    },
+    {
+      "task": "EXPLAIN",
+      "receivedAt": "2026-11-16T08:50:08.954Z",
+      "elapsedMs": 5802.666900000004,
+      "provider": "DeepSeek",
+      "model": "deepseek-flash",
+      "response": {
+        "summary": "同一水平采样点上，较低参考面被遮挡，较高参考面为直射。",
+        "explanation": "在该采样点，较低参考面的射线命中遮挡实体，因此状态为遮挡；较高参考面的射线未命中遮挡实体，因此状态为直射。两个参考面高度不同，所以同一水平位置也可能得到不同遮挡结果。此结果仅来自该采样点的离散射线证据，不能据此推断更大范围或未采样位置的情况。",
+        "pattern": "ground-blocked-elevated-direct",
+        "evidenceRefs": [
+          "analysis-1-1:2:0:55:ground",
+          "analysis-1-1:2:0:55:elevated"
+        ],
+        "limitations": [
+          "当前仅基于离散采样点与有限候选射线，未覆盖未采样位置和未采样时刻。",
+          "单点证据不等同于区域结论，不能外推到相邻采样点或其他参考面。"
+        ]
+      }
+    }
+  ],
+  "note": "Only parsed JSON responses and approved business inputs; no authorization headers, API key or raw network errors. Test confirmation is performed by this explicitly invoked acceptance script."
+}
