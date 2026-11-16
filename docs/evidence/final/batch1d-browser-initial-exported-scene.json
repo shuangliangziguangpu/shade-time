@@ -1,0 +1,27 @@
+{
+  "project": "ShadeTime",
+  "format": "shadetime-scene",
+  "schemaVersion": 1,
+  "sceneGeometryVersion": "courtyard-v1",
+  "algorithmVersion": "ray-box-period-v1",
+  "samplingVersion": "grid10-center-eps1e-4-v1",
+  "task": {
+    "selection": {
+      "regionId": "R3",
+      "canopyId": "R3"
+    },
+    "period": {
+      "date": "2026-06-21",
+      "startTime": "15:00",
+      "endTime": "16:00",
+      "intervalMinutes": 15,
+      "timeZone": "Asia/Shanghai"
+    },
+    "height": 1.5,
+    "constraints": {
+      "regionMovable": true,
+      "canopyMovable": false,
+      "minimumShade": 0.8
+    }
+  }
+}

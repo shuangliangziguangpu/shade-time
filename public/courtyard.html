@@ -14,10 +14,11 @@
 <body class="courtyard-app">
   <header>
     <a class="brand" href="/courtyard"><span class="mark">荫</span><span>荫时 <small>ShadeTime</small></span></a>
-    <nav><a href="/">盒G独立验证 ↗</a><span class="stage">PHASE 1.5 <b>AI决策 · Batch 1C</b></span></nav>
+    <nav><a href="/">盒G独立验证 ↗</a><span class="stage">PHASE 1.5 <b>交付冻结 · Batch 1D</b></span></nav>
   </header>
   <main>
     <div class="intro"><p class="eyebrow">24 × 18米 · 一个庭院，一次空间实验</p><h1>同一处布置，看见不同高度的遮阴。</h1><p>选择活动区域与棚的位置，比较地面和离地1.5米的采样结果。</p></div>
+    <section class="scene-files" aria-label="本地场景保存与恢复"><div class="scene-file-actions"><button id="save-scene" type="button" disabled>保存已确认场景 JSON</button><label for="import-scene">导入场景 JSON</label><input id="import-scene" type="file" accept=".json,application/json"></div><p id="scene-file-status" role="status">只保存当前已确认布局和任务参数；导入后重新计算，不保存AI会话或历史指标。</p></section>
     <section class="ai-assistant" aria-label="AI空间助手">
       <div class="ai-heading"><h2>AI空间助手</h2><span>DeepSeek · deepseek-flash · 服务端重算</span></div>
       <label for="ai-input">描述活动需求，或提出当前证据问题</label>

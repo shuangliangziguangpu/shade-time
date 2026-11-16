@@ -15,6 +15,7 @@ import { createVisualScene } from './view/visual-scene.js';
 import { createRenderPipeline, verifyProxyRendering } from './view/render-pipeline.js';
 import { createCameraRig } from './view/camera-rig.js';
 import { createAiPanel } from './view/ai-panel.js';
+import { serializeSceneFile, parseSceneFile, SCENE_FILE_LIMIT } from './domain/scene-file.js';
 
 const $ = id => document.getElementById(id);
 let selection = { regionId: 'R3', canopyId: 'R3' };
@@ -219,7 +220,7 @@ function start() {
     device:device(),sun:analysis?{direction:analysis.sun.direction.toArray(),lightToSun:pipeline.sunlight.position.clone().sub(pipeline.frame.center).normalize().toArray(),propagation:pipeline.sunlight.target.position.clone().sub(pipeline.sunlight.position).normalize().toArray()}:null,camera:{position:rig.camera.position.toArray(),target:rig.controls.target.toArray(),aspect:rig.camera.aspect},frame:pipeline.lastFrame,resources:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,programs:renderer.info.programs.length},
     staticGroupId:model.staticGroup.uuid,bindings:bindingRows,proxyCheck,performance:performanceResult,
     loading:{proceduralTextureMs,firstRenderReturnedMs,navigation:performance.getEntriesByType('navigation').map(entry=>({duration:entry.duration,domContentLoaded:entry.domContentLoadedEventEnd})),resources:performance.getEntriesByType('resource').filter(entry=>new URL(entry.name).origin===location.origin).map(entry=>({name:new URL(entry.name).pathname,duration:entry.duration,transferSize:entry.transferSize,decodedBodySize:entry.decodedBodySize}))}}; }
-  function publish() {aiPanel?.contextChanged();$('render-diagnostics').textContent=JSON.stringify(diagnostics(),null,2);}
+  function publish() {aiPanel?.contextChanged();$('save-scene').disabled=!periodAnalysis||!session.snapshot().analysisId;$('render-diagnostics').textContent=JSON.stringify(diagnostics(),null,2);}
   $('proxy-check').addEventListener('click',()=>{
     const runs=analysisRuns;
     if(analysis?.status!=='valid'){proxyCheck={status:'NOT_RUN',reason:'requires-valid-sun'};$('proxy-result').textContent='NOT RUN · 请选太阳高度至少5°的有效时刻';publish();return;}
@@ -267,6 +268,34 @@ function start() {
     apply(candidateId,verified){if(preview?.candidateId!==candidateId)throw new Error('AI预览已失效');applyVisiblePreview(verified);},
     restore(candidateId){if(preview?.candidateId===candidateId){preview=null;shown='A';updateComparisonPanel();showSelectedSample();}},
     focus(facts){if(!selectedEvidence||selectedEvidence.ground.evidenceId!==facts.ground.evidenceId||selectedEvidence.elevated.evidenceId!==facts.elevated.evidenceId)throw new Error('证据已过期');dualEvidenceView.update(selectedEvidence);viewport.scrollIntoView({block:'center',behavior:'smooth'});},
+  });
+  $('save-scene').addEventListener('click',()=>{
+    try{
+      if(!periodAnalysis||!session.snapshot().analysisId)throw new Error('请先修正并确认有效任务参数');
+      const confirmed=session.snapshot(),text=serializeSceneFile(confirmed);
+      const url=URL.createObjectURL(new Blob([text],{type:'application/json'})),link=document.createElement('a');
+      link.href=url;link.download=`ShadeTime-${confirmed.period.date}-${confirmed.selection.regionId}-${confirmed.selection.canopyId}.json`;
+      document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      $('scene-file-status').textContent=`已下载A已确认场景：区域${confirmed.selection.regionId} / 棚${confirmed.selection.canopyId}；预览、历史指标及AI令牌未保存。`;
+    }catch(error){$('scene-file-status').textContent=`保存失败：${error.message}`;}
+  });
+  $('import-scene').addEventListener('change',async()=>{
+    const file=$('import-scene').files?.[0];if(!file)return;
+    $('import-scene').disabled=true;
+    try{
+      if(file.size>SCENE_FILE_LIMIT)throw new Error('场景JSON文件不能超过16KiB');
+      const task=parseSceneFile(await file.text()),started=performance.now();
+      // Compute before committing: invalid files never alter the current session.
+      const recomputed=analyzePeriod(task.selection,task.period);
+      aiPanel.reset();session.invalidate();session.update(task);session.acceptAnalysis(recomputed);
+      selection=session.snapshot().selection;referenceHeight=task.height;periodAnalysis=recomputed;selectedSampleIndex=0;analysisRuns++;periodDurationMs=performance.now()-started;
+      const mode=task.constraints.regionMovable?(task.constraints.canopyMovable?'both':'region'):(task.constraints.canopyMovable?'canopy':'none');
+      for(const [id,value] of [['region-id',selection.regionId],['canopy-id',selection.canopyId],['date',task.period.date],['start-time',task.period.startTime],['end-time',task.period.endTime],['sample-interval',task.period.intervalMinutes],['movement-mode',mode],['minimum-target',task.constraints.minimumShade*100]])$(id).value=String(value);
+      $('layout-message').classList.remove('error');$('layout-message').textContent=`区域 ${selection.regionId} / 棚 ${selection.canopyId} · 文件恢复后已重新验证`;
+      clearComparison();showSelectedSample();
+      $('scene-file-status').textContent='场景已恢复并重新计算；旧分析、候选、点证据和AI会话已清除，AI需求须重新解析确认。';
+    }catch(error){$('scene-file-status').textContent=`导入失败：${error.message}`;}
+    finally{$('import-scene').value='';$('import-scene').disabled=false;}
   });
   $('court-loading').hidden=true;
   $('runtime-status').textContent='时段实验已就绪 · 含结束时刻 / 双高度100点';

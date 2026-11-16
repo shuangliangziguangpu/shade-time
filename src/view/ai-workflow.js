@@ -89,5 +89,6 @@ export function createAiWorkflow({getContext,send=sendAiRequest,onState=()=>{},a
   function focusEvidence(){if(value.explanation)focus(value.explanation.facts);}
   return Object.freeze({state,parse,confirmDraft,recommend,preview:showPreview,apply:confirmApplication,reject,explain,focusEvidence,
     contextChanged:()=>invalidate(),intentChanged:()=>invalidate(true),hasAiPreview:()=>Boolean(localCandidateId),
+    reset(){invalidate(true);sessionId=serverContext=serverFingerprint=approvedKey=appliedBusiness=null;value={status:'IDLE',busy:false,approved:false,draft:null,proposal:null,explanation:null,application:null,requestId:null};used=false;lastFingerprint=fingerprint(getContext());emit();},
     cancel(){used=true;invalidate(true);value.status='AI_CANCELLED';emit();}});
 }

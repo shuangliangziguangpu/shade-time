@@ -11,6 +11,7 @@ const files = new Map([
   ['/src/view/ai-panel.js', ['../src/view/ai-panel.js', 'text/javascript; charset=utf-8']],
   ['/src/view/ai-workflow.js', ['../src/view/ai-workflow.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/scene-config.js', ['../src/domain/scene-config.js', 'text/javascript; charset=utf-8']],
+  ['/src/domain/scene-file.js', ['../src/domain/scene-file.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/scene.js', ['../src/domain/scene.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/clearance.js', ['../src/domain/clearance.js', 'text/javascript; charset=utf-8']],
   ['/src/domain/layout.js', ['../src/domain/layout.js', 'text/javascript; charset=utf-8']],

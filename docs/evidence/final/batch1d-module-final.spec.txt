@@ -1,0 +1,27 @@
+✔ B1C frontend draft never mutates scene; only explicit draft and proposal confirmations invoke bridges (5.0072ms)
+✔ B1C rejecting an AI preview restores A and never applies it (0.686ms)
+✔ B1C an applied layout acknowledgement survives a later observation-only refresh (1.4013ms)
+✔ B1C changing analysis invalidates old AI results and blocks confirmation (0.4642ms)
+✔ B1C AI timeout leaves manual bridges untouched and reports its actual failure status (0.5395ms)
+✔ B1C late AI response after a local context change is discarded even when transport ignores abort (0.5073ms)
+✔ B1C expired server sessions can be recreated only through a fresh request, never reused for application (0.5275ms)
+✔ P1 courtyard page and complete shared ESM import graph are served without exposing private files (149.8004ms)
+✔ B1D export includes only confirmed task inputs and explicit supported versions, never cached facts or credentials (25.6515ms)
+✔ B1D save and reopen in a new decision session reproduces both true period results (16.2412ms)
+✔ B1D tampered cached rates, ranking, rays and capabilities are rejected at every schema boundary (52.2847ms)
+✔ B1D old or unknown schema, geometry, algorithm and sampling versions require an explicit unsupported-version error (18.8411ms)
+✔ B1D corrupted JSON, oversized files, missing fields and foreign project files are safely rejected (7.939ms)
+✔ B1D unknown IDs, corridor regions, arbitrary coordinates and illegal task settings cannot be restored (30.2904ms)
+✔ B1D invalid dates, crossing midnight, timezone and steps cannot bypass the frozen period rules (21.2505ms)
+✔ B1D legal night tasks and the ground reference restore as N/A, never fabricated normal rates (4.7919ms)
+✔ B1D export validates its canonical input and parsing creates an independent, normalized task (8.8054ms)
+✔ B1D reset forgets all AI draft/session capabilities even when task inputs remain identical (31.1001ms)
+✔ B1D import reset discards late AI replies even if transport ignores cancellation (4.1886ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 548.9714
