@@ -64,6 +64,15 @@ function start() {
   function invalidateVerification() {proxyCheck=null;$('proxy-result').textContent='当前布局、时刻或视角尚未执行WebGL对照';}
   function clearComparison(){comparison=null;comparisonRequest=null;preview=null;shown='A';candidateDurationMs=null;renderCandidatePanel(null,null,referenceHeight);}
   const visiblePeriod=()=>shown==='B'&&preview?preview.result:periodAnalysis;
+  function updateLayoutDisplay(scene,available=true){
+    const displayedSelection=scene.selection;
+    $('view-layout-status').textContent=`${shown==='B'?'B 预览，未应用':'A 已确认'} · 区域${displayedSelection.regionId} / 棚${displayedSelection.canopyId}`;
+    const bounds=scene.target.footprint;
+    const corners=[[bounds.minX,.012,bounds.minZ],[bounds.maxX,.012,bounds.minZ],[bounds.maxX,.012,bounds.maxZ],[bounds.minX,.012,bounds.maxZ]];
+    corners.forEach((point,index)=>activeRegionGeometry.attributes.position.setXYZ(index,...point));
+    activeRegionGeometry.attributes.position.needsUpdate=true;activeRegion.material.color.setHex(shown==='B'?0xbe8b38:0x3f897f);
+    activeRegion.visible=available;
+  }
   function clearPointEvidence(){session.observe();selectedEvidence=null;dualEvidenceView.update(null);$('evidence-point').value='';$('dual-evidence-status').textContent='上下文已变化，请重新选择有效采样点。';$('ground-evidence').textContent=$('elevated-evidence').textContent='—';}
 
   function failure(message) {
@@ -106,15 +115,10 @@ function start() {
     clearPointEvidence();
     invalidatePerformance();invalidateVerification();
     analysis=visiblePeriod()?.samples[selectedSampleIndex]?.analysis??null;
-    const displayedSelection=visiblePeriod()?.selection??selection;
-    $('view-layout-status').textContent=`${shown==='B'?'B 预览，未应用':'A 已确认'} · 区域${displayedSelection.regionId} / 棚${displayedSelection.canopyId}`;
+    updateLayoutDisplay(analysis?.scene??inspectLayout(selection).scene,Boolean(analysis));
     $('evidence-point').disabled=analysis?.status!=='valid';
     if(!analysis){drawAnalysis();failure('没有可用的采样时刻');publish();return;}
     const modelUpdate=model.update(analysis.scene);bindingRows=modelUpdate.bindings;
-    const bounds=analysis.scene.target.footprint;
-    const corners=[[bounds.minX,.012,bounds.minZ],[bounds.maxX,.012,bounds.minZ],[bounds.maxX,.012,bounds.maxZ],[bounds.minX,.012,bounds.maxZ]];
-    corners.forEach((point,index)=>activeRegionGeometry.attributes.position.setXYZ(index,...point));
-    activeRegionGeometry.attributes.position.needsUpdate=true;activeRegion.material.color.setHex(shown==='B'?0xbe8b38:0x3f897f);
     if(modelUpdate.moved)pipeline.markShadowDirty();
     pipeline.applySun(analysis.sun);sunArrow.setDirection(analysis.sun.direction);
     $('altitude').textContent=`${(analysis.sun.altitude/DEG).toFixed(1)}°`;
@@ -138,7 +142,7 @@ function start() {
       selectedSampleIndex=Math.max(0,periodAnalysis.samples.findIndex(sample=>sample.clock===previousClock));
       analysisRuns++;
       showSelectedSample();
-    } catch(error) { session.invalidate();clearPointEvidence();$('evidence-point').disabled=true;analysis=null;periodAnalysis=null;renderPeriodPanel(null,referenceHeight,0);model.update(inspectLayout(selection).scene);pipeline.sunlight.intensity=0;pipeline.markShadowDirty();$('altitude').textContent='—';$('azimuth').textContent='—';failure(error.message); }
+    } catch(error) { session.invalidate();clearPointEvidence();$('evidence-point').disabled=true;analysis=null;periodAnalysis=null;renderPeriodPanel(null,referenceHeight,0);const confirmedScene=inspectLayout(selection).scene;model.update(confirmedScene);updateLayoutDisplay(confirmedScene,false);pipeline.sunlight.intensity=0;pipeline.markShadowDirty();$('altitude').textContent='—';$('azimuth').textContent='—';failure(error.message); }
     finally { publish(); }
   }
   function changePlacement() {
@@ -156,7 +160,7 @@ function start() {
       publish();
     }
   }
-  function setView(name) { invalidatePerformance();invalidateVerification();rig.view(name,model.scene); $('view-status').textContent={overview:'庭院整体',facade:'B1立面近景',paving:'铺装近景',canopy:'TD004棚体近景',top:'北上俯视'}[name]; publish(); }
+  function setView(name) { invalidatePerformance();invalidateVerification();clearPointEvidence();rig.view(name,model.scene); $('view-status').textContent={overview:'庭院整体',facade:'B1立面近景',paving:'铺装近景',canopy:'TD004棚体近景',top:'北上俯视'}[name]; publish(); }
   for(const [id,name] of [['reset-view','overview'],['top-view','top'],['facade-view','facade'],['paving-view','paving'],['canopy-view','canopy']]) $(id).addEventListener('click',()=>setView(name));
   for(const id of ['region-id','canopy-id']) $(id).addEventListener('change',changePlacement);
   for(const id of ['date','start-time','end-time','sample-interval']) $(id).addEventListener('change',refresh);
@@ -167,7 +171,7 @@ function start() {
   $('height-person').addEventListener('click',()=>changeHeight(1.5));
   function readConstraints(){const mode=$('movement-mode').value;const text=$('minimum-target').value;if(!['region','canopy','both'].includes(mode)||!text.trim())throw new RangeError('请选择已支持的移动权限并输入0–100%的最低目标');return normalizeConstraints({regionMovable:mode!=='canopy',canopyMovable:mode!=='region',minimumShade:Number(text)/100});}
   function updateComparisonPanel(){renderCandidatePanel(comparison,preview,referenceHeight,shown,candidateDurationMs);}
-  for(const id of ['movement-mode','minimum-target'])$(id).addEventListener('change',()=>{clearComparison();try{session.update({constraints:readConstraints()});if(periodAnalysis)session.acceptAnalysis(periodAnalysis);showSelectedSample();}catch(error){session.invalidate();showSelectedSample();$('candidate-status').textContent=error.message;publish();}});
+  for(const id of ['movement-mode','minimum-target'])$(id).addEventListener('change',()=>{clearComparison();try{const constraints=readConstraints();if(!periodAnalysis){refresh();return;}session.update({constraints});session.acceptAnalysis(periodAnalysis);showSelectedSample();}catch(error){session.invalidate();showSelectedSample();$('candidate-status').textContent=error.message;publish();}});
   $('compare-candidates').addEventListener('click',()=>{
     try{if(!periodAnalysis)throw new Error('先修正时段输入');session.update({constraints:readConstraints()});if(!session.snapshot().analysisId)session.acceptAnalysis(periodAnalysis);comparisonRequest=session.beginRequest('candidates');const started=performance.now();const computed=enumerateCandidates(selection,periodAnalysis.period,referenceHeight,session.snapshot().constraints);const registered=session.registerCandidates(comparisonRequest,computed);comparison={...computed,candidates:registered};candidateDurationMs=performance.now()-started;preview=null;shown='A';updateComparisonPanel();showSelectedSample();publish();}
     catch(error){clearComparison();$('candidate-status').textContent=error.message;publish();}
@@ -234,6 +238,7 @@ function start() {
   $('court-loading').hidden=true;
   $('runtime-status').textContent='时段实验已就绪 · 含结束时刻 / 双高度100点';
   renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();$('runtime-status').textContent='WebGL上下文丢失，请刷新';});
+  rig.controls.addEventListener('change',()=>{if(selectedEvidence){clearPointEvidence();publish();}else session.observe();});
   renderer.setAnimationLoop(timestamp=>{
     latestTimestamp=timestamp;rig.update();const frame=pipeline.render(rig.camera);
     if(firstRenderReturnedMs===null)firstRenderReturnedMs=performance.now();

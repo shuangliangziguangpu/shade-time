@@ -44,9 +44,9 @@
         <div class="comparison"><span>地面 <b id="ground-rate">—</b></span><span>离地1.5米 <b id="raised-rate">—</b></span></div>
         <p id="evidence" class="evidence" aria-live="polite">等待空间证据…</p>
         <p id="analysis-state" class="state" role="status" aria-live="polite"></p>
-        <div class="point-evidence-panel"><label for="evidence-point">选择有效网格中心（1–100）</label><select id="evidence-point"><option value="">选择一个点比较双高度</option></select><p id="dual-evidence-status" role="status">尚未选择采样点。</p><dl class="dual-evidence"><dt>蓝线 · 地面0米</dt><dd id="ground-evidence">—</dd><dt>金线 · 离地1.5米</dt><dd id="elevated-evidence">—</dd></dl><p class="hint">两线只代表同一水平采样点的遮挡见证，不代表整个区域；叠加线不参与分析。</p></div>
         <div class="period-metrics"><div><span>时段平均采样遮阴率</span><strong id="period-average">—</strong></div><div><span>采样时刻最低遮阴率</span><strong id="period-minimum">—</strong></div></div>
         <p class="hint">最低值对应时刻：<b id="minimum-time">—</b></p>
+        <div class="point-evidence-panel"><label for="evidence-point">选择有效网格中心（1–100）</label><select id="evidence-point"><option value="">选择一个点比较双高度</option></select><p id="dual-evidence-status" role="status">尚未选择采样点。</p><dl class="dual-evidence"><dt>蓝线 · 地面0米</dt><dd id="ground-evidence">—</dd><dt>金线 · 离地1.5米</dt><dd id="elevated-evidence">—</dd></dl><p class="hint">两线只代表同一水平采样点的遮挡见证，不代表整个区域；叠加线不参与分析。</p></div>
         <details class="render-validation"><summary>渲染验证与性能</summary><label for="tone-mapping">相同曝光的色调映射对照</label><select id="tone-mapping"><option value="aces">ACES Filmic</option><option value="none">No Tone Mapping</option></select><button id="proxy-check" type="button">验证阴影代理</button><p id="proxy-result" role="status">尚未执行WebGL代理验证</p><script id="render-diagnostics" type="application/json"></script></details>
       </aside>
     </div>

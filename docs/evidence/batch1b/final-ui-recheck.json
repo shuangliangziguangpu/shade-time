@@ -1,0 +1,130 @@
+{
+  "capturedAt": "2026-11-16T08:10:02.748Z",
+  "checks": [
+    {
+      "applyDisabled": true,
+      "average": "N/A",
+      "check": "invalid-period-clears-B",
+      "label": "A 已确认 · 区域R3 / 棚R3",
+      "period": null,
+      "selection": {
+        "canopyId": "R3",
+        "regionId": "R3"
+      },
+      "shown": "A",
+      "shownSelection": null
+    },
+    {
+      "average": "N/A",
+      "check": "constraints-recovery-analyzes-current-date",
+      "minimum": "N/A",
+      "stateDate": "2026-06-21"
+    },
+    {
+      "average": "N/A",
+      "check": "constraints-recovery-after-full-reload",
+      "date": "2026-06-22",
+      "error": "移动权限须为布尔值，最低目标须为0–100%",
+      "stateDate": "2026-06-21",
+      "value": "80"
+    },
+    {
+      "average": "76.25%",
+      "check": "constraints-recovery-real-keyboard-change",
+      "error": "",
+      "formDate": "2026-06-23",
+      "periodDate": "2026-06-23",
+      "stateDate": "2026-06-23",
+      "value": "80"
+    },
+    {
+      "check": "paired-evidence-before-camera-change",
+      "elevatedText": "未命中实体，模型内直射。证据 analysis-10-7:28:0:55:elevated",
+      "evidence": {
+        "contextKey": "[10,7,\"analysis-10-7\",28,\"R1\",\"R3\",\"[\\\"2026-06-21\\\",\\\"14:00\\\",\\\"14:15\\\",15,\\\"Asia/Shanghai\\\",15,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T06:00:00.000Z\"]",
+        "elevated": {
+          "blockerId": null,
+          "direction": [
+            -0.4743133985769012,
+            0.8609476908050664,
+            0.1838365405131785
+          ],
+          "evidenceId": "analysis-10-7:28:0:55:elevated",
+          "hit": null,
+          "origin": [
+            -4.9,
+            1.5,
+            -1.9
+          ],
+          "status": "direct"
+        },
+        "ground": {
+          "blockerId": "B1",
+          "direction": [
+            -0.4743133985769012,
+            0.8609476908050664,
+            0.1838365405131785
+          ],
+          "evidenceId": "analysis-10-7:28:0:55:ground",
+          "hit": [
+            -8,
+            5.62695013361084,
+            -0.698487925281631
+          ],
+          "origin": [
+            -4.9,
+            0,
+            -1.9
+          ],
+          "status": "blocked"
+        },
+        "pointIndex": 55,
+        "pointNumber": 56,
+        "sampleIndex": 0,
+        "selection": {
+          "canopyId": "R3",
+          "regionId": "R1"
+        },
+        "timestamp": "2026-06-21T06:00:00.000Z"
+      },
+      "groundText": "最近命中 B1，交点(-8.00, 5.63, -0.70)m。证据 analysis-10-7:28:0:55:ground",
+      "state": {
+        "algorithmVersion": "ray-box-period-v1",
+        "analysisId": "analysis-10-7",
+        "analysisVersion": 7,
+        "constraints": {
+          "canopyMovable": false,
+          "minimumShade": 0.8,
+          "regionMovable": true
+        },
+        "contextVersion": 28,
+        "height": 1.5,
+        "period": {
+          "date": "2026-06-21",
+          "durationMinutes": 15,
+          "endTime": "14:15",
+          "intervalMinutes": 15,
+          "startTime": "14:00",
+          "timeZone": "Asia/Shanghai"
+        },
+        "samplingVersion": "grid10-center-eps1e-4-v1",
+        "sceneGeometryVersion": "courtyard-v1",
+        "sceneVersion": 10,
+        "selection": {
+          "canopyId": "R3",
+          "regionId": "R1"
+        }
+      }
+    },
+    {
+      "analysisVersion": 7,
+      "check": "preset-invalidates-evidence-only",
+      "contextVersion": 30,
+      "sceneVersion": 10,
+      "selectedEvidence": null,
+      "view": "top"
+    }
+  ],
+  "note": "直接填值返回原值的两次恢复检查未触发原生change；保留原始观察，真实键盘提交后恢复成功。",
+  "logs": []
+}
