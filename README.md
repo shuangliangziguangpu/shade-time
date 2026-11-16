@@ -4,7 +4,23 @@
 
 目前完成**阶段0、阶段1及Phase 1.5 Batch 1A/1B/1C/1D**：完整庭院与双高度时段分析、真实DeepSeek三链决策、A/B确认及本地JSON保存/导入。原盒G独立验证页保留。当前130项测试通过（原119项完整保留＋保存恢复新增11项）；保存恢复和三条真实AI链已在本机Edge自动化验收。前台人工验收尚未执行。
 
-撤销、完整竞赛材料、B2精细立面和树木未实现。本轮之后原则上转入材料与缺陷修复，不再增加产品功能。本批未新增遮挡物。当前改动只在本地功能分支，未经批准不推送、不合并main。AI失败或回复不合规时会拒绝并保留手动分析，不能保证每次模型调用成功。
+撤销、完整竞赛材料、B2精细立面和树木未实现。产品范围已冻结，后续转入材料与缺陷修复。本轮发布仅使用下方Phase 1.5候选分支，main保留阶段0基线。AI失败或回复不合规时会拒绝并保留手动分析，不能保证每次模型调用成功。公开代码候选不等于人工验收或赛事提交通过。
+
+公开候选入口：[feature/phase1.5-batch1d-release](https://github.com/shuangliangziguangpu/shade-time/tree/feature/phase1.5-batch1d-release)。请显式选择此分支，不使用main复现完整产品。发布实测记录见[Release Readiness Report](docs/reports/final/ShadeTime-Phase1.5-Release-Readiness.md)。
+
+## 从公开候选复现（目标10分钟以内）
+
+准备Node.js 24.x和npm；实际安装耗时取决于网络，不承诺所有设备10分钟。无密钥也能运行完整手动实验、保存恢复与离线自动化测试。
+
+```powershell
+git clone --branch feature/phase1.5-batch1d-release --single-branch https://github.com/shuangliangziguangpu/shade-time.git shade-time
+Set-Location -LiteralPath './shade-time'
+npm ci --ignore-scripts
+node --test --test-reporter=spec
+node server/index.js
+```
+
+打开 http://127.0.0.1:3000/courtyard 。缺密钥时AI明确不可用；三条真实AI链的既有脱敏证据见docs/evidence/batch1c及final，不把Mock测试冒充真实调用。如3000已被占用，使用`$env:PORT='43115'`再启动并打开对应端口；不要开启第二个3000实例。完整参数、人工清单和已知边界见[复现说明](docs/reports/final/REPRODUCE.md)。
 
 ## 本地运行当前样板
 
@@ -21,7 +37,7 @@ node --env-file-if-exists=.env server/index.js
 
 庭院入口：http://127.0.0.1:3000/courtyard 。独立盒G入口：http://127.0.0.1:3000/ 。若3000已有本项目服务，直接打开网页，不再启动第二个实例。
 
-在包含当前样板提交的干净源代码目录中，先执行 `npm ci --ignore-scripts`，再运行测试和服务，无构建步骤。本地main及origin/main引用仍为阶段0基线；远程克隆不能获得尚未推送的阶段1/1.5本地分支。上述D盘工作目录已有锁定依赖，本轮未安装额外依赖。
+在包含当前候选提交的干净源代码目录中，先执行 `npm ci --ignore-scripts`，再运行测试和服务，无构建步骤。main仍为阶段0基线；完整候选必须通过上方指定分支克隆。发布前本地及独立Git归档均重新安装了锁定的两个依赖，没有新增应用依赖。
 
 若环境只有node而没有npm，可使用完整Node发行环境的npm，或通过 `node <npm安装目录>/bin/npm-cli.js ci --ignore-scripts` 调用官方npm CLI。阶段0曾使用校验过的临时npm 11.6.2；临时路径不属于项目依赖。
 
@@ -87,6 +103,8 @@ node --env-file-if-exists=.env scripts/check-ai.js
 - `src/domain/scene-file.js`：版本化场景JSON白名单；`test/scene-file.test.js`：保存、恶意输入及AI重置回归。
 - `docs/evidence/final/README.md`与manifest：按真实API/Mock/确定性/自动化/人工分类的最终证据索引；原批次证据不改写。
 - `docs/reports/final/`：Batch 1D验收、前台人工清单、完整复现步骤、7:20视频分镜与录制清单。人工验收与正式录像均NOT RUN。
+- `docs/evidence/release-publication/`：发布前全历史安全审计、重新安装回归、独立公开克隆的实际记录；旧批次原始证据保留。
+- `THIRD_PARTY_NOTICES.md`：Three.js/SunCalc版权许可与程序化资产来源说明。
 
 自动化测试不调用真实供应商。`node --env-file-if-exists=.env scripts/check-ai-business.js <新的输出路径>`会发出真实业务请求。可选浏览器验收`node scripts/check-ai-browser.mjs <已有playwright-core/index.mjs绝对路径> <新的输出JSON路径>`使用本机Edge，无浏览器下载；测试工具不属于应用依赖。实际验收使用外置playwright-core 1.65.1。
 

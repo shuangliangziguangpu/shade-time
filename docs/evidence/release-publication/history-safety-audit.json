@@ -1,0 +1,88 @@
+{
+  "capturedAt": "2026-11-16T14:49:54.354Z",
+  "candidate": "35dbde35f2bf5265dbc8f126bad02f2694630d26",
+  "scannedRefs": "all local refs, all reachable historical blob objects",
+  "commits": 30,
+  "objects": 580,
+  "textBlobs": 302,
+  "commitObjects": 30,
+  "images": 50,
+  "otherBinaries": [],
+  "secretPatternFindings": [],
+  "literalCredentialReviews": [],
+  "sensitiveHistoricalPaths": [],
+  "privacyReviews": [],
+  "genericLocalPathReferences": [
+    {
+      "path": "docs/evidence/final/batch1d-clean-repro-before-install-complete.spec.txt",
+      "classification": "generic-admin"
+    }
+  ],
+  "externalHostnames": [
+    "127.0.0.1",
+    "api.deepseek.com",
+    "github.com",
+    "raw.githubusercontent.com",
+    "registry.npmjs.org",
+    "shadowmap.org",
+    "www.cancer.org.au",
+    "www.w3.org",
+    "untrusted.example (negative test only)"
+  ],
+  "branches": [
+    {
+      "branch": "feature/phase1-courtyard-scene",
+      "sha": "50893b8bdce79e683ee639d7dd45560673fad727",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "branch": "feature/phase1.5-batch1a-visual-foundation",
+      "sha": "003b7a38a69271dfab65bd82aef3bf2b47551011",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "branch": "feature/phase1.5-batch1b-decision",
+      "sha": "e891cd1a3ffaea5352de04e8b5f7daeeefb7e794",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "branch": "feature/phase1.5-batch1c-ai",
+      "sha": "5c40f63e30bc6c592bd51c619d14790955c3b18c",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "branch": "feature/phase1.5-batch1d-release",
+      "sha": "35dbde35f2bf5265dbc8f126bad02f2694630d26",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "branch": "main",
+      "sha": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+      "commitsNotInCandidate": 0
+    }
+  ],
+  "authorEmails": [
+    "340575534+shuangliangziguangpu@users.noreply.github.com"
+  ],
+  "envIgnored": true,
+  "note": "Scanner reads Git blobs only; never opens the working .env or prints matched values. Nonzero findings require contextual review before publication. Generic admin/project paths are development provenance, not private identities.",
+  "reviewedCredentialLiterals": [
+    {
+      "kind": "literal-credential-review",
+      "path": "test/ai-http.test.js",
+      "blob": "226706d8114eae98297714cf5dd1e6703262f38b",
+      "line": 20,
+      "length": 12,
+      "disposition": "PASS: fixed negative-test placeholder submitted to local HTTP field rejection, not an API credential"
+    }
+  ],
+  "localPathReview": {
+    "disposition": "PASS: one generic admin workspace path in historical npm execution provenance; project paths and public GitHub noreply identity are intentional engineering context, no personal name/contact/WeChat path found"
+  },
+  "imagesReviewed": {
+    "count": 50,
+    "method": "Visual contact sheets covering all historical image blobs; application-only content, no visible credentials/private desktop; no EXIF entries"
+  },
+  "status": "PASS",
+  "limitations": "Pattern, structural and visual review of reachable history; not a proof against every possible secret encoding. The working .env was not read."
+}

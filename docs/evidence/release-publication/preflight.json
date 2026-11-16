@@ -1,0 +1,54 @@
+{
+  "capturedAt": "2026-11-16T14:56:35.428Z",
+  "expectedHead": "35dbde35f2bf5265dbc8f126bad02f2694630d26",
+  "expectedMain": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "actualRemoteMain": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "remoteCandidateExisted": false,
+  "originalLocalAhead": 24,
+  "originalLocalBehind": 0,
+  "userEdit": {
+    "path": "docs/evidence/final/README.md",
+    "insertedLines": 39,
+    "exactExistingStoryboardCopy": true,
+    "explicitUserDisposition": "保留这段文字，并随发布文档提交",
+    "preserved": true
+  },
+  "networkAttempts": [
+    {
+      "command": "git fetch origin --prune",
+      "status": "FAIL",
+      "reason": "RPC connection reset"
+    },
+    {
+      "command": "git ls-remote --heads origin",
+      "status": "FAIL",
+      "reason": "Connection failure"
+    },
+    {
+      "command": "bounded HTTP/1.1 retry",
+      "status": "FAIL",
+      "reason": "Low-speed timeout"
+    },
+    {
+      "command": "per-command HTTP/1.1 + DNS returned 57.155.223.240; TLS verified",
+      "status": "PASS",
+      "operations": [
+        "ls-remote",
+        "fetch --prune"
+      ]
+    }
+  ],
+  "localInstall": {
+    "command": "node <existing official npm CLI> ci --ignore-scripts --no-fund --no-audit --registry=https://registry.npmjs.org",
+    "exitCode": 0,
+    "packages": 2
+  },
+  "archiveInstall": {
+    "gitRef": "35dbde35f2bf5265dbc8f126bad02f2694630d26",
+    "envCopied": false,
+    "developerModulesCopied": false,
+    "packages": 2,
+    "exitCode": 0
+  },
+  "note": "No global Git or system networking changes. Never disabled TLS certificate verification. Candidate publication remains pending."
+}

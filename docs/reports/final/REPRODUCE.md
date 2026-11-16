@@ -1,6 +1,20 @@
 # ShadeTime 冻结候选版本复现步骤
 
-适用：`feature/phase1.5-batch1d-release`，真实工程`D:\ShadeTime`。本轮没有推送GitHub，所以远程main克隆不能获得这些本地功能。实际最终SHA由验收报告关联的交付记录或`git rev-parse HEAD`确认。
+适用：`feature/phase1.5-batch1d-release`，原开发目录`D:\ShadeTime`。完整候选必须选择该分支；main仍保留阶段0。实际发布SHA和独立克隆结果见ShadeTime-Phase1.5-Release-Readiness.md，所有SHA以实际`git rev-parse HEAD`核对。
+
+## 0. 公开分支快速复现（目标10分钟以内）
+
+前置准备Node.js 24.x及npm，联网安装两个锁定依赖。以下命令不加载任何.env、不调用真实AI；没有密钥仍可验收三维/手动分析与JSON保存恢复。时间依赖下载与机器，目标不是跨设备保证。
+
+```powershell
+git clone --branch feature/phase1.5-batch1d-release --single-branch https://github.com/shuangliangziguangpu/shade-time.git shade-time
+Set-Location -LiteralPath './shade-time'
+npm ci --ignore-scripts
+node --test --test-reporter=spec
+node server/index.js
+```
+
+打开http://127.0.0.1:3000/courtyard；先核对默认76.25%/60%，进行一次手动候选和保存刷新导入。3000占用时勿重复启动，另用进程环境变量PORT启动并打开对应端口。可读发布证据与实测耗时位于docs/evidence/release-publication。
 
 ## 1. 本机冷启动
 
@@ -62,3 +76,7 @@ R3区域/R3棚，2026-06-21，15:00–16:00，15分钟采样，1.5米。五个�
 - 人工验收：按Manual-Acceptance.md在真实前台操作并登记。目前用户明确尚未执行，不能引用自动化通过代填。
 
 不要用新运行覆盖原Batch1A/1B/1C或本轮原始证据；使用新的输出路径。录制正式视频之前需完成人工验收，再按Demo-Storyboard-and-Recording.md执行。
+
+## 6. 历史记录与发布状态
+
+原Batch1A/1B/1C/1D报告描述当次尚未推送的状态，保留作为历史事实；当前发布结果以Release Readiness Report为准。final/manifest.json是35dbde3归档时的快照，证据索引README后来经负责人授权保留了分镜文字；核查旧manifest应对照其记录时的提交，不改写旧哈希。新增发布记录有单独索引，不以更新掩盖历史失败。

@@ -138,3 +138,11 @@
 - 独立Git归档e691826、无.env，npm ci安装两个锁定依赖后130项PASS，3634.4896ms。曾误在安装仍运行时启动测试，缺包导致当次41项中22 PASS/19 FAIL；完整原始输出保留为before-install-complete，再在安装完成后执行最终成功复现，不删失败。
 - final目录按LIVE_API/MOCK/DETERMINISTIC/AUTOMATED_BROWSER/HUMAN_STATUS/DERIVED_INDEX分类，保留原1A/1B/1C不变，生成三链输入/响应/请求ID与确认/应用摘录及SHA256索引。索引明确来自既有录制数据，不冒充新API或真人确认。
 - 当前Batch1D页面再次执行原三链真实API七场景全部PASS，保存六场景PASS，人工依旧NOT RUN。最终全套130 PASS、0 FAIL/SKIP/CANCELLED，3421.7377ms；62个冻结文件和原历史证据无变化。最后给新浏览器验收器增加已有输出拒绝，实测退出1且旧JSON哈希不变，未再调用API。
+
+## 2026-11-16 Phase 1.5 公开候选发布审计
+
+- 用户正式授权只推送Batch1D候选分支、保留历史和main。实查HEAD35dbde3，发现证据README有39行已存在分镜的完整副本插入；其余文件未改。先保留现场，负责人明确回复“保留这段文字，并随发布文档提交”，没有清理或覆盖。
+- 首轮GitHub fetch RPC连接重置，ls-remote连接失败，限时重试也遇低速超时；只读GitHub API确认仓库公开且main7bf34be。随后使用DNS实际返回的地址、命令级HTTP/1.1重试，fetch/ls-remote成功，确认远程仅main、候选同名分支不存在。没有关闭TLS或改全局配置。旧命令曾因当前Git仅支持schannel而拒绝openssl，改回支持的默认后成功，不将此当应用缺陷。
+- 完整30提交/580历史对象审计，302文本blob和50图片，没有真实密钥/私人联系方式或敏感历史路径。一个API-key形字段字符串为固定负向测试占位，人工核对后通过。所有历史截图为应用画面，无EXIF；泛化admin工作路径只在一份历史安装记录中。工作.env未读、未改，仍忽略。
+- 确认各开发分支均已包含在候选；main与候选原差异为0落后/24领先。补充依赖版权许可及公开分支复现命令，不改应用代码、核心或测试。
+- 本地npm ci重新安装两个锁定包，130 PASS、0 FAIL/SKIP/CANCELLED，1609.7085ms；35dbde3独立Git归档无.env/开发node_modules，npm ci后130 PASS、0 FAIL/SKIP/CANCELLED，1754.1813ms。公开推送、公开克隆及无密钥浏览器实测随后执行，未在本行提前宣称完成。
