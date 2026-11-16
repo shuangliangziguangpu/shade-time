@@ -1,0 +1,10 @@
+{
+  "kind": "EVIDENCE_PRESERVATION_CHECK",
+  "status": "PASS",
+  "expectedExitCode": 1,
+  "actualExitCode": 1,
+  "unchangedSha256": "a37f8b76da9afc92fbd04e65705a50c8ae428416489dc0fa68bea607a7982774",
+  "output": "docs/evidence/final/batch1d-browser-initial.json",
+  "providerCalls": 0,
+  "note": "Runner refused existing output before launching a browser or sending a model request."
+}

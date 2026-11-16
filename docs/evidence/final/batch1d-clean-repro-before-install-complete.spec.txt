@@ -1,0 +1,488 @@
+✔ B1C missing dedicated key blocks the real request before transport (3.9832ms)
+✔ B1C business client uses only configured endpoint/model and parses strict JSON (MOCK transport) (47.6475ms)
+✔ B1C unavailable model and authentication failures do not fall back or expose bodies (MOCK) (0.9956ms)
+✔ B1C empty/malformed/object-free/secret-bearing content is rejected safely (MOCK) (4.4127ms)
+✔ B1C timeout and external cancellation abort network work with safe statuses (MOCK) (14.2386ms)
+✔ AI diagnostic without dedicated key is BLOCKED and sends zero requests (1.4819ms)
+✔ AI diagnostic checks configured model before sending a completion (MOCK transport) (45.4416ms)
+✔ AI diagnostic rejects unavailable model without substituting another (MOCK) (0.6492ms)
+✔ AI diagnostic handles HTTP authentication failure without exposing body (MOCK) (0.6851ms)
+✔ AI diagnostic rejects empty, invalid JSON and unknown fields (MOCK) (3.7788ms)
+✔ AI diagnostic aborts; production timeout is 20 seconds (MOCK uses 20ms) (23.1844ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\ai-http.test.js (614.4594ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\ai-service.test.js (587.9313ms)
+✔ B1C frontend draft never mutates scene; only explicit draft and proposal confirmations invoke bridges (4.5481ms)
+✔ B1C rejecting an AI preview restores A and never applies it (0.8607ms)
+✔ B1C an applied layout acknowledgement survives a later observation-only refresh (0.8092ms)
+✔ B1C changing analysis invalidates old AI results and blocks confirmation (0.3553ms)
+✔ B1C AI timeout leaves manual bridges untouched and reports its actual failure status (0.5428ms)
+✔ B1C late AI response after a local context change is discarded even when transport ignores abort (0.6626ms)
+✔ B1C expired server sessions can be recreated only through a fresh request, never reused for application (0.7885ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\analysis.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\analysis.test.js (534.3133ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\candidates.test.js (509.4937ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\courtyard-http.test.js (483.0646ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\courtyard-model.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\courtyard-model.test.js (455.121ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\decision-session.test.js (428.0718ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\geometry.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\geometry.test.js (401.0156ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\scene.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\layout.test.js (373.3221ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\period-panel.test.js (345.1781ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\period.test.js (314.9378ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\point-evidence.test.js (277.9569ms)
+✔ P1 configuration freezes the documented courtyard, buildings and corridor (3.4141ms)
+✔ P1 six region IDs and four canopy IDs have the exact frozen coordinates (0.3889ms)
+✔ P1 only declared IDs can form a selection; coordinates and extra fields are rejected (0.987ms)
+✔ P1 configuration cannot be mutated and entity IDs are globally unique (0.3643ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\scene.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\scene-file.test.js (213.674ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\scene.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\scene.test.js (183.7313ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\server.test.js (223.2335ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\sun.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\sun.test.js (153.3034ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\visual-foundation.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\visual-foundation.test.js (144.1442ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\src\domain\analysis.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\visual-http.test.js (198.5997ms)
+node:internal/modules/esm/resolve:202
+  const resolvedOption = FSLegacyMainResolve(pkgPath, packageConfig.main, baseStringified);
+                         ^
+
+Error: Cannot find package 'C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\node_modules\three\index.js' imported from C:\Users\admin\Documents\Codex\2026-11-14\shadetime-gpt-6-astra-max-v1-2\work\phase1d-repro-e691826\test\visual-model.test.js
+    at legacyMainResolve (node:internal/modules/esm/resolve:202:26)
+    at packageResolve (node:internal/modules/esm/resolve:796:12)
+    at moduleResolve (node:internal/modules/esm/resolve:873:18)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.22.1
+✖ test\visual-model.test.js (149.6612ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 22
+ℹ fail 19
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 887.8949
+
+✖ failing tests:
+
+test at test\ai-http.test.js:1:1
+✖ test\ai-http.test.js (614.4594ms)
+  'test failed'
+
+test at test\ai-service.test.js:1:1
+✖ test\ai-service.test.js (587.9313ms)
+  'test failed'
+
+test at test\analysis.test.js:1:1
+✖ test\analysis.test.js (534.3133ms)
+  'test failed'
+
+test at test\candidates.test.js:1:1
+✖ test\candidates.test.js (509.4937ms)
+  'test failed'
+
+test at test\courtyard-http.test.js:1:1
+✖ test\courtyard-http.test.js (483.0646ms)
+  'test failed'
+
+test at test\courtyard-model.test.js:1:1
+✖ test\courtyard-model.test.js (455.121ms)
+  'test failed'
+
+test at test\decision-session.test.js:1:1
+✖ test\decision-session.test.js (428.0718ms)
+  'test failed'
+
+test at test\geometry.test.js:1:1
+✖ test\geometry.test.js (401.0156ms)
+  'test failed'
+
+test at test\layout.test.js:1:1
+✖ test\layout.test.js (373.3221ms)
+  'test failed'
+
+test at test\period-panel.test.js:1:1
+✖ test\period-panel.test.js (345.1781ms)
+  'test failed'
+
+test at test\period.test.js:1:1
+✖ test\period.test.js (314.9378ms)
+  'test failed'
+
+test at test\point-evidence.test.js:1:1
+✖ test\point-evidence.test.js (277.9569ms)
+  'test failed'
+
+test at test\scene-file.test.js:1:1
+✖ test\scene-file.test.js (213.674ms)
+  'test failed'
+
+test at test\scene.test.js:1:1
+✖ test\scene.test.js (183.7313ms)
+  'test failed'
+
+test at test\server.test.js:1:1
+✖ test\server.test.js (223.2335ms)
+  'test failed'
+
+test at test\sun.test.js:1:1
+✖ test\sun.test.js (153.3034ms)
+  'test failed'
+
+test at test\visual-foundation.test.js:1:1
+✖ test\visual-foundation.test.js (144.1442ms)
+  'test failed'
+
+test at test\visual-http.test.js:1:1
+✖ test\visual-http.test.js (198.5997ms)
+  'test failed'
+
+test at test\visual-model.test.js:1:1
+✖ test\visual-model.test.js (149.6612ms)
+  'test failed'

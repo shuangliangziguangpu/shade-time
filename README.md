@@ -2,9 +2,9 @@
 
 面向校园户外活动组织者的 AI 三维遮阴实验与布置决策实验室。
 
-目前完成**阶段0、阶段1及Phase 1.5 Batch 1A/1B/1C**：在完整24×18米庭院与可信双高度时段分析上，新增真实DeepSeek需求解析、草案确认、合法候选建议、A/B预览与服务端重算应用，以及双高度证据解释。原盒G独立验证页保留。当前119项测试通过（原93项＋Batch 1C新增26项）；三条真实AI链已在本机Edge实际验收。
+目前完成**阶段0、阶段1及Phase 1.5 Batch 1A/1B/1C/1D**：完整庭院与双高度时段分析、真实DeepSeek三链决策、A/B确认及本地JSON保存/导入。原盒G独立验证页保留。当前130项测试通过（原119项完整保留＋保存恢复新增11项）；保存恢复和三条真实AI链已在本机Edge自动化验收。前台人工验收尚未执行。
 
-保存撤销、完整竞赛材料、B2精细立面和树木仍待后续开发。本批未新增遮挡物。当前改动只在本地功能分支，未经批准不推送、不合并main。AI失败或回复不合规时会拒绝并保留手动分析，不能保证每次模型调用成功。
+撤销、完整竞赛材料、B2精细立面和树木未实现。本轮之后原则上转入材料与缺陷修复，不再增加产品功能。本批未新增遮挡物。当前改动只在本地功能分支，未经批准不推送、不合并main。AI失败或回复不合规时会拒绝并保留手动分析，不能保证每次模型调用成功。
 
 ## 本地运行当前样板
 
@@ -14,7 +14,7 @@
 
 ```powershell
 Set-Location -LiteralPath 'D:\ShadeTime'
-git switch feature/phase1.5-batch1c-ai
+git switch feature/phase1.5-batch1d-release
 node --test --test-reporter=spec
 node --env-file-if-exists=.env server/index.js
 ```
@@ -41,6 +41,8 @@ AI闭环：在顶部“AI空间助手”解析默认活动需求，核对日期/
 6. R1区域＋R3棚、2026-06-21 14:00–14:15，选P56：地面命中B1，1.5米未命中。切采样、布局、分析或相机后旧证据清空。单点不代表整个区域。
 7. 俯视为北上东右；可旋转、缩放、重置视角。相机只改变观察上下文，不改变数值分析版本。辅助对象不进入七个遮挡实体，阴影贴图不参与比例计算。
 8. 打开/的独立盒G页面，人工45°下仍为100%/30%，与业务庭院隔离。原太阳/射线和全部旧测试未改。
+
+页面顶部可“保存已确认场景 JSON”，即使正在看B预览也只下载正式A。文件含已确认布局/日期时段/间隔/高度/约束与格式版本，不含旧指标、射线或AI令牌。刷新或改布局后选择导入文件，严格校验并重新计算；旧版本、坏JSON、非法区域/时间或额外历史指标拒绝。导入完全相同的设置也清空旧AI草案/建议/会话，需重新解析确认。文件上限16KiB，不支持云同步、自动恢复或复杂历史。
 
 建筑样板可用“整体/立面/铺装/棚体/俯视”查看，或放大场景。实验辅助显示默认关闭；相机切换不调用业务分析。展开“渲染验证与性能”可对照ACES与NoToneMapping并执行实际WebGL代理A/B；画布下方按钮采样真实5秒RAF/render帧率。请保持独立Edge窗口前台，报告保留了低帧异常，不保证所有窗口条件稳定高帧。
 
@@ -82,6 +84,9 @@ node --env-file-if-exists=.env scripts/check-ai.js
 - `docs/reports/ShadeTime-Phase1.5-Batch1B-Acceptance.md`：本批验收；`docs/evidence/batch1b/`：93项spec/TAP、逐阶段RED/GREEN、浏览器/性能记录、终审失败与修复、最终截图和Node交叉复核。
 - `server/ai-client.js`、`ai-protocol.js`、`ai-service.js`、`ai-http.js`：固定供应商调用、严格协议、服务端权威会话与HTTP边界；`src/view/ai-workflow.js`、`ai-panel.js`接入真实交互。
 - `docs/reports/ShadeTime-Phase1.5-Batch1C-Acceptance.md`及`docs/evidence/batch1c/`：119项输出、真实API成功/失败、三链浏览器记录与截图、本轮完整指令转录。会话仅服务端内存，20分钟失效，重启需重新解析确认。
+- `src/domain/scene-file.js`：版本化场景JSON白名单；`test/scene-file.test.js`：保存、恶意输入及AI重置回归。
+- `docs/evidence/final/README.md`与manifest：按真实API/Mock/确定性/自动化/人工分类的最终证据索引；原批次证据不改写。
+- `docs/reports/final/`：Batch 1D验收、前台人工清单、完整复现步骤、7:20视频分镜与录制清单。人工验收与正式录像均NOT RUN。
 
 自动化测试不调用真实供应商。`node --env-file-if-exists=.env scripts/check-ai-business.js <新的输出路径>`会发出真实业务请求。可选浏览器验收`node scripts/check-ai-browser.mjs <已有playwright-core/index.mjs绝对路径> <新的输出JSON路径>`使用本机Edge，无浏览器下载；测试工具不属于应用依赖。实际验收使用外置playwright-core 1.65.1。
 

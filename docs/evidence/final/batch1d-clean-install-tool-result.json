@@ -1,0 +1,9 @@
+{
+  "kind": "CLEAN_REPRO_INSTALL_TOOL_RESULT",
+  "command": "node <external-npm-cli> ci --prefix <isolated-Git-archive> --registry=https://registry.npmjs.org --ignore-scripts --no-fund --no-audit",
+  "chunk_id": "8c8932",
+  "wall_time_seconds": 0.0000163,
+  "exit_code": 0,
+  "original_token_count": 7,
+  "output": "\nadded 2 packages in 26s\n"
+}

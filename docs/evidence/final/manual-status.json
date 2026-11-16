@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-11-16T10:04:50.383Z",
+  "kind": "HUMAN_ACCEPTANCE_STATUS",
+  "source": "Direct user reply in current chat",
+  "quote": "本轮暂未执行人工验收",
+  "status": "NOT RUN",
+  "steps": [
+    {
+      "step": 1,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 2,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 3,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 4,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 5,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 6,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 7,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 8,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 9,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 10,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 11,
+      "status": "NOT RUN"
+    },
+    {
+      "step": 12,
+      "status": "NOT RUN"
+    }
+  ],
+  "formalVideo": "NOT RUN, waits for human acceptance",
+  "notReplacedByAutomation": true
+}

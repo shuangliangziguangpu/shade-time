@@ -1,0 +1,427 @@
+{
+  "createdAt": "2026-11-16T10:13:42.839Z",
+  "kind": "DERIVED_EVIDENCE_INDEX_NOT_A_NEW_API_RUN",
+  "sources": [
+    {
+      "path": "docs/evidence/batch1c/browser-final.json",
+      "sha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24"
+    }
+  ],
+  "chains": {
+    "A": [
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/1",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/parse",
+        "requestId": "ai-1",
+        "status": "SUCCESS",
+        "input": "2026年6月21日15:00到16:00活动，每15分钟采样，棚保持R3不动，只移动活动区域，离地1.5米参考面，最低采样遮阴率至少80%。",
+        "modelText": {
+          "selection": {
+            "regionId": "R3",
+            "canopyId": "R3"
+          },
+          "date": "2026-06-21",
+          "startTime": "15:00",
+          "endTime": "16:00",
+          "timeZone": "Asia/Shanghai",
+          "intervalMinutes": 15,
+          "height": 1.5,
+          "movementMode": "region",
+          "minimumShade": 0.8,
+          "needsClarification": false,
+          "clarificationQuestions": [],
+          "summary": "解析指定日期的活动时段，沿用当前区域与棚位设置，采用给定的采样间隔、参考高度和最低遮阴要求。"
+        },
+        "programFacts": {},
+        "elapsedMs": 6162.706700000001
+      },
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/2",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/confirm-draft",
+        "requestId": "ai-2",
+        "status": "SUCCESS",
+        "input": {
+          "confirmed": true
+        },
+        "modelText": {
+          "selection": {
+            "regionId": "R3",
+            "canopyId": "R3"
+          },
+          "date": "2026-06-21",
+          "startTime": "15:00",
+          "endTime": "16:00",
+          "timeZone": "Asia/Shanghai",
+          "intervalMinutes": 15,
+          "height": 1.5,
+          "movementMode": "region",
+          "minimumShade": 0.8,
+          "needsClarification": false,
+          "clarificationQuestions": [],
+          "summary": "解析指定日期的活动时段，沿用当前区域与棚位设置，采用给定的采样间隔、参考高度和最低遮阴要求。"
+        },
+        "programFacts": {
+          "confirmed": true
+        },
+        "elapsedMs": 26.705400000000736
+      }
+    ],
+    "B": [
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/18",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/explain",
+        "requestId": "ai-1",
+        "status": "SUCCESS",
+        "input": "为什么同一水平采样点，地面被遮挡，较高参考面却可能直射？",
+        "modelText": {
+          "summary": "同一水平采样点因参考面高度不同而出现不同遮挡结果：较低参考面被遮挡，较高参考面直射。",
+          "explanation": "两条射线方向一致但起点高度不同；较低起点先遇到遮挡实体，较高起点未被该实体遮挡，因此分别呈现命中遮挡与直射状态。该证据仅针对该采样点，不能据此推断区域结论。",
+          "pattern": "ground-blocked-elevated-direct",
+          "evidenceRefs": [
+            "analysis-4-4:13:0:55:ground",
+            "analysis-4-4:13:0:55:elevated"
+          ],
+          "limitations": [
+            "仅基于当前离散采样点与有限候选射线。",
+            "仅反映该采样时刻的两条射线状态。",
+            "未覆盖其他采样位置和未采样时刻，不能据此外推区域结论。"
+          ]
+        },
+        "programFacts": {
+          "facts": {
+            "pointNumber": 56,
+            "pointIndex": 55,
+            "timestamp": "2026-06-21T06:00:00.000Z",
+            "sampleIndex": 0,
+            "contextKey": "[4,4,\"analysis-4-4\",13,\"R1\",\"R3\",\"[\\\"2026-06-21\\\",\\\"14:00\\\",\\\"14:15\\\",15,\\\"Asia/Shanghai\\\",15,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T06:00:00.000Z\"]",
+            "selection": {
+              "regionId": "R1",
+              "canopyId": "R3"
+            },
+            "ground": {
+              "evidenceId": "analysis-4-4:13:0:55:ground",
+              "origin": [
+                -4.9,
+                0,
+                -1.9
+              ],
+              "direction": [
+                -0.4743133985769012,
+                0.8609476908050664,
+                0.1838365405131785
+              ],
+              "status": "blocked",
+              "blockerId": "B1",
+              "hit": [
+                -8,
+                5.62695013361084,
+                -0.698487925281631
+              ]
+            },
+            "elevated": {
+              "evidenceId": "analysis-4-4:13:0:55:elevated",
+              "origin": [
+                -4.9,
+                1.5,
+                -1.9
+              ],
+              "direction": [
+                -0.4743133985769012,
+                0.8609476908050664,
+                0.1838365405131785
+              ],
+              "status": "direct",
+              "blockerId": null,
+              "hit": null
+            },
+            "pattern": "ground-blocked-elevated-direct"
+          },
+          "source": "deepseek"
+        },
+        "elapsedMs": 4199.3938999999955
+      }
+    ],
+    "C": [
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/4",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/recommend",
+        "requestId": "ai-3",
+        "status": "SUCCESS",
+        "input": "2026年6月21日15:00到16:00活动，每15分钟采样，棚保持R3不动，只移动活动区域，离地1.5米参考面，最低采样遮阴率至少80%。",
+        "modelText": {
+          "candidateId": "ai-3:R1/R3",
+          "summary": "选择排序靠前的达标候选，遮阴表现满足目标且移动对象较少。",
+          "reasonCodes": [
+            "meets_target",
+            "higher_average"
+          ],
+          "explanation": "该候选的最低遮阴率和平均遮阴率均达到目标，平均遮阴率高于基线；移动对象仅涉及活动区域，棚保持不动。",
+          "limitations": [
+            "结果仅基于当前离散采样时刻与有限候选，未覆盖未采样时刻。"
+          ]
+        },
+        "programFacts": {
+          "selection": {
+            "regionId": "R1",
+            "canopyId": "R3"
+          },
+          "metrics": {
+            "minimum": 1,
+            "average": 1,
+            "minimumTimes": [
+              "2026-06-21T07:00:00.000Z",
+              "2026-06-21T07:15:00.000Z",
+              "2026-06-21T07:30:00.000Z",
+              "2026-06-21T07:45:00.000Z",
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "baseline": {
+            "minimum": 0.6,
+            "average": 0.7625,
+            "minimumTimes": [
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "changes": [
+            {
+              "object": "region",
+              "from": "R3",
+              "to": "R1"
+            }
+          ],
+          "movedCount": 1,
+          "examined": 6,
+          "legal": 4,
+          "source": "deepseek",
+          "conditions": {
+            "date": "2026-06-21",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "intervalMinutes": 15,
+            "timeZone": "Asia/Shanghai",
+            "durationMinutes": 60,
+            "sceneGeometryVersion": "courtyard-v1",
+            "algorithmVersion": "ray-box-period-v1",
+            "samplingVersion": "grid10-center-eps1e-4-v1",
+            "latitude": 38.914,
+            "longitude": 121.614
+          },
+          "height": 1.5
+        },
+        "elapsedMs": 6397.2605
+      },
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/10",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/reject",
+        "requestId": "ai-4",
+        "status": "SUCCESS",
+        "input": {
+          "confirmed": null
+        },
+        "modelText": null,
+        "programFacts": {
+          "rejected": true
+        },
+        "elapsedMs": 16.397200000003068
+      },
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/12",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/recommend",
+        "requestId": "ai-5",
+        "status": "SUCCESS",
+        "input": "2026年6月21日15:00到16:00活动，每15分钟采样，棚保持R3不动，只移动活动区域，离地1.5米参考面，最低采样遮阴率至少80%。",
+        "modelText": {
+          "candidateId": "ai-5:R1/R3",
+          "summary": "首选候选满足最低遮阴率要求，平均遮阴率高于基准平均，推荐采用。",
+          "reasonCodes": [
+            "meets_target",
+            "higher_average"
+          ],
+          "explanation": "在给定候选排序中优先选择靠前项；其最低遮阴率达到目标，平均遮阴率高于基准平均。移动对象为活动区域，移动对象数量与另一候选相同。",
+          "limitations": [
+            "结果仅基于当前离散采样与有限候选，未覆盖未采样时刻。"
+          ]
+        },
+        "programFacts": {
+          "selection": {
+            "regionId": "R1",
+            "canopyId": "R3"
+          },
+          "metrics": {
+            "minimum": 1,
+            "average": 1,
+            "minimumTimes": [
+              "2026-06-21T07:00:00.000Z",
+              "2026-06-21T07:15:00.000Z",
+              "2026-06-21T07:30:00.000Z",
+              "2026-06-21T07:45:00.000Z",
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "baseline": {
+            "minimum": 0.6,
+            "average": 0.7625,
+            "minimumTimes": [
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "changes": [
+            {
+              "object": "region",
+              "from": "R3",
+              "to": "R1"
+            }
+          ],
+          "movedCount": 1,
+          "examined": 6,
+          "legal": 4,
+          "source": "deepseek",
+          "conditions": {
+            "date": "2026-06-21",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "intervalMinutes": 15,
+            "timeZone": "Asia/Shanghai",
+            "durationMinutes": 60,
+            "sceneGeometryVersion": "courtyard-v1",
+            "algorithmVersion": "ray-box-period-v1",
+            "samplingVersion": "grid10-center-eps1e-4-v1",
+            "latitude": 38.914,
+            "longitude": 121.614
+          },
+          "height": 1.5
+        },
+        "elapsedMs": 5997.9643
+      },
+      {
+        "source": "docs/evidence/batch1c/browser-final.json",
+        "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+        "jsonPointer": "/requests/14",
+        "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+        "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+        "action": "/api/ai/apply",
+        "requestId": "ai-6",
+        "status": "SUCCESS",
+        "input": {
+          "confirmed": true
+        },
+        "modelText": null,
+        "programFacts": {
+          "selection": {
+            "regionId": "R1",
+            "canopyId": "R3"
+          },
+          "metrics": {
+            "minimum": 1,
+            "average": 1,
+            "minimumTimes": [
+              "2026-06-21T07:00:00.000Z",
+              "2026-06-21T07:15:00.000Z",
+              "2026-06-21T07:30:00.000Z",
+              "2026-06-21T07:45:00.000Z",
+              "2026-06-21T08:00:00.000Z"
+            ]
+          },
+          "recomputed": true
+        },
+        "elapsedMs": 23.398300000000745
+      }
+    ]
+  },
+  "failuresAndLimits": [
+    {
+      "source": "docs/evidence/batch1c/browser-final.json",
+      "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+      "jsonPointer": "/requests/21",
+      "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+      "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+      "action": "/api/ai/parse",
+      "requestId": "ai-1",
+      "status": "NEEDS_CLARIFICATION",
+      "input": "活动希望靠近入口，并尽量舒服，其他条件沿用当前设置。",
+      "modelText": {
+        "selection": null,
+        "date": null,
+        "startTime": null,
+        "endTime": null,
+        "timeZone": null,
+        "intervalMinutes": null,
+        "height": null,
+        "movementMode": null,
+        "minimumShade": null,
+        "needsClarification": true,
+        "clarificationQuestions": [
+          "请用已有活动区域替换未支持的位置偏好，可以吗？"
+        ],
+        "summary": "需求包含尚未支持的条件，需要先澄清。"
+      },
+      "programFacts": {},
+      "elapsedMs": 1611.5388999999996
+    },
+    {
+      "source": "docs/evidence/batch1c/browser-final.json",
+      "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+      "jsonPointer": "/requests/23",
+      "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+      "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+      "action": "/api/ai/parse",
+      "requestId": "ai-1",
+      "status": "VALIDATION_REJECTED",
+      "input": "其他条件沿用当前设置，活动参考高度请设为2米，请保留这个高度原值，不要替换成其他值，交给程序检查。",
+      "modelText": null,
+      "programFacts": {},
+      "elapsedMs": 6113.130100000002
+    },
+    {
+      "source": "docs/evidence/batch1c/browser-final.json",
+      "sourceSha256": "6610b3a0033c157442fc5a8d3ee3b83e0748066b905b126c3c7b18de9e651a24",
+      "jsonPointer": "/requests/28",
+      "kind": "RECORDED_LIVE_API_AND_PROGRAM_VERIFICATION",
+      "initiator": "AUTOMATED_BROWSER_NOT_HUMAN",
+      "action": "/api/ai/recommend",
+      "requestId": "ai-3",
+      "status": "NO_FEASIBLE_CANDIDATE",
+      "input": "沿用当前日期时段及参考高度，活动区域和遮阳棚都不能移动，最低采样遮阴率要求至少80%，不降低这个目标。",
+      "modelText": null,
+      "programFacts": {
+        "minimumShade": 0.8,
+        "examined": 1,
+        "legal": 1,
+        "source": "deterministic",
+        "message": "当前有限合法候选没有达到已确认目标，目标未降低。"
+      },
+      "elapsedMs": 11.918699999994715
+    }
+  ],
+  "historyFailures": [
+    "docs/evidence/batch1c/ai-live-initial.json",
+    "docs/evidence/batch1c/ai-live-protocol-recheck.json",
+    "docs/evidence/batch1c/application-ack-red.spec.txt"
+  ],
+  "note": "Original JSON/PNG files remain in their original Batch folders. Rejected model replies and test failures were not overwritten. All user confirmations here were performed by the browser test script, not claimed as a human study."
+}

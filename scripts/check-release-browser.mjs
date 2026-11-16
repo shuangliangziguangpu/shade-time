@@ -6,6 +6,8 @@ import {pathToFileURL} from 'node:url';
 if(!process.argv[2])throw new Error('Pass an existing playwright-core/index.mjs path.');
 const {chromium}=await import(pathToFileURL(process.argv[2]).href);
 const output=process.argv[3]??'docs/evidence/final/batch1d-browser.json';
+try {await fs.access(output);throw new Error('Evidence output already exists; choose a new JSON path to preserve the original run.');}
+catch(error){if(error.code!=='ENOENT')throw error;}
 const prefix=output.replace(/\.json$/,'');
 const report={kind:'AUTOMATED_BROWSER',headless:!process.argv.includes('--headed'),humanAcceptance:false,capturedAt:new Date().toISOString(),checks:[],records:[],aiRequests:[],console:[],pageErrors:[]};
 const browser=await chromium.launch({channel:'msedge',headless:report.headless});

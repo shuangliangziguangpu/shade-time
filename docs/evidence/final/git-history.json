@@ -1,0 +1,125 @@
+{
+  "capturedAt": "2026-11-16T10:13:43.127Z",
+  "headAtIndexing": "e691826a60d7dec51f8d28c67254c781139522a9",
+  "branch": "feature/phase1.5-batch1d-release",
+  "main": "7bf34be2fc86592e9283d1a7c5c0962e2d42607f",
+  "commits": [
+    {
+      "sha": "8323e4651530c34223083b3278e8bb7fade564a7",
+      "date": "2026-11-14T19:15:41+08:00",
+      "subject": "feat: freeze courtyard configuration and approved canopy structure"
+    },
+    {
+      "sha": "de7991168c9db603441a6055d011826eeca0e2e0",
+      "date": "2026-11-14T19:18:21+08:00",
+      "subject": "feat: generate courtyard geometry from one immutable scene source"
+    },
+    {
+      "sha": "e41d22a3259bfd66e038282997ecd7e19e6cbb7e",
+      "date": "2026-11-14T19:21:26+08:00",
+      "subject": "feat: validate ID-based layouts with confirmed ground clearances"
+    },
+    {
+      "sha": "0ecca01341f8f081bff960c5b52213317fc7034c",
+      "date": "2026-11-14T19:24:34+08:00",
+      "subject": "feat: analyze legal courtyard placements with the frozen ray core"
+    },
+    {
+      "sha": "a2c9d6d90bdd041e7f7fb1a71bc1eb77469504ac",
+      "date": "2026-11-14T19:28:57+08:00",
+      "subject": "feat: derive courtyard meshes and shadow coverage from scene geometry"
+    },
+    {
+      "sha": "b5f546c78f709732da2e0ac7b92c4c995e166d06",
+      "date": "2026-11-14T19:47:32+08:00",
+      "subject": "feat: deliver courtyard experiment UI and verify full regression"
+    },
+    {
+      "sha": "50893b8bdce79e683ee639d7dd45560673fad727",
+      "date": "2026-11-14T19:58:04+08:00",
+      "subject": "docs: archive phase-one acceptance, browser evidence and frozen baseline audit"
+    },
+    {
+      "sha": "aaa0269e9b2c29d1b5b3ba113aaa84ec896fec3f",
+      "date": "2026-11-14T21:25:09+08:00",
+      "subject": "feat: establish reproducible PBR materials and explicit shadow bindings"
+    },
+    {
+      "sha": "59afdaab20f431adafea1606ea6a6c27bf144671",
+      "date": "2026-11-14T21:57:12+08:00",
+      "subject": "feat: add bound facade prototype, instanced paving and visual render pipeline"
+    },
+    {
+      "sha": "a8ed43610afe546d0635f5bc13c290c31b36cda0",
+      "date": "2026-11-14T23:24:11+08:00",
+      "subject": "feat: refine TD004 finishes and verify shadow, resource and performance instrumentation"
+    },
+    {
+      "sha": "003b7a38a69271dfab65bd82aef3bf2b47551011",
+      "date": "2026-11-14T23:38:47+08:00",
+      "subject": "docs: archive Batch 1A acceptance, visual comparisons and unfiltered performance evidence"
+    },
+    {
+      "sha": "55e9d27b8092f54f317151109def3b33d349ffaa",
+      "date": "2026-11-16T14:52:26+08:00",
+      "subject": "feat: analyze complete activity periods with weighted sampling and validity gates"
+    },
+    {
+      "sha": "e7c2e2a1827f622985904ffd9dda765cc926031b",
+      "date": "2026-11-16T15:01:22+08:00",
+      "subject": "feat: link activity-period curves and sampled moments to the courtyard"
+    },
+    {
+      "sha": "50a870891c81604c1d5f0259dae68a559f468d3c",
+      "date": "2026-11-16T15:07:52+08:00",
+      "subject": "feat: compare legal layouts with strict conditions and confirmable A/B previews"
+    },
+    {
+      "sha": "3807edc6c53946410dee13dcf9f4fab0d63409cb",
+      "date": "2026-11-16T15:12:36+08:00",
+      "subject": "feat: inspect paired height rays with context-bound spatial evidence"
+    },
+    {
+      "sha": "6f059f3ee789afaa67ed80c49433296066fe00b2",
+      "date": "2026-11-16T15:26:29+08:00",
+      "subject": "feat: bind decision requests, candidate application and evidence to monotone versions"
+    },
+    {
+      "sha": "02a5ac87df3540a70577aeca20998bb7986e3a60",
+      "date": "2026-11-16T16:12:15+08:00",
+      "subject": "fix: invalidate observation evidence and recover consistent decision views"
+    },
+    {
+      "sha": "e891cd1a3ffaea5352de04e8b5f7daeeefb7e794",
+      "date": "2026-11-16T16:20:27+08:00",
+      "subject": "docs: archive Batch 1B acceptance, browser comparisons and reproducible evidence"
+    },
+    {
+      "sha": "2e6d4e5048e8b83cc9bc82b17de6eee913da7660",
+      "date": "2026-11-16T16:37:08+08:00",
+      "subject": "feat: add fixed-provider server JSON client with cancellation and safe errors"
+    },
+    {
+      "sha": "144f1528bac7798d451e0f9f2da141ff8a0eb1e4",
+      "date": "2026-11-16T17:01:49+08:00",
+      "subject": "feat: enforce server authority for AI drafts, candidates, evidence and revalidated application"
+    },
+    {
+      "sha": "bc9b7a63e50c633333c35b82ed8b3afb86cce3ff",
+      "date": "2026-11-16T17:26:09+08:00",
+      "subject": "feat: connect real AI workflows to courtyard preview, evidence and confirmed application"
+    },
+    {
+      "sha": "5c40f63e30bc6c592bd51c619d14790955c3b18c",
+      "date": "2026-11-16T17:38:34+08:00",
+      "subject": "docs: archive three live AI chains, final browser verification and Batch 1C acceptance"
+    },
+    {
+      "sha": "e691826a60d7dec51f8d28c67254c781139522a9",
+      "date": "2026-11-16T17:58:19+08:00",
+      "subject": "feat: save portable confirmed scenes and restore with fresh analysis and AI invalidation"
+    }
+  ],
+  "pushed": false,
+  "merged": false
+}
