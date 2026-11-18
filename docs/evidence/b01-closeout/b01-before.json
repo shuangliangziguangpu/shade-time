@@ -1,0 +1,199 @@
+{
+  "recordedAt": "2026-11-17T17:10:36.343Z",
+  "kind": "B01_REAL_DOMAIN_AND_HTTP_WITH_MOCK_SUPPLIER",
+  "sourceHead": "c9c0d3871847053e3939576b37f84488c9c0bc26",
+  "parameters": {
+    "confirmed": {
+      "regionId": "R3",
+      "canopyId": "R3"
+    },
+    "preview": {
+      "regionId": "R1",
+      "canopyId": "R3"
+    },
+    "settings": {
+      "date": "2026-06-21",
+      "startTime": "15:00",
+      "endTime": "16:00",
+      "intervalMinutes": 15
+    },
+    "sampleIndex": 0,
+    "pointIndex": 55
+  },
+  "confirmedEvidence": {
+    "pointNumber": 56,
+    "pointIndex": 55,
+    "timestamp": "2026-06-21T07:00:00.000Z",
+    "sampleIndex": 0,
+    "contextKey": "[1,1,\"analysis-1-1\",3,\"R3\",\"R3\",\"[\\\"2026-06-21\\\",\\\"15:00\\\",\\\"16:00\\\",15,\\\"Asia/Shanghai\\\",60,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T07:00:00.000Z\"]",
+    "selection": {
+      "regionId": "R3",
+      "canopyId": "R3"
+    },
+    "ground": {
+      "evidenceId": "analysis-1-1:3:0:55:ground",
+      "origin": [
+        5.1,
+        0,
+        -1.9
+      ],
+      "direction": [
+        -0.6613948487648118,
+        0.7446273362889716,
+        0.0899276602529085
+      ],
+      "status": "direct",
+      "blockerId": null,
+      "hit": null
+    },
+    "elevated": {
+      "evidenceId": "analysis-1-1:3:0:55:elevated",
+      "origin": [
+        5.1,
+        1.5,
+        -1.9
+      ],
+      "direction": [
+        -0.6613948487648118,
+        0.7446273362889716,
+        0.0899276602529085
+      ],
+      "status": "blocked",
+      "blockerId": "C_ROOF",
+      "hit": [
+        4.3005996357118335,
+        2.4,
+        -1.7913081882932527
+      ]
+    }
+  },
+  "previewEvidence": {
+    "pointNumber": 56,
+    "pointIndex": 55,
+    "timestamp": "2026-06-21T07:00:00.000Z",
+    "sampleIndex": 0,
+    "contextKey": "[1,1,\"analysis-1-1\",3,\"R1\",\"R3\",\"[\\\"2026-06-21\\\",\\\"15:00\\\",\\\"16:00\\\",15,\\\"Asia/Shanghai\\\",60,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T07:00:00.000Z\"]",
+    "selection": {
+      "regionId": "R1",
+      "canopyId": "R3"
+    },
+    "ground": {
+      "evidenceId": "analysis-1-1:3:0:55:ground",
+      "origin": [
+        -4.9,
+        0,
+        -1.9
+      ],
+      "direction": [
+        -0.6613948487648118,
+        0.7446273362889716,
+        0.0899276602529085
+      ],
+      "status": "blocked",
+      "blockerId": "B1",
+      "hit": [
+        -8,
+        3.490115997738358,
+        -1.4785032990434621
+      ]
+    },
+    "elevated": {
+      "evidenceId": "analysis-1-1:3:0:55:elevated",
+      "origin": [
+        -4.9,
+        1.5,
+        -1.9
+      ],
+      "direction": [
+        -0.6613948487648118,
+        0.7446273362889716,
+        0.0899276602529085
+      ],
+      "status": "blocked",
+      "blockerId": "B1",
+      "hit": [
+        -8,
+        4.990115997738358,
+        -1.4785032990434621
+      ]
+    }
+  },
+  "referencesEqual": true,
+  "contextKeysDiffer": true,
+  "http": 200,
+  "response": {
+    "status": "SUCCESS",
+    "requestId": "ai-1",
+    "contextId": "7716abd4-33d2-48a2-a35b-eca1176903ef",
+    "data": {
+      "facts": {
+        "pointNumber": 56,
+        "pointIndex": 55,
+        "timestamp": "2026-06-21T07:00:00.000Z",
+        "sampleIndex": 0,
+        "contextKey": "[1,1,\"analysis-1-1\",3,\"R3\",\"R3\",\"[\\\"2026-06-21\\\",\\\"15:00\\\",\\\"16:00\\\",15,\\\"Asia/Shanghai\\\",60,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T07:00:00.000Z\"]",
+        "selection": {
+          "regionId": "R3",
+          "canopyId": "R3"
+        },
+        "ground": {
+          "evidenceId": "analysis-1-1:3:0:55:ground",
+          "origin": [
+            5.1,
+            0,
+            -1.9
+          ],
+          "direction": [
+            -0.6613948487648118,
+            0.7446273362889716,
+            0.0899276602529085
+          ],
+          "status": "direct",
+          "blockerId": null,
+          "hit": null
+        },
+        "elevated": {
+          "evidenceId": "analysis-1-1:3:0:55:elevated",
+          "origin": [
+            5.1,
+            1.5,
+            -1.9
+          ],
+          "direction": [
+            -0.6613948487648118,
+            0.7446273362889716,
+            0.0899276602529085
+          ],
+          "status": "blocked",
+          "blockerId": "C_ROOF",
+          "hit": [
+            4.3005996357118335,
+            2.4,
+            -1.7913081882932527
+          ]
+        },
+        "pattern": "ground-direct-elevated-blocked"
+      },
+      "ai": {
+        "summary": "两条射线的命中状态不同。",
+        "explanation": "较低参考面的射线未命中，较高参考面的射线命中遮挡实体。",
+        "pattern": "ground-direct-elevated-blocked",
+        "evidenceRefs": [
+          "analysis-1-1:3:0:55:ground",
+          "analysis-1-1:3:0:55:elevated"
+        ],
+        "limitations": [
+          "仅描述当前单点，不代表区域。"
+        ]
+      },
+      "source": "deepseek"
+    }
+  },
+  "completions": 1,
+  "modelReceivedLayout": {
+    "regionId": "R3",
+    "canopyId": "R3"
+  },
+  "liveApiCalled": false,
+  "bugReproduced": true
+}

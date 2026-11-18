@@ -83,7 +83,9 @@ export function createAiWorkflow({getContext,send=sendAiRequest,onState=()=>{},a
     dropPreview();value.proposal=null;value.status='REJECTED';emit();
   }
   async function explain(text){
-    const ctx=getContext();if(!ctx?.evidenceRefs?.length){value.status='INVALID_INPUT';emit();return null;}
+    const ctx=getContext();
+    if(ctx?.shown==='B'){value.explanation=null;value.status='PREVIEW_EXPLANATION_UNAVAILABLE';emit();return null;}
+    if(!ctx?.evidenceRefs?.length){value.status='INVALID_INPUT';emit();return null;}
     const response=await request('explain',{text,evidenceRefs:ctx.evidenceRefs});if(response){value.explanation=response.data;value.status='EXPLANATION_VALIDATED';emit();}return response;
   }
   function focusEvidence(){if(value.explanation)focus(value.explanation.facts);}

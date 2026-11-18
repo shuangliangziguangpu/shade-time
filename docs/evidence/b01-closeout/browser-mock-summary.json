@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-17T17:42:49.550Z",
+  "kind": "OBSERVED_CUA_ACTION_SUMMARY_WITH_MOCK_TRANSPORT",
+  "note": "Steps observed directly in current tool transcript; B screenshots and supplier-call log retained. One accumulated in-memory snapshot list was lost when the file chooser tool timed out; imported final snapshot was subsequently saved.",
+  "checks": [
+    {
+      "name": "manual B P56 disabled explanation and retained B1/B1 local rays",
+      "status": "PASS",
+      "evidence": "mock-manual-B.jpg"
+    },
+    {
+      "name": "manual switch back A explain direct/C_ROOF",
+      "status": "PASS",
+      "evidence": "mock-supplier-calls.jsonl record1 plus tool observation"
+    },
+    {
+      "name": "manual B confirm then explain B1/B1",
+      "status": "PASS",
+      "evidence": "mock-supplier-calls.jsonl record2"
+    },
+    {
+      "name": "AI-recommended B disabled explanation and retained B1/B1 local rays",
+      "status": "PASS",
+      "evidence": "mock-AI-B.jpg"
+    },
+    {
+      "name": "AI B confirm then explain B1/B1",
+      "status": "PASS",
+      "evidence": "mock-supplier-calls.jsonl record5"
+    },
+    {
+      "name": "save confirmed B, reload, import, explain B1/B1",
+      "status": "PASS",
+      "evidence": "mock-import-after.json"
+    }
+  ],
+  "toolIssue": {
+    "fileChooser": "Timed out once before import; recovered using existing saved JSON absolute path",
+    "applicationFailure": false
+  },
+  "humanAcceptance": "NOT RUN",
+  "liveApiSeparate": "b01-live.json"
+}

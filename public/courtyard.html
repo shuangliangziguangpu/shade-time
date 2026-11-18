@@ -25,6 +25,7 @@
       <textarea id="ai-input" rows="2" maxlength="2000">2026年6月21日15:00到16:00活动，每15分钟采样，棚保持R3不动，只移动活动区域，离地1.5米参考面，最低采样遮阴率至少80%。</textarea>
       <div class="ai-actions"><button id="ai-parse" type="button">解析需求</button><button id="ai-confirm-draft" type="button" disabled>确认约束草案</button><button id="ai-recommend" type="button" disabled>生成布置建议</button><button id="ai-explain" type="button" disabled>解释当前证据</button><button id="ai-cancel" type="button" disabled>取消请求</button></div>
       <p id="ai-status" role="status" aria-live="polite">尚未请求AI。</p>
+      <p id="ai-explain-scope" class="hint" aria-live="polite">AI解释适用于当前已确认布局；B预览可查看本地双高度射线。</p>
       <div id="ai-result" aria-live="polite"></div>
       <div class="ai-actions"><button id="ai-preview" type="button" disabled>预览AI建议B</button><button id="ai-apply" type="button" disabled>确认应用AI方案</button><button id="ai-reject" type="button" disabled>拒绝AI建议</button></div>
       <p class="hint">先确认约束，再请求建议。AI只组织解释；数值、候选合法性和应用前验证由程序完成。解释前请在侧栏选择有效网格点。</p>

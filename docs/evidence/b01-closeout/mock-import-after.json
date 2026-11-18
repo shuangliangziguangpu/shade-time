@@ -1,0 +1,745 @@
+{
+  "kind": "REAL_BROWSER_MOCK_SUPPLIER_NOT_LIVE_API",
+  "record": {
+    "ai": {
+      "application": null,
+      "approved": false,
+      "busy": false,
+      "draft": null,
+      "explanation": {
+        "ai": {
+          "evidenceRefs": [
+            "analysis-3-2:8:R1/R3:0:55:ground",
+            "analysis-3-2:8:R1/R3:0:55:elevated"
+          ],
+          "explanation": "事实卡展示各参考面是否命中实体，文字仅为辅助阅读。",
+          "limitations": [
+            "单点不能代替区域结论。"
+          ],
+          "pattern": "ground-blocked-elevated-blocked",
+          "summary": "对照当前两条射线。"
+        },
+        "facts": {
+          "contextKey": "[3,2,\"analysis-3-2\",8,\"R1\",\"R3\",\"[\\\"2026-06-21\\\",\\\"15:00\\\",\\\"16:00\\\",15,\\\"Asia/Shanghai\\\",60,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T07:00:00.000Z\"]",
+          "elevated": {
+            "blockerId": "B1",
+            "direction": [
+              -0.6613948487648118,
+              0.7446273362889716,
+              0.0899276602529085
+            ],
+            "evidenceId": "analysis-3-2:8:R1/R3:0:55:elevated",
+            "hit": [
+              -8,
+              4.990115997738358,
+              -1.478503299043462
+            ],
+            "origin": [
+              -4.9,
+              1.5,
+              -1.9
+            ],
+            "status": "blocked"
+          },
+          "ground": {
+            "blockerId": "B1",
+            "direction": [
+              -0.6613948487648118,
+              0.7446273362889716,
+              0.0899276602529085
+            ],
+            "evidenceId": "analysis-3-2:8:R1/R3:0:55:ground",
+            "hit": [
+              -8,
+              3.490115997738358,
+              -1.478503299043462
+            ],
+            "origin": [
+              -4.9,
+              0,
+              -1.9
+            ],
+            "status": "blocked"
+          },
+          "pattern": "ground-blocked-elevated-blocked",
+          "pointIndex": 55,
+          "pointNumber": 56,
+          "sampleIndex": 0,
+          "selection": {
+            "canopyId": "R3",
+            "regionId": "R1"
+          },
+          "timestamp": "2026-06-21T07:00:00.000Z"
+        },
+        "source": "deepseek"
+      },
+      "proposal": null,
+      "requestId": "ai-1",
+      "status": "EXPLANATION_VALIDATED"
+    },
+    "d": {
+      "analysisRuns": 2,
+      "bindings": [
+        {
+          "entityId": "B1",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            -8,
+            6,
+            9
+          ],
+          "proxyMin": [
+            -12,
+            0,
+            -9
+          ],
+          "visualMax": [
+            -8,
+            6,
+            9
+          ],
+          "visualMin": [
+            -12,
+            -7.152557213174759e-9,
+            -9
+          ]
+        },
+        {
+          "entityId": "B2",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            10,
+            4,
+            9
+          ],
+          "proxyMin": [
+            2,
+            0,
+            6
+          ],
+          "visualMax": [
+            10,
+            4,
+            9
+          ],
+          "visualMin": [
+            2,
+            0,
+            6
+          ]
+        },
+        {
+          "entityId": "C_ROOF",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            6.5,
+            2.5000000007450582,
+            -0.5
+          ],
+          "proxyMin": [
+            3.5,
+            2.399999999254942,
+            -3.5
+          ],
+          "visualMax": [
+            6.5,
+            2.5,
+            -0.5
+          ],
+          "visualMin": [
+            3.5,
+            2.4000000953674316,
+            -3.5
+          ]
+        },
+        {
+          "entityId": "C_POST_NW",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            3.600000000745058,
+            2.400000047683716,
+            -3.399999999254942
+          ],
+          "proxyMin": [
+            3.4999999992549418,
+            -4.768371586472142e-8,
+            -3.5000000007450582
+          ],
+          "visualMax": [
+            3.5999999046325684,
+            2.4000000953674316,
+            -3.4000000953674316
+          ],
+          "visualMin": [
+            3.5,
+            3.874301990336448e-10,
+            -3.5
+          ]
+        },
+        {
+          "entityId": "C_POST_SW",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            3.600000000745058,
+            2.400000047683716,
+            -0.499999999254942
+          ],
+          "proxyMin": [
+            3.4999999992549418,
+            -4.768371586472142e-8,
+            -0.6000000007450581
+          ],
+          "visualMax": [
+            3.5999999046325684,
+            2.4000000953674316,
+            -0.5
+          ],
+          "visualMin": [
+            3.5,
+            3.874301990336448e-10,
+            -0.6000000238418579
+          ]
+        },
+        {
+          "entityId": "C_POST_NE",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            6.500000000745058,
+            2.400000047683716,
+            -3.399999999254942
+          ],
+          "proxyMin": [
+            6.399999999254942,
+            -4.768371586472142e-8,
+            -3.5000000007450582
+          ],
+          "visualMax": [
+            6.5,
+            2.4000000953674316,
+            -3.4000000953674316
+          ],
+          "visualMin": [
+            6.400000095367432,
+            3.874301990336448e-10,
+            -3.5
+          ]
+        },
+        {
+          "entityId": "C_POST_SE",
+          "geometryVersion": "batch1a-v1",
+          "proxyMax": [
+            6.500000000745058,
+            2.400000047683716,
+            -0.499999999254942
+          ],
+          "proxyMin": [
+            6.399999999254942,
+            -4.768371586472142e-8,
+            -0.6000000007450581
+          ],
+          "visualMax": [
+            6.5,
+            2.4000000953674316,
+            -0.5
+          ],
+          "visualMin": [
+            6.400000095367432,
+            3.874301990336448e-10,
+            -0.6000000238418579
+          ]
+        }
+      ],
+      "camera": {
+        "aspect": 1.4839285714285717,
+        "position": [
+          24.076150706056257,
+          22.76663186779922,
+          -28.088842490398942
+        ],
+        "target": [
+          0,
+          1.7,
+          0
+        ]
+      },
+      "candidateDurationMs": null,
+      "comparison": null,
+      "device": {
+        "cssHeight": 560,
+        "cssWidth": 831,
+        "deviceMemoryGiB": 16,
+        "documentHasFocus": true,
+        "dpr": 1.5,
+        "drawingBuffer": [
+          1246,
+          840
+        ],
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5060 Laptop GPU (0x00002D59) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "logicalCores": 32,
+        "screenHeight": 1067,
+        "screenWidth": 1707,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+        "vendor": "Google Inc. (NVIDIA)",
+        "visibility": "visible"
+      },
+      "evidenceContext": {
+        "analysisId": "analysis-3-2",
+        "analysisVersion": 2,
+        "contextVersion": 8,
+        "sceneVersion": 3
+      },
+      "frame": {
+        "calls": 28,
+        "frame": 73952,
+        "lines": 4,
+        "points": 0,
+        "renderCpuMs": 0.3999999985098839,
+        "shadowUpdated": false,
+        "triangles": 17546
+      },
+      "loading": {
+        "firstRenderReturnedMs": 823.6999999992549,
+        "navigation": [
+          {
+            "domContentLoaded": 654.6999999992549,
+            "duration": 828.4000000003725
+          }
+        ],
+        "proceduralTextureMs": 331.2000000011176,
+        "resources": [
+          {
+            "decodedBodySize": 5858,
+            "duration": 17.600000001490116,
+            "name": "/styles.css",
+            "transferSize": 6158
+          },
+          {
+            "decodedBodySize": 8717,
+            "duration": 18.09999999962747,
+            "name": "/courtyard.css",
+            "transferSize": 9017
+          },
+          {
+            "decodedBodySize": 32549,
+            "duration": 18.799999998882413,
+            "name": "/src/courtyard.js",
+            "transferSize": 32849
+          },
+          {
+            "decodedBodySize": 1272972,
+            "duration": 17.199999999254942,
+            "name": "/vendor/three.module.js",
+            "transferSize": 1273272
+          },
+          {
+            "decodedBodySize": 1429,
+            "duration": 18,
+            "name": "/src/domain/layout.js",
+            "transferSize": 1729
+          },
+          {
+            "decodedBodySize": 2436,
+            "duration": 13.200000001117589,
+            "name": "/src/domain/scene-config.js",
+            "transferSize": 2736
+          },
+          {
+            "decodedBodySize": 4600,
+            "duration": 25.300000000745055,
+            "name": "/src/view/period-panel.js",
+            "transferSize": 4900
+          },
+          {
+            "decodedBodySize": 5314,
+            "duration": 20,
+            "name": "/src/domain/period.js",
+            "transferSize": 5614
+          },
+          {
+            "decodedBodySize": 3427,
+            "duration": 24.699999999254945,
+            "name": "/src/view/candidate-panel.js",
+            "transferSize": 3727
+          },
+          {
+            "decodedBodySize": 4899,
+            "duration": 29.299999998882413,
+            "name": "/src/domain/candidates.js",
+            "transferSize": 5199
+          },
+          {
+            "decodedBodySize": 2524,
+            "duration": 28.59999999962747,
+            "name": "/src/domain/point-evidence.js",
+            "transferSize": 2824
+          },
+          {
+            "decodedBodySize": 1734,
+            "duration": 50.19999999925494,
+            "name": "/src/view/point-evidence.js",
+            "transferSize": 2034
+          },
+          {
+            "decodedBodySize": 1771,
+            "duration": 52.5,
+            "name": "/src/core/geometry.js",
+            "transferSize": 2071
+          },
+          {
+            "decodedBodySize": 6572,
+            "duration": 45.59999999962747,
+            "name": "/src/domain/decision-session.js",
+            "transferSize": 6872
+          },
+          {
+            "decodedBodySize": 2317,
+            "duration": 52.09999999962747,
+            "name": "/src/core/sun.js",
+            "transferSize": 2617
+          },
+          {
+            "decodedBodySize": 4825,
+            "duration": 49.20000000111759,
+            "name": "/src/view/visual-materials.js",
+            "transferSize": 5125
+          },
+          {
+            "decodedBodySize": 3718,
+            "duration": 50.09999999962747,
+            "name": "/src/view/visual-scene.js",
+            "transferSize": 4018
+          },
+          {
+            "decodedBodySize": 6963,
+            "duration": 51.20000000111759,
+            "name": "/src/view/render-pipeline.js",
+            "transferSize": 7263
+          },
+          {
+            "decodedBodySize": 3145,
+            "duration": 54.5,
+            "name": "/src/view/camera-rig.js",
+            "transferSize": 3445
+          },
+          {
+            "decodedBodySize": 3458,
+            "duration": 55.5,
+            "name": "/src/domain/scene-file.js",
+            "transferSize": 3758
+          },
+          {
+            "decodedBodySize": 6527,
+            "duration": 53.5,
+            "name": "/src/view/ai-panel.js",
+            "transferSize": 6827
+          },
+          {
+            "decodedBodySize": 2963,
+            "duration": 8.699999999254942,
+            "name": "/src/domain/scene.js",
+            "transferSize": 3263
+          },
+          {
+            "decodedBodySize": 1635,
+            "duration": 7.700000001117587,
+            "name": "/src/domain/clearance.js",
+            "transferSize": 1935
+          },
+          {
+            "decodedBodySize": 2138,
+            "duration": 6.5,
+            "name": "/src/domain/analysis.js",
+            "transferSize": 2438
+          },
+          {
+            "decodedBodySize": 489,
+            "duration": 9.400000000372527,
+            "name": "/src/view/lighting.js",
+            "transferSize": 789
+          },
+          {
+            "decodedBodySize": 849,
+            "duration": 8.599999999627471,
+            "name": "/src/view/visual-config.js",
+            "transferSize": 1149
+          },
+          {
+            "decodedBodySize": 5531,
+            "duration": 9.900000000372527,
+            "name": "/src/view/courtyard-model.js",
+            "transferSize": 5831
+          },
+          {
+            "decodedBodySize": 280,
+            "duration": 7.599999999627471,
+            "name": "/vendor/suncalc-adapter.js",
+            "transferSize": 580
+          },
+          {
+            "decodedBodySize": 7966,
+            "duration": 6.5,
+            "name": "/src/view/ai-workflow.js",
+            "transferSize": 8266
+          },
+          {
+            "decodedBodySize": 29868,
+            "duration": 7.800000000745058,
+            "name": "/vendor/OrbitControls.js",
+            "transferSize": 30168
+          },
+          {
+            "decodedBodySize": 2538,
+            "duration": 9.699999999254942,
+            "name": "/src/view/shadow-proxies.js",
+            "transferSize": 2838
+          },
+          {
+            "decodedBodySize": 3440,
+            "duration": 10.699999999254942,
+            "name": "/src/view/building-visuals.js",
+            "transferSize": 3740
+          },
+          {
+            "decodedBodySize": 4379,
+            "duration": 10.099999999627473,
+            "name": "/src/view/ground-visuals.js",
+            "transferSize": 4679
+          },
+          {
+            "decodedBodySize": 1582,
+            "duration": 11.400000000372527,
+            "name": "/src/view/canopy-visuals.js",
+            "transferSize": 1882
+          },
+          {
+            "decodedBodySize": 1906,
+            "duration": 11.5,
+            "name": "/src/view/box-parts.js",
+            "transferSize": 2206
+          },
+          {
+            "decodedBodySize": 9116,
+            "duration": 11.400000000372527,
+            "name": "/vendor/suncalc.js",
+            "transferSize": 9416
+          },
+          {
+            "decodedBodySize": 31906,
+            "duration": 5.199999999254942,
+            "name": "/vendor/BufferGeometryUtils.js",
+            "transferSize": 32206
+          }
+        ]
+      },
+      "metrics": {
+        "elevated": 1,
+        "ground": 1
+      },
+      "performance": null,
+      "period": {
+        "elevated": {
+          "average": 1,
+          "invalidTimes": [],
+          "minimum": 1,
+          "minimumTimes": [
+            "2026-06-21T07:00:00.000Z",
+            "2026-06-21T07:15:00.000Z",
+            "2026-06-21T07:30:00.000Z",
+            "2026-06-21T07:45:00.000Z",
+            "2026-06-21T08:00:00.000Z"
+          ],
+          "sampleCount": 5,
+          "status": "valid"
+        },
+        "ground": {
+          "average": 1,
+          "invalidTimes": [],
+          "minimum": 1,
+          "minimumTimes": [
+            "2026-06-21T07:00:00.000Z",
+            "2026-06-21T07:15:00.000Z",
+            "2026-06-21T07:30:00.000Z",
+            "2026-06-21T07:45:00.000Z",
+            "2026-06-21T08:00:00.000Z"
+          ],
+          "sampleCount": 5,
+          "status": "valid"
+        },
+        "samples": [
+          {
+            "clock": "15:00",
+            "elevated": 1,
+            "elevatedValidCount": 100,
+            "ground": 1,
+            "groundValidCount": 100,
+            "status": "valid",
+            "timestamp": "2026-06-21T07:00:00.000Z"
+          },
+          {
+            "clock": "15:15",
+            "elevated": 1,
+            "elevatedValidCount": 100,
+            "ground": 1,
+            "groundValidCount": 100,
+            "status": "valid",
+            "timestamp": "2026-06-21T07:15:00.000Z"
+          },
+          {
+            "clock": "15:30",
+            "elevated": 1,
+            "elevatedValidCount": 100,
+            "ground": 1,
+            "groundValidCount": 100,
+            "status": "valid",
+            "timestamp": "2026-06-21T07:30:00.000Z"
+          },
+          {
+            "clock": "15:45",
+            "elevated": 1,
+            "elevatedValidCount": 100,
+            "ground": 1,
+            "groundValidCount": 100,
+            "status": "valid",
+            "timestamp": "2026-06-21T07:45:00.000Z"
+          },
+          {
+            "clock": "16:00",
+            "elevated": 1,
+            "elevatedValidCount": 100,
+            "ground": 1,
+            "groundValidCount": 100,
+            "status": "valid",
+            "timestamp": "2026-06-21T08:00:00.000Z"
+          }
+        ],
+        "selectedSampleIndex": 0,
+        "settings": {
+          "date": "2026-06-21",
+          "durationMinutes": 60,
+          "endTime": "16:00",
+          "intervalMinutes": 15,
+          "startTime": "15:00",
+          "timeZone": "Asia/Shanghai"
+        },
+        "status": "valid"
+      },
+      "periodDurationMs": 7.599999999627471,
+      "proxyCheck": null,
+      "resources": {
+        "geometries": 28,
+        "programs": 7,
+        "textures": 17
+      },
+      "selectedEvidence": {
+        "contextKey": "[3,2,\"analysis-3-2\",8,\"R1\",\"R3\",\"[\\\"2026-06-21\\\",\\\"15:00\\\",\\\"16:00\\\",15,\\\"Asia/Shanghai\\\",60,\\\"courtyard-v1\\\",\\\"ray-box-period-v1\\\",\\\"grid10-center-eps1e-4-v1\\\",38.914,121.614,1.5]\",\"2026-06-21T07:00:00.000Z\"]",
+        "elevated": {
+          "blockerId": "B1",
+          "direction": [
+            -0.6613948487648118,
+            0.7446273362889716,
+            0.0899276602529085
+          ],
+          "evidenceId": "analysis-3-2:8:R1/R3:0:55:elevated",
+          "hit": [
+            -8,
+            4.990115997738358,
+            -1.478503299043462
+          ],
+          "origin": [
+            -4.9,
+            1.5,
+            -1.9
+          ],
+          "status": "blocked"
+        },
+        "ground": {
+          "blockerId": "B1",
+          "direction": [
+            -0.6613948487648118,
+            0.7446273362889716,
+            0.0899276602529085
+          ],
+          "evidenceId": "analysis-3-2:8:R1/R3:0:55:ground",
+          "hit": [
+            -8,
+            3.490115997738358,
+            -1.478503299043462
+          ],
+          "origin": [
+            -4.9,
+            0,
+            -1.9
+          ],
+          "status": "blocked"
+        },
+        "pointIndex": 55,
+        "pointNumber": 56,
+        "sampleIndex": 0,
+        "selection": {
+          "canopyId": "R3",
+          "regionId": "R1"
+        },
+        "timestamp": "2026-06-21T07:00:00.000Z"
+      },
+      "selection": {
+        "canopyId": "R3",
+        "regionId": "R1"
+      },
+      "shown": "A",
+      "shownSelection": {
+        "canopyId": "R3",
+        "regionId": "R1"
+      },
+      "state": {
+        "algorithmVersion": "ray-box-period-v1",
+        "analysisId": "analysis-3-2",
+        "analysisVersion": 2,
+        "constraints": {
+          "canopyMovable": false,
+          "minimumShade": 0.8,
+          "regionMovable": true
+        },
+        "contextVersion": 8,
+        "height": 1.5,
+        "period": {
+          "date": "2026-06-21",
+          "durationMinutes": 60,
+          "endTime": "16:00",
+          "intervalMinutes": 15,
+          "startTime": "15:00",
+          "timeZone": "Asia/Shanghai"
+        },
+        "samplingVersion": "grid10-center-eps1e-4-v1",
+        "sceneGeometryVersion": "courtyard-v1",
+        "sceneVersion": 3,
+        "selection": {
+          "canopyId": "R3",
+          "regionId": "R1"
+        }
+      },
+      "staticGroupId": "ce7a863a-ad10-4251-9de6-6fae5bf8c725",
+      "sun": {
+        "direction": [
+          -0.6613948487648118,
+          0.7446273362889716,
+          0.0899276602529085
+        ],
+        "lightToSun": [
+          -0.6613948487648117,
+          0.7446273362889716,
+          0.0899276602529085
+        ],
+        "propagation": [
+          0.6613948487648117,
+          -0.7446273362889716,
+          -0.0899276602529085
+        ]
+      },
+      "version": "batch1b-v1",
+      "view": "overview"
+    },
+    "explainDisabled": false,
+    "file": "场景已恢复并重新计算；旧分析、候选、点证据和AI会话已清除，AI需求须重新解析确认。"
+  },
+  "earlierToolTimeout": "File chooser cell timed out before import; preserved as test-environment event, recovered using absolute saved path"
+}

@@ -111,6 +111,7 @@ export function createAiService({client=createAiClient(),now=Date.now}={}){
       }
       if(action==='explain'){
         inputText(input.text);if(ctx.pointIndex===null)throw new AiError('INVALID_INPUT');
+        // Rebuild layout-bound references from the server's confirmed scene before any model call.
         const evidence=pointEvidence(ctx.result,ctx.sampleIndex,ctx.pointIndex,ctx.state),refs=[evidence.ground.evidenceId,evidence.elevated.evidenceId];
         if(!Array.isArray(input.evidenceRefs)||input.evidenceRefs.length!==2)throw new AiError('VALIDATION_REJECTED');
         if(!same(refs,input.evidenceRefs))throw new AiError(input.evidenceRefs.every(ref=>typeof ref==='string'&&ref.startsWith('analysis-'))?'STALE_CONTEXT':'VALIDATION_REJECTED');

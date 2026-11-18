@@ -1,0 +1,127 @@
+✖ B01 exact P56 counterexample uses distinct references for different actual layouts (28.1405ms)
+✖ B01 HTTP rejects B evidence against confirmed A before any supplier call (MOCK transport) (104.7862ms)
+✖ B01 legacy unbound references are rejected instead of being silently upgraded (MOCK transport) (16.1982ms)
+✔ B01 confirmed A and later confirmed B are both explainable with freshly bound facts (MOCK transport) (21.2466ms)
+✖ B01 manual B preview cannot issue an explain request or erase local rays (7.0076ms)
+✖ B01 ai-recommendation B preview cannot issue an explain request or erase local rays (5.7621ms)
+✖ B01 switching back to A restores explain workflow without requiring preview application (5.6932ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 1
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 518.6116
+
+✖ failing tests:
+
+test at test\preview-explanation.test.js:29:1
+✖ B01 exact P56 counterexample uses distinct references for different actual layouts (28.1405ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+  
+  'analysis-1-1:2:0:55:ground'
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/preview-explanation.test.js:33:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'analysis-1-1:2:0:55:ground',
+    expected: 'analysis-1-1:2:0:55:ground',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at test\preview-explanation.test.js:36:1
+✖ B01 HTTP rejects B evidence against confirmed A before any supplier call (MOCK transport) (104.7862ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 409
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/preview-explanation.test.js:41:9)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 409,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\preview-explanation.test.js:43:1
+✖ B01 legacy unbound references are rejected instead of being silently upgraded (MOCK transport) (16.1982ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'SUCCESS'
+  - 'STALE_CONTEXT'
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/preview-explanation.test.js:45:228)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'SUCCESS',
+    expected: 'STALE_CONTEXT',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\preview-explanation.test.js:53:50
+✖ B01 manual B preview cannot issue an explain request or erase local rays (7.0076ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/preview-explanation.test.js:56:40)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\preview-explanation.test.js:53:50
+✖ B01 ai-recommendation B preview cannot issue an explain request or erase local rays (5.7621ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/preview-explanation.test.js:56:40)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\preview-explanation.test.js:58:1
+✖ B01 switching back to A restores explain workflow without requiring preview application (5.6932ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///D:/ShadeTime/test/preview-explanation.test.js:61:38)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

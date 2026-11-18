@@ -1,0 +1,6 @@
+{"at":"2026-11-17T17:23:39.443Z","kind":"MOCK_SUPPLIER_ONLY","number":1,"task":"EXPLAIN","selection":{"regionId":"R3","canopyId":"R3"},"pattern":"ground-direct-elevated-blocked"}
+{"at":"2026-11-17T17:27:06.325Z","kind":"MOCK_SUPPLIER_ONLY","number":2,"task":"EXPLAIN","selection":{"regionId":"R1","canopyId":"R3"},"pattern":"ground-blocked-elevated-blocked"}
+{"at":"2026-11-17T17:27:35.910Z","kind":"MOCK_SUPPLIER_ONLY","number":3,"task":"PARSE"}
+{"at":"2026-11-17T17:27:36.502Z","kind":"MOCK_SUPPLIER_ONLY","number":4,"task":"RECOMMEND"}
+{"at":"2026-11-17T17:28:39.455Z","kind":"MOCK_SUPPLIER_ONLY","number":5,"task":"EXPLAIN","selection":{"regionId":"R1","canopyId":"R3"},"pattern":"ground-blocked-elevated-blocked"}
+{"at":"2026-11-17T17:34:13.578Z","kind":"MOCK_SUPPLIER_ONLY","number":6,"task":"EXPLAIN","selection":{"regionId":"R1","canopyId":"R3"},"pattern":"ground-blocked-elevated-blocked"}

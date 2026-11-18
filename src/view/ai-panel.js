@@ -1,6 +1,6 @@
 import { createAiWorkflow } from './ai-workflow.js';
 
-const labels={IDLE:'尚未请求AI；手动分析始终可用。',UNDERSTANDING:'正在理解需求，尚未修改场景…',COMPUTING_CANDIDATES:'服务端正在重算合法候选并请求DeepSeek…',VERIFYING_EVIDENCE:'服务端正在验证当前双高度证据并请求解释…',CONFIRMING_CONSTRAINTS:'正在确认约束草案…',REVALIDATING:'正在服务端重新计算，尚未应用…',WAITING_DRAFT_CONFIRMATION:'草案已通过程序校验，等待你确认约束。',CONSTRAINTS_CONFIRMED:'约束已确认，可以生成布置建议。',RECOMMENDATION_VALIDATED:'AI建议已通过程序校验，尚未预览或应用。',WAITING_APPLICATION_CONFIRMATION:'正在预览B，正式布局仍为A；等待你确认应用。',EXPLANATION_VALIDATED:'AI解释已通过证据引用校验，事实以程序证据卡为准。',APPLIED:'服务端和本地重新验证通过，已正式应用。',REJECTED:'已拒绝建议并恢复A。',NEEDS_CLARIFICATION:'存在未支持或不明确的条件，请回答澄清问题后重新解析。',NO_FEASIBLE_CANDIDATE:'当前有限合法候选没有达到已确认目标；目标未降低。',INVALID_INPUT:'输入或当前分析不完整；解释前请先选择有效采样点。',STALE_CONTEXT:'上下文已变化，旧AI结果失效；请重新请求。',AI_TIMEOUT:'AI请求超时；场景保持原状，可重试或继续手动分析。',AI_CANCELLED:'已取消AI请求，场景保持原状。',AI_UNAVAILABLE:'AI暂不可用；手动分析与A/B比较仍可使用。',INVALID_AI_RESPONSE:'AI回复不符合严格协议，已拒绝，场景保持原状。',VALIDATION_REJECTED:'程序拒绝此输入、建议或确认；请核对当前条件。'};
+const labels={IDLE:'尚未请求AI；手动分析始终可用。',UNDERSTANDING:'正在理解需求，尚未修改场景…',COMPUTING_CANDIDATES:'服务端正在重算合法候选并请求DeepSeek…',VERIFYING_EVIDENCE:'服务端正在验证当前双高度证据并请求解释…',CONFIRMING_CONSTRAINTS:'正在确认约束草案…',REVALIDATING:'正在服务端重新计算，尚未应用…',WAITING_DRAFT_CONFIRMATION:'草案已通过程序校验，等待你确认约束。',CONSTRAINTS_CONFIRMED:'约束已确认，可以生成布置建议。',RECOMMENDATION_VALIDATED:'AI建议已通过程序校验，尚未预览或应用。',WAITING_APPLICATION_CONFIRMATION:'正在预览B，正式布局仍为A；等待你确认应用。',EXPLANATION_VALIDATED:'AI解释的结构、布局引用与模式校验通过；请结合事实卡核对生成文字。',PREVIEW_EXPLANATION_UNAVAILABLE:'B预览的AI解释不可用，请切回A或确认应用后重新选点；本地双射线仍可查看。',APPLIED:'服务端和本地重新验证通过，已正式应用。',REJECTED:'已拒绝建议并恢复A。',NEEDS_CLARIFICATION:'存在未支持或不明确的条件，请回答澄清问题后重新解析。',NO_FEASIBLE_CANDIDATE:'当前有限合法候选没有达到已确认目标；目标未降低。',INVALID_INPUT:'输入或当前分析不完整；解释前请先选择有效采样点。',STALE_CONTEXT:'上下文已变化，旧AI结果失效；请重新请求。',AI_TIMEOUT:'AI请求超时；场景保持原状，可重试或继续手动分析。',AI_CANCELLED:'已取消AI请求，场景保持原状。',AI_UNAVAILABLE:'AI暂不可用；手动分析与A/B比较仍可使用。',INVALID_AI_RESPONSE:'AI回复不符合严格协议，已拒绝，场景保持原状。',VALIDATION_REJECTED:'程序拒绝此输入、建议或确认；请核对当前条件。'};
 export function createAiPanel(bridge){
   const $=id=>document.getElementById(id),container=$('ai-result');
   const text=(tag,value,className)=>{const node=document.createElement(tag);node.textContent=value;if(className)node.className=className;return node;};
@@ -11,7 +11,11 @@ export function createAiPanel(bridge){
     $('ai-parse').disabled=state.busy;
     $('ai-confirm-draft').disabled=state.busy||!state.draft?.draftId;
     $('ai-recommend').disabled=state.busy||!state.approved;
-    $('ai-explain').disabled=state.busy||!bridge.getContext()?.evidenceRefs?.length;
+    const explanationContext=bridge.getContext(),previewing=explanationContext?.shown==='B';
+    $('ai-explain').disabled=state.busy||previewing||!explanationContext?.evidenceRefs?.length;
+    $('ai-explain-scope').textContent=previewing
+      ?'B预览保留本地双高度射线；AI解释暂不可用。请切回A或确认应用后重新选点解释。'
+      :'AI解释仅校验结构、当前布局的证据引用与模式；生成文字的语义仍需结合事实卡核对。';
     $('ai-cancel').disabled=!state.busy;
     $('ai-preview').disabled=state.busy||!state.proposal;
     $('ai-apply').disabled=state.busy||!workflow.hasAiPreview();

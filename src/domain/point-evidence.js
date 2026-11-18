@@ -20,7 +20,8 @@ export function pointEvidence(result, sampleIndex, pointIndex, context) {
   if (sample.status !== 'valid' || !sample.analysis.ground || !sample.analysis.elevated) throw new RangeError('当前时刻没有有效双高度证据');
   const record = (reference, layer) => {
     const point = reference.samples[pointIndex];
-    return Object.freeze({ evidenceId: `${context.analysisId}:${context.contextVersion}:${sampleIndex}:${pointIndex}:${layer}`,
+    // A and B can share analysis/observation versions; the actual layout must distinguish their references.
+    return Object.freeze({ evidenceId: `${context.analysisId}:${context.contextVersion}:${result.selection.regionId}/${result.selection.canopyId}:${sampleIndex}:${pointIndex}:${layer}`,
       origin: Object.freeze(point.point.toArray()), direction: Object.freeze(sample.analysis.sun.direction.toArray()),
       status: point.status, blockerId: point.blockerId ?? null,
       hit: point.hit ? Object.freeze(point.hit.toArray()) : null });
