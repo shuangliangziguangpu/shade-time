@@ -1,14 +1,12 @@
 # 荫时 ShadeTime
 
-> 本地B01修订（2026-11-18）：分支`fix/phase1.5-b01-preview-evidence`仅修复B预览的AI解释错配。B视图禁用解释并保留本地双射线；切回A或确认应用后重新选点可解释。引用绑定实际布局，错配在调用模型前拒绝。原130项＋新增7项共137项通过，详见[修复记录](docs/reports/final/B01-Preview-Evidence-Closeout.md)。该本地分支尚未推送，下面公开链接仍指向c9c0d38基线；不要把未推送修订与旧公开版视为同一版本。生成文字仅校验结构、引用与模式，不代表全部语义已验证。
-
 面向校园户外活动组织者的 AI 三维遮阴实验与布置决策实验室。
 
-目前完成**阶段0、阶段1及Phase 1.5 Batch 1A/1B/1C/1D**：完整庭院与双高度时段分析、真实DeepSeek三链决策、A/B确认及本地JSON保存/导入。原盒G独立验证页保留。当前130项测试通过（原119项完整保留＋保存恢复新增11项）；保存恢复和三条真实AI链已在本机Edge自动化验收。前台人工验收尚未执行。
+本候选包括**阶段0、阶段1及 Phase 1.5 Batch 1A/1B/1C/1D**的完整历史、B01 修复和交付说明。功能包括庭院、双高度时段分析、DeepSeek 三条业务链、A/B 预览与确认、本地 JSON 保存与导入。阶段1验收提交为 `50893b8bdce79e683ee639d7dd45560673fad727`。历史阶段0独立入口 `/` 保留，完整产品入口为 `/courtyard`。
 
-撤销、完整竞赛材料、B2精细立面和树木未实现。产品范围已冻结，后续转入材料与缺陷修复。本轮发布仅使用下方Phase 1.5候选分支，main保留阶段0基线。AI失败或回复不合规时会拒绝并保留手动分析，不能保证每次模型调用成功。公开代码候选不等于人工验收或赛事提交通过。
+全套自动化测试为 137 项，包括 7 项 B01 回归。B 预览保留双高度射线，AI 解释仅针对已确认布局。证据引用绑定实际布局，服务端先验证再调用模型。自由文字仍需和程序事实卡核对。详见 [B01 修复记录](docs/reports/final/B01-Preview-Evidence-Closeout.md)，其中的发布状态属于记录当时。
 
-公开候选入口：[feature/phase1.5-batch1d-release](https://github.com/shuangliangziguangpu/shade-time/tree/feature/phase1.5-batch1d-release)。请显式选择此分支，不使用main复现完整产品。发布实测记录见[Release Readiness Report](docs/reports/final/ShadeTime-Phase1.5-Release-Readiness.md)。
+复现完整作品时选择 [feature/phase1.5-batch1d-release](https://github.com/shuangliangziguangpu/shade-time/tree/feature/phase1.5-batch1d-release)。`main` 是阶段0基线。参赛包的评审入口列出实际交付 HEAD、AI 协作证据和材料版本。原公开基线的复现留档见 [历史发布核对](docs/reports/final/ShadeTime-Phase1.5-Release-Readiness.md)。
 
 ## 从公开候选复现（目标10分钟以内）
 
@@ -17,24 +15,24 @@
 ```powershell
 git clone --branch feature/phase1.5-batch1d-release --single-branch https://github.com/shuangliangziguangpu/shade-time.git shade-time
 Set-Location -LiteralPath './shade-time'
+git rev-parse HEAD
 npm ci --ignore-scripts
-node --test --test-reporter=spec
-node server/index.js
+npm test
+npm start
 ```
 
-打开 http://127.0.0.1:3000/courtyard 。缺密钥时AI明确不可用；三条真实AI链的既有脱敏证据见docs/evidence/batch1c及final，不把Mock测试冒充真实调用。如3000已被占用，使用`$env:PORT='43115'`再启动并打开对应端口；不要开启第二个3000实例。完整参数、人工清单和已知边界见[复现说明](docs/reports/final/REPRODUCE.md)。
+打开 http://127.0.0.1:3000/courtyard 。`npm start` 会读取本地 `.env`。无密钥可完成手动复现。有自有密钥时先按下方配置，再启动真实 AI。历史脱敏调用见 `docs/evidence/batch1c` 和 `docs/evidence/b01-closeout`。如端口3000被占用，可设 `$env:PORT='43115'` 再启动并打开对应端口。场景参数和验证边界见[复现说明](docs/reports/final/REPRODUCE.md)。
 
 ## 本地运行当前样板
 
 环境：Node.js 24.x（本机实测v24.22.1）和随Node发行的npm、支持WebGL的桌面浏览器。仅有两个精确依赖：Three.js 0.160.0、SunCalc 1.9.0；无构建步骤或数据库。
 
-在PowerShell中：
+在候选源码目录中执行以下命令。
 
 ```powershell
-Set-Location -LiteralPath 'D:\ShadeTime'
-git switch feature/phase1.5-batch1d-release
-node --test --test-reporter=spec
-node --env-file-if-exists=.env server/index.js
+npm ci --ignore-scripts
+npm test
+npm start
 ```
 
 庭院入口：http://127.0.0.1:3000/courtyard 。独立盒G入口：http://127.0.0.1:3000/ 。若3000已有本项目服务，直接打开网页，不再启动第二个实例。
@@ -49,7 +47,7 @@ node --env-file-if-exists=.env server/index.js
 
 AI闭环：在顶部“AI空间助手”解析默认活动需求，核对日期/时段/高度/权限/目标后点“确认约束草案”，再点“生成布置建议”。程序重算有限合法候选后，DeepSeek只能选择达标候选ID；点击“预览AI建议B”不会改变正式A，只有确认应用才进行服务端与本地二次计算并应用。可以切A/B或拒绝。改变业务条件使旧结果失效。
 
-证据解释：设置R1区域/R3棚、2026-06-21 14:00–14:15，在侧栏选择P56，再点“解释当前证据”。实际地面命中B1、1.5米未命中。AI只组织文字，命中对象、交点和引用由服务器重建；点击证据定位按钮显示对应双射线。切观察上下文后旧解释清除。
+证据解释可用 2026-06-21 15:00 的 P56 核验。正式 R3/R3 时地面直射，1.5 米射线命中 `C_ROOF`。预览 R1/R3 时双射线均命中 `B1`，解释按钮禁用。切回 A 或确认应用 B 后重新选点，即可在对应正式布局上解释。布局与观察上下文切换会清除旧证据。
 
 1. 打开/courtyard，默认R3区域＋R3棚、2026-06-21 15:00–16:00，间隔15分钟。1.5米五值90/80/80/70/60%，梯形平均76.25%，最低60%在16:00。地面独立平均5%、最低0%。
 2. 切换参考高度或采样时刻：曲线、当前遮阴率与三维太阳联动，不重新执行整段计算。结束设15:20时包含15:00、15:15、15:20，末段按5分钟加权。
